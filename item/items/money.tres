@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cchwfxajyowmr"]
+
+[ext_resource type="Script" uid="uid://4rg6eckkaigk" path="res://item/item_data.gd" id="1_aty5g"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aty5g"]
+load_path = "res://.godot/imported/genericItems_spritesheet_colored.png-7460db51fb7d59ee8878cf98ae176cd8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqm2n"]
+atlas = SubResource("CompressedTexture2D_aty5g")
+region = Rect2(268, 648, 104, 108)
+
+[resource]
+script = ExtResource("1_aty5g")
+name = "money"
+description = "why would you need it underwater?"
+texture = SubResource("AtlasTexture_cqm2n")
+metadata/_custom_type_script = "uid://4rg6eckkaigk"
