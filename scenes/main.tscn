@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxrx820pryg0u"]
+[gd_scene format=3 uid="uid://cxrx820pryg0u"]
 
 [ext_resource type="Script" uid="uid://hcimcrlphnpe" path="res://scripts/terrain_generator.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://puodl8gsm5u" path="res://scripts/world.gd" id="2_0wfyh"]
@@ -8,16 +8,16 @@ noise_type = 0
 frequency = 0.014
 fractal_weighted_strength = 1.0
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1125537957]
 
-[node name="DummyPlayer" type="Node2D" parent="."]
+[node name="DummyPlayer" type="Node2D" parent="." unique_id=2126297963]
 
-[node name="TerrainGenerator" type="Node" parent="."]
+[node name="TerrainGenerator" type="Node" parent="." unique_id=127509959]
 script = ExtResource("1_o5qli")
 noise = SubResource("FastNoiseLite_o5qli")
 metadata/_custom_type_script = "uid://hcimcrlphnpe"
 
-[node name="World" type="Node" parent="." node_paths=PackedStringArray("player", "terrain_generator")]
+[node name="World" type="Node" parent="." unique_id=1701203509 node_paths=PackedStringArray("player", "terrain_generator")]
 script = ExtResource("2_0wfyh")
 player = NodePath("../DummyPlayer")
 terrain_generator = NodePath("../TerrainGenerator")
