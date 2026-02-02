@@ -5,12 +5,25 @@ class_name TerrainGenerator
 
 @export var noise: FastNoiseLite
 @export var isovalue: float
+@export var player: Player
 var chunks: Dictionary = {} # Vector2i -> ChunkData
 var loaded_chunks: Dictionary = {} # Vector2i -> ChunkInstance
 
 func _ready() -> void:
 	noise.seed = randi()
-	load_chunk(Vector2i(0, 0))
+	for y in 4:
+		for x in 4:
+			ensure_loaded(Vector2i(x, y))
+	
+#func _process(delta: float) -> void:
+	## load chunks around the player
+	#for y in [-1, 0, 1]:
+		#for x in [-1, 0 ,1]:
+			#ensure_loaded(self.player.chunk_pos + Vector2i(x, y))
+
+func ensure_loaded(chunk_pos: Vector2i):
+	if not is_loaded(chunk_pos):
+		load_chunk(chunk_pos)
 
 # loads a chunk at a given chunk position
 # generates the chunk if not generated already
@@ -28,15 +41,15 @@ func load_chunk(chunk_pos: Vector2i):
 
 # generates chunk data using simplex noise
 func generate_chunk(chunk_pos: Vector2i) -> ChunkData:
-	var terrain_data = PackedByteArray()
-	var global_pos = Vector2(chunk_pos * Globals.CHUNK_SIZE * Globals.TILE_SIZE)
+	var terrain_data = PackedFloat32Array()
+	var chunk_origin = chunk_pos * Globals.CHUNK_SIZE * Globals.TILE_SIZE
 	# store chunk data in rows
-	for y in range(Globals.CHUNK_SIZE):
-		for x in range(Globals.CHUNK_SIZE):
-			self.noise.offset = Vector3(global_pos.x, global_pos.y, 0.0)
-			var sample_pos = Vector2(x, y) * Globals.TILE_SIZE
-			var sample = self.noise.get_noise_2d(sample_pos.x, sample_pos.y)
-			terrain_data.append(round(sample * 255.0))
+	# + 1 because we want Globals.CHUNK_SIZE cells (bars and stars)
+	for y in range(Globals.CHUNK_SIZE + 1):
+		for x in range(Globals.CHUNK_SIZE + 1):
+			var sample_pos = Vector2(chunk_origin + Vector2i(x, y) * Globals.TILE_SIZE)
+			var sample = self.noise.get_noise_2dv(sample_pos)
+			terrain_data.append(sample)
 	var chunk_data = ChunkData.new()
 	chunk_data.chunk_pos = chunk_pos
 	chunk_data.terrain_data = terrain_data

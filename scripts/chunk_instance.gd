@@ -71,12 +71,15 @@ func build(_isovalue: float):
 	var indices: Array[int] = []
 	var base_index = 0
 	
-	for y in range(Globals.CHUNK_SIZE - 1):
-		for x in range(Globals.CHUNK_SIZE - 1):
+	for y in range(Globals.CHUNK_SIZE):
+		for x in range(Globals.CHUNK_SIZE):
 			var cell = build_cell(Vector2i(x, y), _isovalue)
 			verts.append_array(cell.verts)
 			indices.append_array(cell.indices.map(func(i): return i + base_index))
 			base_index += cell.verts.size()
+	
+	if verts.size() == 0:
+		return
 	
 	var arrays = []
 	arrays.resize(Mesh.ARRAY_MAX)
@@ -92,18 +95,6 @@ func is_close(a: float, b: float) -> bool:
 	
 func is_inside(x: float, _isovalue: float) -> bool:
 	return x <= _isovalue
-
-func polygon_signed_area(verts: Array) -> float:
-	# standard shoelace * 0.5
-	var sum := 0.0
-	for i in range(verts.size()):
-		var a = verts[i]
-		var b = verts[(i + 1) % verts.size()]
-		sum += (a.x * b.y) - (b.x * a.y)
-	return sum * 0.5
-
-func is_polygon_ccw(verts: Array) -> bool:
-	return polygon_signed_area(verts) < 0.0 
 
 func safe_interp_t(a_val: float, b_val: float, _isovalue: float) -> float:
 	var denom = b_val - a_val
@@ -154,21 +145,23 @@ func build_cell(cell_pos: Vector2i, _isovalue: float) -> Cell:
 
 func draw_chunk_grid():
 	# grid
+	var rand = rand_from_seed(hash(self.chunk_data.chunk_pos))[0]
+	var grid_color = Color.from_hsv((rand % 255) / 255.0, 1.0, 1.0)
 	for i in range(Globals.CHUNK_SIZE):
 		draw_line(Vector2(i * Globals.TILE_SIZE * Globals.PPM, 0.0),
 			Vector2(i * Globals.TILE_SIZE * Globals.PPM, Globals.CHUNK_SIZE * Globals.TILE_SIZE * Globals.PPM),
-			Color.RED)
+			grid_color)
 		draw_line(Vector2(0.0, i * Globals.TILE_SIZE * Globals.PPM),
 			Vector2(Globals.CHUNK_SIZE * Globals.TILE_SIZE * Globals.PPM, i * Globals.TILE_SIZE * Globals.PPM),
-			Color.RED)
+			grid_color)
 	# values
-	for y in range(Globals.CHUNK_SIZE):
-		for x in range(Globals.CHUNK_SIZE):
+	for y in range(Globals.CHUNK_SIZE + 1):
+		for x in range(Globals.CHUNK_SIZE + 1):
 			var t = self.chunk_data.get_vertex_value(Vector2i(x, y))
 			var inside_color = Color.GREEN if is_inside(t, self.isovalue) else Color.RED
 			draw_circle(Vector2(x, y) * Globals.TILE_SIZE * Globals.PPM, 8.0, inside_color)
 			var value_color = Color.BLACK.lerp(Color.WHITE, t)
-			draw_circle(Vector2(x, y) * Globals.TILE_SIZE * Globals.PPM, 6.0, value_color)
+			draw_circle(Vector2(x, y) * Globals.TILE_SIZE * Globals.PPM, 7.0, value_color)
 
 func _draw() -> void:
 	draw_chunk_grid()
