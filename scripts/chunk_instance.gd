@@ -11,6 +11,13 @@ const CORNERS := [
 	Vector2(0.0, 1.0)  # 3 bottom-left
 ]
 
+const EDGE_CORNERS := [
+	[0, 1], # top
+	[1, 2], # right
+	[2, 3], # bottom
+	[3, 0]  # left
+]
+
 const MS_POLYGONS := [
 	[],                             # 0  - no corners inside
 	[4, 0, 7],                      # 1  - TL
@@ -57,8 +64,8 @@ class Cell:
 	var verts: Array[Vector2]
 	var indices: Array[int]
 
-func build(isovalue: float):
-	self.isovalue = isovalue
+func build(_isovalue: float):
+	self.isovalue = _isovalue
 	
 	var verts: Array[Vector2] = []
 	var indices: Array[int] = []
@@ -66,9 +73,9 @@ func build(isovalue: float):
 	
 	for y in range(Globals.CHUNK_SIZE - 1):
 		for x in range(Globals.CHUNK_SIZE - 1):
-			var cell = build_cell(Vector2i(x, y), isovalue)
+			var cell = build_cell(Vector2i(x, y), _isovalue)
 			verts.append_array(cell.verts)
-			indices.append_array(cell.indices.map(func(x): return x + base_index))
+			indices.append_array(cell.indices.map(func(i): return i + base_index))
 			base_index += cell.verts.size()
 	
 	var arrays = []
@@ -83,10 +90,28 @@ func build(isovalue: float):
 func is_close(a: float, b: float) -> bool:
 	return abs(a - b) <= 0.01
 	
-func is_inside(x: float, isovalue: float) -> bool:
-	return x <= isovalue
+func is_inside(x: float, _isovalue: float) -> bool:
+	return x <= _isovalue
 
-func build_cell(cell_pos: Vector2i, isovalue: float) -> Cell:
+func polygon_signed_area(verts: Array) -> float:
+	# standard shoelace * 0.5
+	var sum := 0.0
+	for i in range(verts.size()):
+		var a = verts[i]
+		var b = verts[(i + 1) % verts.size()]
+		sum += (a.x * b.y) - (b.x * a.y)
+	return sum * 0.5
+
+func is_polygon_ccw(verts: Array) -> bool:
+	return polygon_signed_area(verts) < 0.0 
+
+func safe_interp_t(a_val: float, b_val: float, _isovalue: float) -> float:
+	var denom = b_val - a_val
+	if abs(denom) < 1e-9:
+		return 0.5
+	return clamp((_isovalue - a_val) / denom, 0.0, 1.0)
+
+func build_cell(cell_pos: Vector2i, _isovalue: float) -> Cell:
 	var verts: Array[Vector2] = []
 	var indices: Array[int] = []
 	
@@ -94,12 +119,12 @@ func build_cell(cell_pos: Vector2i, isovalue: float) -> Cell:
 		self.chunk_data.get_vertex_value(cell_pos + Vector2i(1, 0)),
 		self.chunk_data.get_vertex_value(cell_pos + Vector2i(1, 1)),
 		self.chunk_data.get_vertex_value(cell_pos + Vector2i(0, 1))]
-	var center = (v[0] + v[1] + v[2] + v[3]) / 4.0
+	#var center = (v[0] + v[1] + v[2] + v[3]) / 4.0
 	
-	var casevalue = int(is_inside(v[0], isovalue)) \
-		| int(is_inside(v[1], isovalue)) << 1 \
-		| int(is_inside(v[2], isovalue)) << 2 \
-		| int(is_inside(v[3], isovalue)) << 3
+	var casevalue = int(is_inside(v[0], _isovalue)) \
+		| int(is_inside(v[1], _isovalue)) << 1 \
+		| int(is_inside(v[2], _isovalue)) << 2 \
+		| int(is_inside(v[3], _isovalue)) << 3
 	var vertex_ptrs = MS_POLYGONS[casevalue]
 	for ptr in vertex_ptrs:
 		var offset: Vector2
@@ -114,14 +139,14 @@ func build_cell(cell_pos: Vector2i, isovalue: float) -> Cell:
 			# 3 - left
 			var edge_index = ptr - 4
 			var edge_values = [v[edge_index], v[(edge_index + 1) % v.size()]]
-			var t = (isovalue - edge_values[0]) / (edge_values[1] - edge_values[0])
-			var edge_verts = [CORNERS[edge_index], CORNERS[(edge_index + 1) % CORNERS.size()]]
+			var t = safe_interp_t(edge_values[0], edge_values[1], _isovalue)
+			var edge_verts = EDGE_CORNERS[edge_index].map(func(i): return CORNERS[i])
 			offset = lerp(edge_verts[0], edge_verts[1], t)
 		verts.append((Vector2(cell_pos) + offset) * Globals.TILE_SIZE * Globals.PPM)
 	
 	for triangle in MS_TRIANGLES[casevalue]:
 		indices.append_array(triangle)
-	
+
 	var cell = Cell.new()
 	cell.verts = verts
 	cell.indices = indices

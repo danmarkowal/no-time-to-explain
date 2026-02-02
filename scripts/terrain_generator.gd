@@ -3,13 +3,13 @@ class_name TerrainGenerator
 
 @onready var chunk_prefab = preload("res://scenes/chunk_instance.tscn")
 
-@export var seed: int
 @export var noise: FastNoiseLite
 @export var isovalue: float
 var chunks: Dictionary = {} # Vector2i -> ChunkData
 var loaded_chunks: Dictionary = {} # Vector2i -> ChunkInstance
 
 func _ready() -> void:
+	noise.seed = randi()
 	load_chunk(Vector2i(0, 0))
 
 # loads a chunk at a given chunk position
@@ -20,6 +20,7 @@ func load_chunk(chunk_pos: Vector2i):
 	if chunk_data == null:
 		chunk_data = self.generate_chunk(chunk_pos)
 	var chunk_instance = chunk_prefab.instantiate()
+	chunk_instance.position = chunk_pos * Globals.CHUNK_SIZE * Globals.TILE_SIZE * Globals.PPM
 	chunk_instance.chunk_data = chunk_data
 	chunk_instance.build(self.isovalue)
 	self.loaded_chunks.set(chunk_pos, chunk_instance)
