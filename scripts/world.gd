@@ -5,4 +5,5 @@ class_name World
 @export var terrain_generator: TerrainGenerator
 
 func _process(delta: float) -> void:
-	
+	# load chunks around player
+	pass
