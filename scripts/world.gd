@@ -17,6 +17,6 @@ func _process(delta: float) -> void:
 	# load chunks around the player
 	for y in [-1, 0, 1]:
 		for x in [-1, 0 ,1]:
-			var chunk_pos = Vector2i(x, y)
+			var chunk_pos = self.player.chunk_pos + Vector2i(x, y)
 			if world_bounds.has_point(chunk_pos):
-				terrain_generator.ensure_loaded(self.player.chunk_pos + chunk_pos)
+				terrain_generator.ensure_loaded(chunk_pos)

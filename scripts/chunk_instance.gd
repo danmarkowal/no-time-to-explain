@@ -175,7 +175,7 @@ func draw_chunk_grid():
 					valid_count += 1
 			delta /= valid_count
 			
-			draw_line(center_pos, center_pos + delta * 100.0, Color.BLUE)
+			draw_line(center_pos, center_pos + delta * 64.0, Color.BLUE)
 
 func _draw() -> void:
 	draw_chunk_grid()
