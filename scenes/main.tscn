@@ -18,9 +18,12 @@ script = ExtResource("1_o5qli")
 noise = SubResource("FastNoiseLite_o5qli")
 isovalue = 0.05
 player = NodePath("../Player")
+world_bounds = Rect2i(0, 0, 8, 8)
 metadata/_custom_type_script = "uid://hcimcrlphnpe"
 
-[node name="World" type="Node" parent="." node_paths=PackedStringArray("terrain_generator")]
+[node name="World" type="Node" parent="." node_paths=PackedStringArray("player", "terrain_generator")]
 script = ExtResource("2_0wfyh")
+player = NodePath("../Player")
 terrain_generator = NodePath("../TerrainGenerator")
+world_bounds = Rect2i(0, 0, 16, 2)
 metadata/_custom_type_script = "uid://puodl8gsm5u"

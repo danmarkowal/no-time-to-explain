@@ -6,20 +6,12 @@ class_name TerrainGenerator
 @export var noise: FastNoiseLite
 @export var isovalue: float
 @export var player: Player
+@export var world_bounds: Rect2i
 var chunks: Dictionary = {} # Vector2i -> ChunkData
 var loaded_chunks: Dictionary = {} # Vector2i -> ChunkInstance
 
 func _ready() -> void:
 	noise.seed = randi()
-	for y in 4:
-		for x in 4:
-			ensure_loaded(Vector2i(x, y))
-	
-#func _process(delta: float) -> void:
-	## load chunks around the player
-	#for y in [-1, 0, 1]:
-		#for x in [-1, 0 ,1]:
-			#ensure_loaded(self.player.chunk_pos + Vector2i(x, y))
 
 func ensure_loaded(chunk_pos: Vector2i):
 	if not is_loaded(chunk_pos):

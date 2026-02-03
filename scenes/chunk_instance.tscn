@@ -9,3 +9,5 @@ script = ExtResource("1_xpami")
 
 [node name="ChunkMesh" type="MeshInstance2D" parent="ChunkBody"]
 z_index = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChunkBody"]

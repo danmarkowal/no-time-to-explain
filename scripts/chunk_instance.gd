@@ -159,9 +159,23 @@ func draw_chunk_grid():
 		for x in range(Globals.CHUNK_SIZE + 1):
 			var t = self.chunk_data.get_vertex_value(Vector2i(x, y))
 			var inside_color = Color.GREEN if is_inside(t, self.isovalue) else Color.RED
-			draw_circle(Vector2(x, y) * Globals.TILE_SIZE * Globals.PPM, 8.0, inside_color)
+			var center_pos = Vector2(x, y) * Globals.TILE_SIZE * Globals.PPM
+			draw_circle(center_pos, 8.0, inside_color)
 			var value_color = Color.BLACK.lerp(Color.WHITE, t)
-			draw_circle(Vector2(x, y) * Globals.TILE_SIZE * Globals.PPM, 7.0, value_color)
+			draw_circle(center_pos, 7.0, value_color)
+			
+			var directions = [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]
+			var delta = Vector2.ZERO
+			var valid_count = 0
+			for direction in directions:
+				var pos = Vector2i(x, y) + direction
+				if Rect2i(0, 0, Globals.CHUNK_SIZE, Globals.CHUNK_SIZE).has_point(pos):
+					var sample = self.chunk_data.get_vertex_value(pos)
+					delta += Vector2(direction) * (sample - t)
+					valid_count += 1
+			delta /= valid_count
+			
+			draw_line(center_pos, center_pos + delta * 100.0, Color.BLUE)
 
 func _draw() -> void:
 	draw_chunk_grid()
