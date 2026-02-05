@@ -1,19 +1,19 @@
 extends CharacterBody2D
 class_name Player
 
-var chunk_pos: Vector2i = Vector2i.ZERO
-@export var speed: float = 200.0
-var speed_smoother = Smoother.new(0.0)
-var torso_smoother = LerpSmoother.new(0.0)
-
+@export var speed: float = 2.0 * Globals.PPM
 @export var swim_anim_range: float = PI / 6
 @export var swim_anim_speed_legs: float = 1.0
 @export var swim_anim_speed_arms: float = 0.5
 @export var swim_anim_phase_offset_legs: float = PI / 2
 @export var swim_anim_phase_offset_arms: float = PI / 6
 @export var swim_anim_speed_moving_multiplier = 2.0
+
+var chunk_pos: Vector2i = Vector2i.ZERO
 var swim_anim_t_legs = 0.0
 var swim_anim_t_arms = 0.0
+var speed_smoother = Smoother.new(0.0)
+var torso_smoother = LerpSmoother.new(0.0)
 
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position() - $Components/Head.global_position
@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	
 	$Components.scale.x = direction
 	# this is an ugly mess because when we set the scale to one everything turns upside down
-	$Components/Head.global_rotation = clamp(-direction * mouse_pos.angle_to(direction * Vector2.RIGHT), -PI / 6, PI / 6)
+	$Components/Head.rotation = clamp(-direction * mouse_pos.angle_to(direction * Vector2.RIGHT), -PI / 6, PI / 6)
 	$Components/Torso.rotation = torso_smoother.value
 	
 	# swim animation
