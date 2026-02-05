@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c31nuxiuatkq3"
-path="res://.godot/imported/left_arm.png-f4cfafdb29fe709b3d80c7a77f59402c.ctex"
+uid="uid://ias58gfar7hi"
+path="res://.godot/imported/right_arm.png-80cc506a1063945c8c29997a9c06c13c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/left_arm.png"
-dest_files=["res://.godot/imported/left_arm.png-f4cfafdb29fe709b3d80c7a77f59402c.ctex"]
+source_file="res://textures/player/diving_suit/right_arm.png"
+dest_files=["res://.godot/imported/right_arm.png-80cc506a1063945c8c29997a9c06c13c.ctex"]
 
 [params]
 

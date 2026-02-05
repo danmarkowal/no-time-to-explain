@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckc5ni3ry8i8f"
-path="res://.godot/imported/torso.png-c30a0b21d9b4e874ec64a2451199bccb.ctex"
+uid="uid://d0gcqo84j6dua"
+path="res://.godot/imported/left_leg.png-e7dc60f7b3ac475518698335156092bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/torso.png"
-dest_files=["res://.godot/imported/torso.png-c30a0b21d9b4e874ec64a2451199bccb.ctex"]
+source_file="res://textures/player/scientist/left_leg.png"
+dest_files=["res://.godot/imported/left_leg.png-e7dc60f7b3ac475518698335156092bb.ctex"]
 
 [params]
 

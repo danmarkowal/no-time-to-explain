@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c06ig1uktbuaa"
-path="res://.godot/imported/helmet.png-456a7ca2fe206cecce5ccb58ffb85afc.ctex"
+uid="uid://cv5j21dxg30p1"
+path="res://.godot/imported/torso.png-8ee878ea7ebb27e5a4b523226888da0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/helmet.png"
-dest_files=["res://.godot/imported/helmet.png-456a7ca2fe206cecce5ccb58ffb85afc.ctex"]
+source_file="res://textures/player/scientist/torso.png"
+dest_files=["res://.godot/imported/torso.png-8ee878ea7ebb27e5a4b523226888da0d.ctex"]
 
 [params]
 
