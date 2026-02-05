@@ -1,27 +1,32 @@
-[gd_scene format=3 uid="uid://cxrx820pryg0u"]
+[gd_scene load_steps=5 format=3 uid="uid://cxrx820pryg0u"]
 
 [ext_resource type="Script" uid="uid://hcimcrlphnpe" path="res://scripts/terrain_generator.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://w7o7jbdvg51v" path="res://scenes/player.tscn" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://puodl8gsm5u" path="res://scripts/world.gd" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://lxltr18qhs5y" path="res://inventory/inventory.tscn" id="3_sugp2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o5qli"]
 noise_type = 0
-frequency = 0.014
-fractal_weighted_strength = 1.0
+frequency = 0.05
+fractal_octaves = 4
 
 [node name="Main" type="Node2D" unique_id=1125537957]
 
-[node name="DummyPlayer" type="Node2D" parent="." unique_id=2126297963]
+[node name="Player" parent="." instance=ExtResource("1_sugp2")]
 
-[node name="TerrainGenerator" type="Node" parent="." unique_id=127509959]
+[node name="TerrainGenerator" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("1_o5qli")
 noise = SubResource("FastNoiseLite_o5qli")
+isovalue = 0.05
+player = NodePath("../Player")
+world_bounds = Rect2i(0, 0, 8, 8)
 metadata/_custom_type_script = "uid://hcimcrlphnpe"
 
 [node name="World" type="Node" parent="." unique_id=1701203509 node_paths=PackedStringArray("player", "terrain_generator")]
 script = ExtResource("2_0wfyh")
-player = NodePath("../DummyPlayer")
+player = NodePath("../Player")
 terrain_generator = NodePath("../TerrainGenerator")
+world_bounds = Rect2i(0, 0, 16, 2)
 metadata/_custom_type_script = "uid://puodl8gsm5u"
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1283426529]

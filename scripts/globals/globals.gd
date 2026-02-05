@@ -1,4 +1,5 @@
 extends Node
 
-const CHUNK_SIZE: int = 64 # in metres, chunks are square shaped
-const CHUNK_RESOLUTION: int = 2 # number of data points per metre, more = smoother terrain
+const CHUNK_SIZE: int = 16 # in tiles, chunks are square shaped
+const TILE_SIZE: int = 2 # in metres, tiles are also square shaped
+const PPM: int = 64 # pixels per metre
