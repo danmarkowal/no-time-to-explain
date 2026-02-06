@@ -18,8 +18,9 @@ var speed_smoother = Smoother.new(0.0)
 var torso_smoother = LerpSmoother.new(0.0)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		inventory_data.add_item(load("res://item/items/potion.tres"))
+	for i in 5:
+		if event.is_action_pressed("slot_%d" % (i + 1)):
+			inventory_data.selected_slot = i
 
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position() - $Components/Head.global_position

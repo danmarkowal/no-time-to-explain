@@ -3,7 +3,17 @@ class_name InventoryData
 
 @export var slot_datas: Array[SlotData]
 
+var selected_slot: int = 0 :
+	get():
+		return selected_slot
+	set(value):
+		if value < 0 or value >= slot_datas.size():
+			push_error("Selected slot out of range")
+		selected_slot = value
+		on_slot_selected.emit(value)
+
 signal on_item_added(slot: SlotData)
+signal on_slot_selected(slot_index: int)
 
 # returns whether the item was added or not
 func add_item(item_data: ItemData) -> bool:
