@@ -1,13 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://drt34y2l3hphi"]
+[gd_scene format=3 uid="uid://drt34y2l3hphi"]
 
 [ext_resource type="Script" uid="uid://17dwxv27dexv" path="res://scripts/chunk_instance.gd" id="1_xpami"]
 
-[node name="ChunkInstance" type="Node2D"]
+[node name="ChunkInstance" type="Node2D" unique_id=49376616]
 script = ExtResource("1_xpami")
 
-[node name="ChunkBody" type="StaticBody2D" parent="."]
+[node name="ChunkBody" type="StaticBody2D" parent="." unique_id=233814914]
 
-[node name="ChunkMesh" type="MeshInstance2D" parent="ChunkBody"]
+[node name="ChunkMesh" type="MeshInstance2D" parent="ChunkBody" unique_id=945218128]
 z_index = -1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChunkBody"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChunkBody" unique_id=43480602]

@@ -9,11 +9,17 @@ class_name Player
 @export var swim_anim_phase_offset_arms: float = PI / 6
 @export var swim_anim_speed_moving_multiplier = 2.0
 
+@export var inventory_data: InventoryData
+
 var chunk_pos: Vector2i = Vector2i.ZERO
 var swim_anim_t_legs = 0.0
 var swim_anim_t_arms = 0.0
 var speed_smoother = Smoother.new(0.0)
 var torso_smoother = LerpSmoother.new(0.0)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		inventory_data.add_item(load("res://item/items/potion.tres"))
 
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position() - $Components/Head.global_position

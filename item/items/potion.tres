@@ -11,8 +11,8 @@ region = Rect2(624, 500, 68, 88)
 
 [resource]
 script = ExtResource("1_h3qha")
-name = "potion"
-description = "are you a witch?"
+id = "potion"
+name = "Potion"
 texture = SubResource("AtlasTexture_0aggb")
-stackable = true
+stack_size = 5
 metadata/_custom_type_script = "uid://4rg6eckkaigk"

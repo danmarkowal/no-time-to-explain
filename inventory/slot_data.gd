@@ -1,13 +1,32 @@
 extends Resource
 class_name SlotData
 
-const MAX_STACK_SIZE: int = 12
-
 @export var item_data: ItemData
-@export_range (1, MAX_STACK_SIZE) var quantity: int = 1: set = set_quantity
+@export var quantity: int
 
-func set_quantity(value: int) -> void:
-	quantity = value
-	if quantity > 1 and not item_data.stackable:
-		quantity = 1
-		push_error("%s is not stackable, setting quantity to 1" % item_data.name)
+func is_empty() -> bool:
+	return item_data == null
+
+func set_item(item: ItemData) -> void:
+	if item.stack_size <= 0:
+		push_error("Invalid item stack size %d" % item.stack_size)
+		return
+	item_data = item
+	quantity = 1
+
+func clear() -> void:
+	item_data = null
+	quantity = 0
+
+func item_matches(item: ItemData) -> bool:
+	if item_data == null:
+		return false
+	return item_data.id == item.id
+
+# returns whether the item was successfully added
+func try_increment(count: int) -> bool:
+	if item_data == null or quantity + count > item_data.stack_size:
+		return false
+	quantity += count
+	return true
+	

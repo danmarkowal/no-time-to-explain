@@ -1,7 +1,7 @@
 extends Node
 class_name World
 
-@export var player: Node2D
+@export var player: Player
 @export var terrain_generator: TerrainGenerator
 @export var world_bounds: Rect2i
 

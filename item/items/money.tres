@@ -11,7 +11,8 @@ region = Rect2(268, 648, 104, 108)
 
 [resource]
 script = ExtResource("1_aty5g")
-name = "money"
-description = "why would you need it underwater?"
+id = "money"
+name = "Money"
 texture = SubResource("AtlasTexture_cqm2n")
+stack_size = 5
 metadata/_custom_type_script = "uid://4rg6eckkaigk"
