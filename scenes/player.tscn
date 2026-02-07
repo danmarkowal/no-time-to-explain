@@ -16,8 +16,6 @@ height = 110.0
 texture_filter = 1
 script = ExtResource("1_3vyb7")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1045280014]
-
 [node name="Components" type="Node2D" parent="." unique_id=1329812622]
 
 [node name="Head" type="Sprite2D" parent="Components" unique_id=483976877]

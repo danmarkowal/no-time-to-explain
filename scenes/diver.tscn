@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://m6qncnjunmn" path="res://textures/light.png" id="9_f1ej7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
-radius = 20.0
-height = 116.0
+radius = 19.0
+height = 122.0
 
 [node name="Diver" type="CharacterBody2D" unique_id=1267579876]
 texture_filter = 1
@@ -26,6 +26,7 @@ script = ExtResource("1_3vyb7")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1004536533]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1256995027]
+position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_fjrip")
 
 [node name="Components2" type="Node2D" parent="." unique_id=1892307032]

@@ -1,0 +1,61 @@
+[gd_scene format=4 uid="uid://7wwjyg8nwxvy"]
+
+[ext_resource type="Texture2D" uid="uid://b31yleh5ujhsu" path="res://textures/sub_atlas.png" id="1_gua2t"]
+[ext_resource type="PackedScene" uid="uid://vmbdflvn8iue" path="res://scenes/player.tscn" id="1_r3h5y"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gua2t"]
+texture = ExtResource("1_gua2t")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+0:0/3 = 3
+0:0/3/flip_v = true
+0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/next_alternative_id = 5
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+1:0/2 = 2
+1:0/2/flip_v = true
+1:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/3 = 3
+1:0/3/flip_h = true
+1:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/4 = 4
+1:0/4/flip_h = true
+1:0/4/flip_v = true
+1:0/4/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/next_alternative_id = 2
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+2:0/1 = 1
+2:0/1/flip_h = true
+2:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/next_alternative_id = 2
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.31863022, -16, -16, -16, -16, 16, 0, 16)
+3:0/1 = 1
+3:0/1/flip_h = true
+3:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(0, -16, 16, -16, 16, 16, 0, 16)
+
+[sub_resource type="TileSet" id="TileSet_r3h5y"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_gua2t")
+
+[node name="Submarine" type="Node2D" unique_id=218489408]
+texture_filter = 1
+
+[node name="Player" parent="." unique_id=1763138530 instance=ExtResource("1_r3h5y")]
+position = Vector2(-9, -57)
+speed = null
+run_multiplier = 1.7
+walk_anim_phase_offset_arms = null
+walk_anim_range_arms = null
+walk_anim_phase_offset_legs = null
+walk_anim_range_legs = null
+walk_anim_exp = null
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2045823858]
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAADAAAAAAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAAEAAAAAAADAAAAAQD7/wAAAAAAAAAAAAAFAAAAAAAAAAAAAAD6/wAAAAAAAAAAAAAGAAAAAAAAAAAAAAD5/wAAAAAAAAAAAAAHAAAAAAACAAAAAAAHAP//AAACAAAAAAAHAP7/AAACAAAAAAAHAP3/AAACAAAAAAAHAPz/AAACAAAAAAAGAPv/AAAAAAAAAwAFAPv/AAAAAAAAAwAEAPv/AAAAAAAAAwADAPv/AAAAAAAAAwACAPv/AAAAAAAAAwABAPv/AAAAAAAAAwAAAPv/AAAAAAAAAwD///v/AAAAAAAAAwD+//v/AAAAAAAAAwAHAPv/AAABAAAAAgD9//v/AAAAAAAAAwD8//v/AAAAAAAAAwD7//v/AAAAAAAAAwD6//v/AAAAAAAAAwD5//v/AAAAAAAAAwD4//v/AAAAAAAAAwD3//v/AAAAAAAAAwD2//v/AAAAAAAAAwD1//v/AAAAAAAAAwD0//v/AAAAAAAAAwDz//v/AAAAAAAAAwDy//v/AAAAAAAAAwDx//v/AAAAAAAAAwDw//v/AAAAAAAAAwDv//v/AAAAAAAAAwDu//v/AAAAAAAAAwD4/wAAAAAAAAAAAAD3/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD1/wAAAAAAAAAAAAD0/wAAAAAAAAAAAADz/wAAAAADAAAAAQDw/wAAAAAAAAAAAADv/wAAAAAAAAAAAADu/wAAAAAAAAAAAADt//v/AAABAAAABADt//z/AAACAAAAAQDt//3/AAACAAAAAQDt//7/AAACAAAAAQDt////AAACAAAAAQDt/wAAAAACAAAAAQDt/wEAAAACAAAAAQDt/wIAAAACAAAAAQDt/wMAAAACAAAAAQDt/wQAAAACAAAAAQDt/wUAAAABAAAAAwDu/wUAAAAAAAAAAADv/wUAAAAAAAAAAADw/wUAAAAAAAAAAADx/wUAAAAAAAAAAADy/wUAAAAAAAAAAADz/wUAAAAAAAAAAAD0/wUAAAAAAAAAAAD1/wUAAAAAAAAAAAD2/wUAAAAAAAAAAAD3/wUAAAAAAAAAAAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAABAAAAAAAHAAQAAAACAAAAAAAHAAMAAAACAAAAAAAHAAIAAAACAAAAAAAHAAEAAAACAAAAAADx/wAAAAADAAAAAAA=")
+tile_set = SubResource("TileSet_r3h5y")

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed: float = 2.0 * Globals.PPM
+@export var run_multiplier: float = 1.5
 @export var walk_anim_phase_offset_arms: float = PI
 @export var walk_anim_range_arms: float = PI / 6
 @export var walk_anim_phase_offset_legs: float = PI
@@ -52,11 +53,14 @@ func sin_pow(x: float, p: float):
 
 
 func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("walk_left", "walk_right")
+	var speed_multiplier = run_multiplier if Input.is_action_pressed("run") else 1.0
 	if direction:
-		velocity.x = direction * speed
+		velocity.x = direction * speed * speed_multiplier
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, speed * speed_multiplier)
 	move_and_slide()
