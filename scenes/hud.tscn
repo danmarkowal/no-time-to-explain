@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://db6ww8kvfaktg"]
 
 [ext_resource type="Script" uid="uid://by0kqhujyy8wa" path="res://scripts/hud.gd" id="1_oo0fn"]
-[ext_resource type="PackedScene" uid="uid://lxltr18qhs5y" path="res://inventory/inventory.tscn" id="2_5ysmq"]
+[ext_resource type="PackedScene" uid="uid://lxltr18qhs5y" path="res://resources/inventory/hotbar.tscn" id="2_5ysmq"]
 
 [node name="HUD" type="Control" unique_id=851495828]
 layout_mode = 3

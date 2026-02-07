@@ -1,14 +1,14 @@
 extends PanelContainer
 class_name Inventory
 
-@onready var slot_prefab = preload("res://inventory/slot.tscn")
+@onready var slot_prefab = preload("res://resources/inventory/slot.tscn")
 
 var inventory_data: InventoryData
 
 func initialize(_inventory_data: InventoryData) -> void:
 	inventory_data = _inventory_data
 	inventory_data.on_item_added.connect.call(func (item): refresh())
-	inventory_data.on_slot_selected.connect.call(func (item): refresh())
+	inventory_data.on_slot_selected.connect.call(func (slot): refresh())
 	refresh()
 
 func refresh() -> void:

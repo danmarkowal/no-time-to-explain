@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://bntpt8bmka2qo"]
+
+[ext_resource type="PackedScene" uid="uid://dk53fhlylkgy" path="res://resources/item/prefabs/pistol.tscn" id="1_qytj4"]
+[ext_resource type="Script" uid="uid://bustjsbgk5twl" path="res://resources/item/ranged_weapon.gd" id="2_2t3q2"]
+[ext_resource type="Texture2D" uid="uid://b5u5y866ei5f2" path="res://textures/pistol.png" id="2_ojiyi"]
+
+[resource]
+script = ExtResource("2_2t3q2")
+mag_size = 8
+id = "pistol"
+name = "Pistol"
+texture = ExtResource("2_ojiyi")
+prefab = ExtResource("1_qytj4")
+metadata/_custom_type_script = "uid://4rg6eckkaigk"

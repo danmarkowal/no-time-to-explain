@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bgo7iechrmm3p"]
 
-[ext_resource type="Script" uid="uid://bh8vr1hr0vhuq" path="res://inventory/slot.gd" id="1_u4i3g"]
+[ext_resource type="Script" uid="uid://bh8vr1hr0vhuq" path="res://resources/inventory/slot.gd" id="1_u4i3g"]
 
 [node name="Slot" type="PanelContainer" unique_id=961905673]
 custom_minimum_size = Vector2(48, 48)
@@ -16,6 +16,7 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=2074560348]
+texture_filter = 1
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5

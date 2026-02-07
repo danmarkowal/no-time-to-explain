@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dk53fhlylkgy"]
+
+[ext_resource type="Texture2D" uid="uid://b5u5y866ei5f2" path="res://textures/pistol.png" id="1_igbvm"]
+
+[node name="Pistol" type="Sprite2D" unique_id=1842976785]
+texture_filter = 1
+texture = ExtResource("1_igbvm")
+offset = Vector2(5, -4.5)

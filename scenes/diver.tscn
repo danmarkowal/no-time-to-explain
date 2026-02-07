@@ -2,73 +2,55 @@
 
 [ext_resource type="Script" uid="uid://8dw70okg8sfs" path="res://scripts/diver.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://c06ig1uktbuaa" path="res://textures/player/diving_suit/helmet.png" id="2_fjrip"]
-[ext_resource type="Texture2D" uid="uid://bsmfp3qc1ur16" path="res://textures/player/scientist/head.png" id="2_jej6c"]
-[ext_resource type="Texture2D" uid="uid://b1v8bcjd544v2" path="res://textures/player/scientist/left_arm.png" id="3_f1ej7"]
+[ext_resource type="Script" uid="uid://dqx3idb731n7i" path="res://resources/inventory/inventory_data.gd" id="2_fou7f"]
+[ext_resource type="Script" uid="uid://51t8it8b2hdp" path="res://resources/inventory/slot_data.gd" id="3_di3hc"]
 [ext_resource type="Texture2D" uid="uid://c31nuxiuatkq3" path="res://textures/player/diving_suit/left_arm.png" id="3_smehm"]
-[ext_resource type="Texture2D" uid="uid://cv5j21dxg30p1" path="res://textures/player/scientist/torso.png" id="4_oprun"]
 [ext_resource type="Texture2D" uid="uid://ckc5ni3ry8i8f" path="res://textures/player/diving_suit/torso.png" id="4_ur7pv"]
-[ext_resource type="Texture2D" uid="uid://bqd8lnms3ouev" path="res://textures/player/scientist/right_arm.png" id="5_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://ias58gfar7hi" path="res://textures/player/diving_suit/right_arm.png" id="5_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://qnlgwbi2b0m5" path="res://textures/player/diving_suit/left_leg.png" id="6_d2wvv"]
-[ext_resource type="Texture2D" uid="uid://d0gcqo84j6dua" path="res://textures/player/scientist/left_leg.png" id="6_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://ctacdvxepfx0k" path="res://textures/player/diving_suit/right_leg.png" id="7_3v2ag"]
-[ext_resource type="Texture2D" uid="uid://tekamkf10wkh" path="res://textures/player/scientist/right_leg.png" id="7_fulsm"]
 [ext_resource type="Texture2D" uid="uid://m6qncnjunmn" path="res://textures/light.png" id="9_f1ej7"]
+
+[sub_resource type="Resource" id="Resource_gr00a"]
+script = ExtResource("3_di3hc")
+metadata/_custom_type_script = "uid://51t8it8b2hdp"
+
+[sub_resource type="Resource" id="Resource_6jugd"]
+script = ExtResource("3_di3hc")
+metadata/_custom_type_script = "uid://51t8it8b2hdp"
+
+[sub_resource type="Resource" id="Resource_e5upo"]
+script = ExtResource("3_di3hc")
+metadata/_custom_type_script = "uid://51t8it8b2hdp"
+
+[sub_resource type="Resource" id="Resource_qbbwr"]
+script = ExtResource("3_di3hc")
+metadata/_custom_type_script = "uid://51t8it8b2hdp"
+
+[sub_resource type="Resource" id="Resource_nkj7j"]
+script = ExtResource("3_di3hc")
+metadata/_custom_type_script = "uid://51t8it8b2hdp"
+
+[sub_resource type="Resource" id="Resource_nub7u"]
+script = ExtResource("2_fou7f")
+slot_datas = Array[ExtResource("3_di3hc")]([SubResource("Resource_gr00a"), SubResource("Resource_6jugd"), SubResource("Resource_e5upo"), SubResource("Resource_qbbwr"), SubResource("Resource_nkj7j")])
+metadata/_custom_type_script = "uid://dqx3idb731n7i"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
 radius = 19.0
 height = 122.0
 
-[node name="Diver" type="CharacterBody2D" unique_id=1267579876]
+[node name="Diver" type="CharacterBody2D" unique_id=1267579876 node_paths=PackedStringArray("item_slot")]
 texture_filter = 1
 script = ExtResource("1_3vyb7")
+item_slot = NodePath("Components/Torso/RightArm/ItemSlot")
+inventory_data = SubResource("Resource_nub7u")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1004536533]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1256995027]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_fjrip")
-
-[node name="Components2" type="Node2D" parent="." unique_id=1892307032]
-visible = false
-
-[node name="Head" type="Sprite2D" parent="Components2" unique_id=208113618]
-z_index = 10
-position = Vector2(2, -36)
-texture = ExtResource("2_jej6c")
-offset = Vector2(0, -6)
-
-[node name="LeftArm" type="Sprite2D" parent="Components2" unique_id=1608187965]
-z_index = 9
-position = Vector2(-12, -24.5)
-texture = ExtResource("3_f1ej7")
-offset = Vector2(0, 17)
-
-[node name="Torso" type="Sprite2D" parent="Components2" unique_id=1653329012]
-z_index = 8
-position = Vector2(-1, 0)
-texture = ExtResource("4_oprun")
-
-[node name="RightArm" type="Sprite2D" parent="Components2" unique_id=985126339]
-z_index = 7
-position = Vector2(9, -24.5)
-texture = ExtResource("5_a8ls1")
-offset = Vector2(3, 17)
-
-[node name="ItemSlot" type="Node2D" parent="Components2/RightArm" unique_id=1058375750]
-position = Vector2(6, 34.5)
-
-[node name="LeftLeg" type="Sprite2D" parent="Components2" unique_id=586747609]
-z_index = 6
-position = Vector2(-7, 12)
-texture = ExtResource("6_qfm1y")
-offset = Vector2(4, 21)
-
-[node name="RightLeg" type="Sprite2D" parent="Components2" unique_id=1110501573]
-z_index = 5
-position = Vector2(3, 11)
-texture = ExtResource("7_fulsm")
-offset = Vector2(4, 21)
 
 [node name="Components" type="Node2D" parent="." unique_id=1494993005]
 
@@ -103,6 +85,7 @@ offset = Vector2(3, 17)
 
 [node name="ItemSlot" type="Node2D" parent="Components/Torso/RightArm" unique_id=956256022]
 position = Vector2(2, 35)
+rotation = 1.5707964
 
 [node name="LeftLeg" type="Sprite2D" parent="Components/Torso" unique_id=1390370226]
 z_index = -4

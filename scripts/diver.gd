@@ -8,6 +8,7 @@ class_name Diver
 @export var swim_anim_phase_offset_legs: float = PI / 2
 @export var swim_anim_phase_offset_arms: float = PI / 6
 @export var swim_anim_speed_moving_multiplier = 2.0
+@export var item_slot: Node2D
 
 @export var inventory_data: InventoryData
 
@@ -17,6 +18,32 @@ var swim_anim_t_arms = 0.0
 var speed_smoother = Smoother.new(0.0)
 var torso_smoother = LerpSmoother.new(0.0)
 
+func _ready() -> void:
+	inventory_data.on_slot_selected.connect(on_slot_selected)
+	on_slot_selected(inventory_data.selected_slot)
+
+func on_slot_selected(slot_index: int) -> void:
+	var slot = inventory_data.slot_datas[slot_index]
+	unequip()
+	if slot.is_empty():
+		return
+	try_equip(slot.item_data)
+
+func try_equip(item: ItemData) -> void:
+	var prefab = item.prefab
+	if prefab == null:
+		return
+	var item_instance = prefab.instantiate()
+	if item_instance.has_method("on_equip"):
+		item_instance.on_equip()
+	item_slot.add_child(item_instance)
+
+func unequip() -> void:
+	for child in item_slot.get_children():
+		if child.has_method("on_unequip"):
+			child.on_unequip()
+		child.queue_free()
+	
 func _unhandled_input(event: InputEvent) -> void:
 	for i in 5:
 		if event.is_action_pressed("slot_%d" % (i + 1)):
@@ -59,7 +86,18 @@ func _process(delta: float) -> void:
 	$Components/Torso/RightLeg.rotation = sin(2.0 * PI * swim_anim_t_legs - swim_anim_phase_offset_legs) * swim_anim_range
 	
 	$Components/Torso/LeftArm.rotation = sin(2.0 * PI * swim_anim_t_arms) * swim_anim_range
-	$Components/Torso/RightArm.rotation = sin(2.0 * PI * swim_anim_t_arms - swim_anim_phase_offset_arms) * swim_anim_range
+	
+	var current_item = inventory_data.current_item
+	if current_item is RangedWeapon:
+		aim(direction)
+	else:
+		$Components/Torso/RightArm.rotation = sin(2.0 * PI * swim_anim_t_arms - swim_anim_phase_offset_arms) * swim_anim_range
+
+func aim(direction: int) -> void:
+	var delta = get_global_mouse_position() - $Components/Torso/RightArm.global_position
+	$Components/Torso/RightArm.global_rotation = -(delta.angle_to(Vector2.RIGHT) + direction * PI / 2)
+	print($Components/Torso/RightArm.global_rotation)
+	
 
 func _physics_process(delta: float) -> void:
 	# Get input direction
