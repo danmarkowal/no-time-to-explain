@@ -13,6 +13,7 @@ slot_datas = Array[ExtResource("3_ubaeb")]([null, null, null, null, null])
 metadata/_custom_type_script = "uid://dqx3idb731n7i"
 
 [node name="Start" type="Node2D" unique_id=218489408]
+texture_filter = 1
 
 [node name="Follower" type="Node2D" parent="." unique_id=394060055 node_paths=PackedStringArray("target")]
 script = ExtResource("1_y16t7")
