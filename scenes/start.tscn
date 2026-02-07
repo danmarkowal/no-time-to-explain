@@ -21,6 +21,7 @@ target = NodePath("../Player")
 [node name="Camera2D" type="Camera2D" parent="Follower" unique_id=1244786680]
 
 [node name="Player" parent="." unique_id=1763138530 instance=ExtResource("1_r3h5y")]
+position = Vector2(-355, 171)
 inventory_data = SubResource("Resource_t215d")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=329245350]

@@ -1,6 +1,8 @@
 extends CharacterBody2D
+class_name Player
 
-@export var speed: float = 2.0 * Globals.PPM
+@export var walk_speed: float = 2.0 * Globals.PPM
+@export var climb_speed: float = 3.0 * Globals.PPM
 @export var run_multiplier: float = 1.5
 @export var walk_anim_phase_offset_arms: float = PI
 @export var walk_anim_range_arms: float = PI / 6
@@ -16,6 +18,8 @@ var left_arm_smoother = LerpSmoother.new(0.0)
 var right_arm_smoother = LerpSmoother.new(0.0)
 var left_leg_smoother = LerpSmoother.new(0.0)
 var right_leg_smoother = LerpSmoother.new(0.0)
+var can_climb_ladder = false
+var is_climbing_ladder = false
 
 
 func _process(delta: float) -> void:
@@ -40,11 +44,12 @@ func _process(delta: float) -> void:
 		right_arm_smoother.update(0.0, delta, 0.2)
 		left_leg_smoother.update(0.0, delta, 0.2)
 		right_leg_smoother.update(0.0, delta, 0.2)
-	
+		
 	$Components/LeftArm.rotation = left_arm_smoother.value
 	$Components/RightArm.rotation = right_arm_smoother.value
 	$Components/LeftLeg.rotation = left_leg_smoother.value
 	$Components/RightLeg.rotation = right_leg_smoother.value
+	
 
 func sin_pow(x: float, p: float):
 	var y = sin(x)
@@ -53,14 +58,28 @@ func sin_pow(x: float, p: float):
 
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
+	var climb_dir = -Input.get_axis("climb_down", "climb_up")
+	if not can_climb_ladder:
+		is_climbing_ladder = false
+	elif climb_dir != 0:
+		is_climbing_ladder = true
+			
+	if not is_on_floor() and not is_climbing_ladder:
 		velocity += get_gravity() * delta
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("walk_left", "walk_right")
 	var speed_multiplier = run_multiplier if Input.is_action_pressed("run") else 1.0
 	if direction:
-		velocity.x = direction * speed * speed_multiplier
+		velocity.x = direction * walk_speed * speed_multiplier
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed * speed_multiplier)
+		velocity.x = move_toward(velocity.x, 0, walk_speed * speed_multiplier)
+		
+	if is_climbing_ladder:
+		if climb_dir != 0:
+			velocity.y = climb_dir * climb_speed * speed_multiplier
+		else:
+			velocity.y = move_toward(velocity.y, 0, climb_speed * speed_multiplier)
+	
 	move_and_slide()
