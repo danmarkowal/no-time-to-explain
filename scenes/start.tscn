@@ -33,6 +33,7 @@ zoom = Vector2(2, 2)
 
 [node name="Player" parent="." unique_id=1763138530 instance=ExtResource("1_r3h5y")]
 position = Vector2(-355, 171)
+collision_mask = 6
 inventory_data = SubResource("Resource_t215d")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=991172848]

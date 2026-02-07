@@ -6,6 +6,7 @@
 b = Vector2(32, 0)
 
 [node name="DropChute" type="StaticBody2D" unique_id=1319384023]
+collision_layer = 4
 script = ExtResource("1_851q2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1962151176]
