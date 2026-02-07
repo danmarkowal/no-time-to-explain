@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://b8eby0tlkd577"]
+
+[ext_resource type="PackedScene" uid="uid://dj1isovxm0cth" path="res://resources/item/prefabs/harpoon_gun.tscn" id="1_3euml"]
+[ext_resource type="Script" uid="uid://bustjsbgk5twl" path="res://resources/item/ranged_weapon.gd" id="1_04jvc"]
+[ext_resource type="Texture2D" uid="uid://xxavqv62idb5" path="res://textures/harpoon_gun.png" id="2_1hws4"]
+
+[resource]
+script = ExtResource("1_04jvc")
+mag_size = 1
+id = "harpoon_gun"
+name = "Harpoon Gun"
+texture = ExtResource("2_1hws4")
+prefab = ExtResource("1_3euml")
+metadata/_custom_type_script = "uid://bustjsbgk5twl"

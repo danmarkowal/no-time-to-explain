@@ -96,7 +96,6 @@ func _process(delta: float) -> void:
 func aim(direction: int) -> void:
 	var delta = get_global_mouse_position() - $Components/Torso/RightArm.global_position
 	$Components/Torso/RightArm.global_rotation = -(delta.angle_to(Vector2.RIGHT) + direction * PI / 2)
-	print($Components/Torso/RightArm.global_rotation)
 	
 
 func _physics_process(delta: float) -> void:

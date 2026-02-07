@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dj1isovxm0cth"]
+
+[ext_resource type="Texture2D" uid="uid://xxavqv62idb5" path="res://textures/harpoon_gun.png" id="1_584pl"]
+
+[node name="HarpoonGun" type="Sprite2D" unique_id=919425063]
+texture = ExtResource("1_584pl")
+offset = Vector2(21, -4)
