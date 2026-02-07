@@ -27,6 +27,8 @@ func _process(delta: float) -> void:
 	# 1 = right
 	# -1 = left
 	var direction = sign(mouse_pos.dot(Vector2.RIGHT))
+	if direction == 0:
+		direction = 1
 	
 	# update swim animiation speed
 	speed_smoother.update(delta / 0.5, velocity.length_squared() > 0)

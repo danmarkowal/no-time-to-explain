@@ -27,6 +27,8 @@ func _process(delta: float) -> void:
 	# 1 = right
 	# -1 = left
 	var direction = sign(mouse_pos.dot(Vector2.RIGHT))
+	if direction == 0:
+		direction = 1
 	
 	$Components.scale.x = direction
 	$Components/Head.rotation = clamp(-direction * mouse_pos.angle_to(direction * Vector2.RIGHT), -PI / 6, PI / 6)

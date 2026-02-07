@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bvd6g34jdcv7o" path="res://textures/sub_logo.png" id="2_cjhfg"]
 [ext_resource type="PackedScene" uid="uid://bv4vxddepa1f5" path="res://scenes/ladder.tscn" id="3_cjhfg"]
 [ext_resource type="Texture2D" uid="uid://df2fds47k4ofa" path="res://textures/exit_sign.png" id="4_m734x"]
+[ext_resource type="PackedScene" uid="uid://1hyuqqu3o5ub" path="res://scenes/drop_chute.tscn" id="5_ubaeb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gua2t"]
 texture = ExtResource("1_gua2t")
@@ -75,6 +76,7 @@ tile_map_data = PackedByteArray("AADu//z/AAAEAAAAAADv//z/AAAEAAAAAADw//z/AAAEAAA
 tile_set = SubResource("TileSet_cjhfg")
 
 [node name="SubLogo" type="Sprite2D" parent="." unique_id=539986999]
+self_modulate = Color(0.19607843, 0.3254902, 0.2901961, 1)
 z_index = -20
 position = Vector2(-448, 47)
 texture = ExtResource("2_cjhfg")
@@ -94,3 +96,11 @@ offset_bottom = 158.0
 [node name="ExitSign" type="Sprite2D" parent="." unique_id=1513573938]
 position = Vector2(-288, 48)
 texture = ExtResource("4_m734x")
+
+[node name="DropChute2" parent="." unique_id=1319384023 instance=ExtResource("5_ubaeb")]
+position = Vector2(80, 0)
+scale = Vector2(2, 1)
+
+[node name="DropChute" parent="." unique_id=1382866629 instance=ExtResource("5_ubaeb")]
+position = Vector2(-464, 0)
+scale = Vector2(2, 1)

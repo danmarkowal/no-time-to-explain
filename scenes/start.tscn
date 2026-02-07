@@ -19,6 +19,7 @@ script = ExtResource("1_y16t7")
 target = NodePath("../Player")
 
 [node name="Camera2D" type="Camera2D" parent="Follower" unique_id=1244786680]
+zoom = Vector2(2, 2)
 
 [node name="Player" parent="." unique_id=1763138530 instance=ExtResource("1_r3h5y")]
 position = Vector2(-355, 171)
@@ -30,4 +31,4 @@ inventory_data = SubResource("Resource_t215d")
 player = NodePath("../../Player")
 
 [node name="Submarine" parent="." unique_id=392428454 instance=ExtResource("5_0auqf")]
-position = Vector2(0, 68)
+position = Vector2(-1, 69)
