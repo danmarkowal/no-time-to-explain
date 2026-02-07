@@ -5,7 +5,7 @@ class_name TerrainGenerator
 
 @export var noise: FastNoiseLite
 @export var isovalue: float
-@export var player: Player
+@export var player: Diver
 @export var world_bounds: Rect2i
 var chunks: Dictionary = {} # Vector2i -> ChunkData
 var loaded_chunks: Dictionary = {} # Vector2i -> ChunkInstance

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cmu35spvp45fp"]
+
+[ext_resource type="PackedScene" uid="uid://vmbdflvn8iue" path="res://scenes/player.tscn" id="1_r3h5y"]
+[ext_resource type="PackedScene" uid="uid://db6ww8kvfaktg" path="res://scenes/hud.tscn" id="2_cjhfg"]
+[ext_resource type="Script" uid="uid://dqx3idb731n7i" path="res://inventory/inventory_data.gd" id="2_m734x"]
+[ext_resource type="Script" uid="uid://51t8it8b2hdp" path="res://inventory/slot_data.gd" id="3_ubaeb"]
+
+[sub_resource type="Resource" id="Resource_t215d"]
+script = ExtResource("2_m734x")
+slot_datas = Array[ExtResource("3_ubaeb")]([null, null, null, null, null])
+metadata/_custom_type_script = "uid://dqx3idb731n7i"
+
+[node name="Submarine" type="Node2D" unique_id=218489408]
+
+[node name="Player" parent="." unique_id=1763138530 instance=ExtResource("1_r3h5y")]
+inventory_data = SubResource("Resource_t215d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=329245350]
+
+[node name="HUD" parent="CanvasLayer" unique_id=851495828 node_paths=PackedStringArray("player") instance=ExtResource("2_cjhfg")]
+player = NodePath("../../Player")
