@@ -32,6 +32,9 @@ terrain_generator = NodePath("../TerrainGenerator")
 world_bounds = Rect2i(0, 0, 16, 2)
 metadata/_custom_type_script = "uid://puodl8gsm5u"
 
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=752574786]
+color = Color(0.25202763, 0.25202763, 0.25202778, 1)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1283426529]
 
 [node name="HUD" type="Control" parent="CanvasLayer" unique_id=1112866072 node_paths=PackedStringArray("player")]

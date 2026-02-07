@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d0gcqo84j6dua" path="res://textures/player/scientist/left_leg.png" id="6_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://ctacdvxepfx0k" path="res://textures/player/diving_suit/right_leg.png" id="7_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://tekamkf10wkh" path="res://textures/player/scientist/right_leg.png" id="7_fulsm"]
+[ext_resource type="Texture2D" uid="uid://m6qncnjunmn" path="res://textures/light.png" id="9_f1ej7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
 radius = 20.0
@@ -75,6 +76,11 @@ z_index = 20
 position = Vector2(0, -39.5)
 texture = ExtResource("2_fjrip")
 offset = Vector2(0, -7)
+
+[node name="PointLight2D" type="PointLight2D" parent="Components/Head" unique_id=1981599546]
+blend_mode = 2
+texture = ExtResource("9_f1ej7")
+texture_scale = 2.0
 
 [node name="Torso" type="Sprite2D" parent="Components" unique_id=1545791306]
 z_index = 5
