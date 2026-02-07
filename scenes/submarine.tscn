@@ -102,7 +102,7 @@ texture = ExtResource("4_m734x")
 [node name="EscapePodText" type="Sprite2D" parent="." unique_id=83241083]
 self_modulate = Color(0.7411765, 0.73333335, 0.68235296, 1)
 z_index = -20
-position = Vector2(-111, 40)
+position = Vector2(-112, 40)
 texture = ExtResource("5_t215d")
 
 [node name="DropChute2" parent="." unique_id=1319384023 instance=ExtResource("5_ubaeb")]
