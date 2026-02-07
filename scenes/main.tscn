@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://lxltr18qhs5y" path="res://resources/inventory/hotbar.tscn" id="3_sugp2"]
 [ext_resource type="Resource" uid="uid://bntpt8bmka2qo" path="res://resources/item/items/pistol_item.tres" id="4_tipki"]
 [ext_resource type="Resource" uid="uid://b8eby0tlkd577" path="res://resources/item/items/harpoon_gun_item.tres" id="5_85g3d"]
+[ext_resource type="Resource" uid="uid://b30r6lgbdiwvd" path="res://resources/item/items/bandage_item.tres" id="6_choun"]
 [ext_resource type="Script" uid="uid://by0kqhujyy8wa" path="res://scripts/hud.gd" id="6_o6xl0"]
 
 [sub_resource type="Resource" id="Resource_tipki"]
@@ -22,6 +23,7 @@ metadata/_custom_type_script = "uid://51t8it8b2hdp"
 
 [sub_resource type="Resource" id="Resource_choun"]
 script = ExtResource("3_85g3d")
+item_data = ExtResource("6_choun")
 metadata/_custom_type_script = "uid://51t8it8b2hdp"
 
 [sub_resource type="Resource" id="Resource_ya4ey"]

@@ -9,6 +9,7 @@ class_name Diver
 @export var swim_anim_phase_offset_arms: float = PI / 6
 @export var swim_anim_speed_moving_multiplier = 2.0
 @export var item_slot: Node2D
+@export var particle_emitters: Array[CPUParticles2D]
 
 @export var inventory_data: InventoryData
 
@@ -31,11 +32,13 @@ func on_slot_selected(slot_index: int) -> void:
 
 func try_equip(item: ItemData) -> void:
 	var prefab = item.prefab
+	var item_instance: Node
 	if prefab == null:
-		return
-	var item_instance = prefab.instantiate()
+		item_instance = item.default_instance()
+	else:
+		item_instance = prefab.instantiate()
 	if item_instance.has_method("on_equip"):
-		item_instance.on_equip()
+		item_instance.on_equip(item)
 	item_slot.add_child(item_instance)
 
 func unequip() -> void:
@@ -47,7 +50,11 @@ func unequip() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	for i in 5:
 		if event.is_action_pressed("slot_%d" % (i + 1)):
-			inventory_data.selected_slot = i
+			if inventory_data.selected_slot != i:
+				inventory_data.selected_slot = i
+			else:
+				inventory_data.selected_slot = -1
+			break
 
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position() - $Components/Head.global_position
@@ -86,6 +93,13 @@ func _process(delta: float) -> void:
 	$Components/Torso/RightLeg.rotation = sin(2.0 * PI * swim_anim_t_legs - swim_anim_phase_offset_legs) * swim_anim_range
 	
 	$Components/Torso/LeftArm.rotation = sin(2.0 * PI * swim_anim_t_arms) * swim_anim_range
+	
+	if velocity.length_squared() > 0:
+		for emitter in particle_emitters:
+			emitter.initial_velocity_max = 128.0
+	else:
+		for emitter in particle_emitters:
+			emitter.initial_velocity_max = 32.0
 	
 	var current_item = inventory_data.current_item
 	if current_item is RangedWeapon:

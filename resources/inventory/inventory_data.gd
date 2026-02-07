@@ -3,14 +3,11 @@ class_name InventoryData
 
 @export var slot_datas: Array[SlotData]
 
-var selected_slot: int = 0 :
+var selected_slot: int = -1 :
 	get():
 		return selected_slot
 	set(value):
-		if value == -1:
-			selected_slot = value
-			return
-		if value < 0 or value >= slot_datas.size():
+		if value < -1 or value >= slot_datas.size():
 			push_error("Selected slot out of range")
 		selected_slot = value
 		on_slot_selected.emit(value)

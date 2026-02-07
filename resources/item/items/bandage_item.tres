@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b30r6lgbdiwvd"]
+
+[ext_resource type="Script" uid="uid://4rg6eckkaigk" path="res://resources/item/item_data.gd" id="1_2jqkx"]
+[ext_resource type="Texture2D" uid="uid://b0g2nsrgd5nw4" path="res://textures/bandage.png" id="2_a68fh"]
+
+[resource]
+script = ExtResource("1_2jqkx")
+id = "bandage"
+name = "Bandage"
+texture = ExtResource("2_a68fh")
+metadata/_custom_type_script = "uid://4rg6eckkaigk"

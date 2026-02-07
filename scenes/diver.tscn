@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ias58gfar7hi" path="res://textures/player/diving_suit/right_arm.png" id="5_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://qnlgwbi2b0m5" path="res://textures/player/diving_suit/left_leg.png" id="6_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://ctacdvxepfx0k" path="res://textures/player/diving_suit/right_leg.png" id="7_3v2ag"]
+[ext_resource type="PackedScene" uid="uid://bwv1m61pwqxkd" path="res://scenes/bubbles.tscn" id="8_di3hc"]
 [ext_resource type="Texture2D" uid="uid://m6qncnjunmn" path="res://textures/light.png" id="9_f1ej7"]
 
 [sub_resource type="Resource" id="Resource_gr00a"]
@@ -40,10 +41,11 @@ metadata/_custom_type_script = "uid://dqx3idb731n7i"
 radius = 19.0
 height = 122.0
 
-[node name="Diver" type="CharacterBody2D" unique_id=1267579876 node_paths=PackedStringArray("item_slot")]
+[node name="Diver" type="CharacterBody2D" unique_id=1267579876 node_paths=PackedStringArray("item_slot", "particle_emitters")]
 texture_filter = 1
 script = ExtResource("1_3vyb7")
 item_slot = NodePath("Components/Torso/RightArm/ItemSlot")
+particle_emitters = [NodePath("Components/Torso/LeftLeg/Bubbles"), NodePath("Components/Torso/RightLeg/Bubbles")]
 inventory_data = SubResource("Resource_nub7u")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1004536533]
@@ -77,8 +79,26 @@ position = Vector2(-12.5, 6)
 texture = ExtResource("3_smehm")
 offset = Vector2(-3, 17)
 
-[node name="RightArm" type="Sprite2D" parent="Components/Torso" unique_id=797788183]
+[node name="LeftLeg" type="Sprite2D" parent="Components/Torso" unique_id=1390370226]
 z_index = -3
+position = Vector2(-6, 48)
+texture = ExtResource("6_d2wvv")
+offset = Vector2(5, 23)
+
+[node name="Bubbles" parent="Components/Torso/LeftLeg" unique_id=2099288988 instance=ExtResource("8_di3hc")]
+position = Vector2(5, 47)
+
+[node name="RightLeg" type="Sprite2D" parent="Components/Torso" unique_id=590982176]
+z_index = -4
+position = Vector2(8, 46)
+texture = ExtResource("7_3v2ag")
+offset = Vector2(5, 23)
+
+[node name="Bubbles" parent="Components/Torso/RightLeg" unique_id=232735557 instance=ExtResource("8_di3hc")]
+position = Vector2(5, 47)
+
+[node name="RightArm" type="Sprite2D" parent="Components/Torso" unique_id=797788183]
+z_index = -5
 position = Vector2(13.5, 6)
 texture = ExtResource("5_y4r1p")
 offset = Vector2(3, 17)
@@ -86,15 +106,3 @@ offset = Vector2(3, 17)
 [node name="ItemSlot" type="Node2D" parent="Components/Torso/RightArm" unique_id=956256022]
 position = Vector2(2, 35)
 rotation = 1.5707964
-
-[node name="LeftLeg" type="Sprite2D" parent="Components/Torso" unique_id=1390370226]
-z_index = -4
-position = Vector2(-6, 48)
-texture = ExtResource("6_d2wvv")
-offset = Vector2(5, 23)
-
-[node name="RightLeg" type="Sprite2D" parent="Components/Torso" unique_id=590982176]
-z_index = -5
-position = Vector2(8, 46)
-texture = ExtResource("7_3v2ag")
-offset = Vector2(5, 23)
