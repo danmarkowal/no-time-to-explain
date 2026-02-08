@@ -8,6 +8,7 @@ class_name InventoryManager
 
 
 func _ready() -> void:
+	inventory_data.on_item_added.connect(func (x): refresh_held_item())
 	inventory_data.on_slot_selected.connect(func (x): refresh_held_item())
 	inventory_data.on_item_dropped.connect(func (x): refresh_held_item())
 	refresh_held_item()
@@ -54,7 +55,7 @@ func unequip() -> void:
 	
 func drop_current_item() -> void:
 	var current_slot = inventory_data.current_slot
-	if current_slot.is_empty():
+	if current_slot == null or current_slot.is_empty():
 		return
 	var dropped_item = dropped_item_prefab.instantiate()
 	dropped_item.item = current_slot.item_data
@@ -62,3 +63,7 @@ func drop_current_item() -> void:
 	# decreases count
 	inventory_data.drop_item()
 	get_tree().root.add_child(dropped_item)
+	
+
+func pickup_item(item: ItemData) -> bool:
+	return inventory_data.add_item(item)

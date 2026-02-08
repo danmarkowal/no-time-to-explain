@@ -11,6 +11,7 @@ class_name Player
 @export var walk_anim_exp: float = 0.6
 
 @export var inventory_manager: InventoryManager
+@export var interaction_manager: InteractionManager
 
 var walk_anim_t_legs = 0.0
 var walk_anim_t_arms = 0.0
@@ -93,3 +94,7 @@ func _physics_process(delta: float) -> void:
 		$WalkingSound.playing = false
 	
 	move_and_slide()
+
+
+func interact_with(node: Node2D):
+	interaction_manager.interact_with(node)

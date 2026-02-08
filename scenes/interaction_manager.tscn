@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ct1fdvcqo2lwf"]
+
+[ext_resource type="Script" uid="uid://chsum4scp8o65" path="res://scripts/interaction_manager.gd" id="1_rddhf"]
+
+[node name="InteractionManager" type="Node2D" unique_id=356724999]
+script = ExtResource("1_rddhf")

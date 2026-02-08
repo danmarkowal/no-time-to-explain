@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ceaeg35sovch0"]
+
+[ext_resource type="Script" uid="uid://4rg6eckkaigk" path="res://resources/item/item_data.gd" id="1_vifmj"]
+[ext_resource type="Texture2D" uid="uid://d11aobmv5vd8o" path="res://textures/radar.png" id="2_gyaa8"]
+
+[resource]
+script = ExtResource("1_vifmj")
+id = "radar"
+name = "Radar"
+texture = ExtResource("2_gyaa8")
+metadata/_custom_type_script = "uid://4rg6eckkaigk"

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ckc5ni3ry8i8f" path="res://textures/player/diving_suit/torso.png" id="4_ur7pv"]
 [ext_resource type="Resource" uid="uid://db3g7gy0posvt" path="res://resources/item/items/knife_item.tres" id="5_gr00a"]
 [ext_resource type="Texture2D" uid="uid://ias58gfar7hi" path="res://textures/player/diving_suit/right_arm.png" id="5_y4r1p"]
+[ext_resource type="PackedScene" uid="uid://ct1fdvcqo2lwf" path="res://scenes/interaction_manager.tscn" id="6_6jugd"]
 [ext_resource type="Texture2D" uid="uid://qnlgwbi2b0m5" path="res://textures/player/diving_suit/left_leg.png" id="6_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://ctacdvxepfx0k" path="res://textures/player/diving_suit/right_leg.png" id="7_3v2ag"]
 [ext_resource type="PackedScene" uid="uid://bwv1m61pwqxkd" path="res://scenes/bubbles.tscn" id="8_di3hc"]
@@ -44,7 +45,7 @@ script = ExtResource("2_fou7f")
 slot_datas = Array[ExtResource("3_di3hc")]([SubResource("Resource_di3hc"), SubResource("Resource_duvs1"), SubResource("Resource_5ugpt"), SubResource("Resource_evrdc"), SubResource("Resource_swvyy")])
 metadata/_custom_type_script = "uid://dqx3idb731n7i"
 
-[node name="Diver" type="CharacterBody2D" unique_id=1267579876 node_paths=PackedStringArray("particle_emitters", "inventory_manager")]
+[node name="Diver" type="CharacterBody2D" unique_id=1267579876 node_paths=PackedStringArray("particle_emitters", "inventory_manager") groups=["player"]]
 texture_filter = 1
 script = ExtResource("1_3vyb7")
 particle_emitters = [NodePath("Components/Torso/LeftLeg/Bubbles"), NodePath("Components/Torso/RightLeg/Bubbles")]
@@ -54,10 +55,12 @@ inventory_manager = NodePath("InventoryManager")
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_fjrip")
 
-[node name="InventoryManager" parent="." unique_id=1093543294 node_paths=PackedStringArray("player", "item_slot") instance=ExtResource("4_di3hc")]
-player = NodePath("..")
+[node name="InventoryManager" parent="." unique_id=1093543294 node_paths=PackedStringArray("item_slot") instance=ExtResource("4_di3hc")]
 inventory_data = SubResource("Resource_m1jr7")
 item_slot = NodePath("../Components/Torso/RightArm/ItemSlot")
+
+[node name="InteractionManager" parent="." unique_id=356724999 node_paths=PackedStringArray("player") instance=ExtResource("6_6jugd")]
+player = NodePath("..")
 
 [node name="Components" type="Node2D" parent="." unique_id=1494993005]
 

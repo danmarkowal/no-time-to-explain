@@ -11,6 +11,7 @@ class_name Diver
 @export var particle_emitters: Array[CPUParticles2D]
 
 @export var inventory_manager: InventoryManager
+@export var interaction_manager: InteractionManager
 
 var chunk_pos: Vector2i = Vector2i.ZERO
 var swim_anim_t_legs = 0.0
@@ -72,7 +73,6 @@ func _process(delta: float) -> void:
 func aim(direction: int) -> void:
 	var delta = get_global_mouse_position() - $Components/Torso/RightArm.global_position
 	$Components/Torso/RightArm.global_rotation = -(delta.angle_to(Vector2.RIGHT) + direction * PI / 2)
-	
 
 func _physics_process(delta: float) -> void:
 	# Get input direction
@@ -87,3 +87,6 @@ func _physics_process(delta: float) -> void:
 
 	# Update chunk position
 	chunk_pos = floor(position / (Globals.CHUNK_SIZE * Globals.TILE_SIZE * Globals.PPM))
+
+func interact_with(node: Node2D):
+	interaction_manager.interact_with(node)
