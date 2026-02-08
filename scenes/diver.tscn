@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://qnlgwbi2b0m5" path="res://textures/player/diving_suit/left_leg.png" id="6_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://ctacdvxepfx0k" path="res://textures/player/diving_suit/right_leg.png" id="7_3v2ag"]
 [ext_resource type="PackedScene" uid="uid://bwv1m61pwqxkd" path="res://scenes/bubbles.tscn" id="8_di3hc"]
-[ext_resource type="Texture2D" uid="uid://m6qncnjunmn" path="res://textures/light.png" id="9_f1ej7"]
 
 [sub_resource type="Resource" id="Resource_gr00a"]
 script = ExtResource("3_di3hc")
@@ -48,8 +47,6 @@ item_slot = NodePath("Components/Torso/RightArm/ItemSlot")
 particle_emitters = [NodePath("Components/Torso/LeftLeg/Bubbles"), NodePath("Components/Torso/RightLeg/Bubbles")]
 inventory_data = SubResource("Resource_nub7u")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1004536533]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1256995027]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_fjrip")
@@ -61,11 +58,6 @@ z_index = 20
 position = Vector2(0, -39.5)
 texture = ExtResource("2_fjrip")
 offset = Vector2(0, -7)
-
-[node name="PointLight2D" type="PointLight2D" parent="Components/Head" unique_id=1981599546]
-blend_mode = 2
-texture = ExtResource("9_f1ej7")
-texture_scale = 2.0
 
 [node name="Torso" type="Sprite2D" parent="Components" unique_id=1545791306]
 z_index = 5

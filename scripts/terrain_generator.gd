@@ -4,9 +4,8 @@ class_name TerrainGenerator
 @onready var chunk_prefab = preload("res://scenes/chunk_instance.tscn")
 
 @export var noise: FastNoiseLite
-@export var isovalue: float
+@export var isovalue: float = 0.5
 @export var player: Diver
-@export var world_bounds: Rect2i
 
 var chunks: Dictionary = {} # Vector2i -> ChunkData
 var loaded_chunks: Dictionary = {} # Vector2i -> ChunkInstance

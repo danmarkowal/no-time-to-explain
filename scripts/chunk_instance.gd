@@ -176,7 +176,3 @@ func draw_chunk_grid():
 			delta /= valid_count
 			
 			draw_line(center_pos, center_pos + delta * 64.0, Color.BLUE)
-
-func _draw() -> void:
-	draw_chunk_grid()
-	queue_redraw()
