@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://gu2av6ffg3et"]
+
+[ext_resource type="FontFile" uid="uid://bbvylpe5mrgwv" path="res://fonts/determination.ttf" id="1_d4nwg"]
+
+[resource]
+default_font = ExtResource("1_d4nwg")

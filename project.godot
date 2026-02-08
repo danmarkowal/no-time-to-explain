@@ -27,6 +27,10 @@ Globals="*res://scripts/globals/globals.gd"
 
 player=""
 
+[gui]
+
+theme/custom="uid://gu2av6ffg3et"
+
 [input]
 
 swim_up={
