@@ -3,7 +3,6 @@ class_name InventoryManager
 
 @onready var dropped_item_prefab = preload("res://scenes/dropped_item.tscn")
 
-@export var player: Node2D
 @export var inventory_data: InventoryData
 @export var item_slot: Node2D
 
@@ -59,6 +58,7 @@ func drop_current_item() -> void:
 		return
 	var dropped_item = dropped_item_prefab.instantiate()
 	dropped_item.item = current_slot.item_data
+	dropped_item.global_position = global_position
 	# decreases count
 	inventory_data.drop_item()
-	player.drop_item(dropped_item)
+	get_tree().root.add_child(dropped_item)

@@ -53,8 +53,7 @@ inventory_manager = NodePath("InventoryManager")
 position = Vector2(-2, 2)
 shape = SubResource("CapsuleShape2D_fjrip")
 
-[node name="InventoryManager" parent="." unique_id=1093543294 node_paths=PackedStringArray("player", "item_slot") instance=ExtResource("2_smehm")]
-player = NodePath("..")
+[node name="InventoryManager" parent="." unique_id=1093543294 node_paths=PackedStringArray("item_slot") instance=ExtResource("2_smehm")]
 inventory_data = SubResource("Resource_oprun")
 item_slot = NodePath("../Components/RightArm/ItemSlot")
 
