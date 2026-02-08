@@ -8,53 +8,15 @@ class_name Diver
 @export var swim_anim_phase_offset_legs: float = PI / 2
 @export var swim_anim_phase_offset_arms: float = PI / 6
 @export var swim_anim_speed_moving_multiplier = 2.0
-@export var item_slot: Node2D
 @export var particle_emitters: Array[CPUParticles2D]
 
-@export var inventory_data: InventoryData
+@export var inventory_manager: InventoryManager
 
 var chunk_pos: Vector2i = Vector2i.ZERO
 var swim_anim_t_legs = 0.0
 var swim_anim_t_arms = 0.0
 var speed_smoother = Smoother.new(0.0)
 var torso_smoother = LerpSmoother.new(0.0)
-
-func _ready() -> void:
-	inventory_data.on_slot_selected.connect(on_slot_selected)
-	on_slot_selected(inventory_data.selected_slot)
-
-func on_slot_selected(slot_index: int) -> void:
-	var slot = inventory_data.slot_datas[slot_index]
-	unequip()
-	if slot.is_empty():
-		return
-	try_equip(slot.item_data)
-
-func try_equip(item: ItemData) -> void:
-	var prefab = item.prefab
-	var item_instance: Node
-	if prefab == null:
-		item_instance = item.default_instance()
-	else:
-		item_instance = prefab.instantiate()
-	if item_instance.has_method("on_equip"):
-		item_instance.on_equip(item)
-	item_slot.add_child(item_instance)
-
-func unequip() -> void:
-	for child in item_slot.get_children():
-		if child.has_method("on_unequip"):
-			child.on_unequip()
-		child.queue_free()
-	
-func _unhandled_input(event: InputEvent) -> void:
-	for i in 5:
-		if event.is_action_pressed("slot_%d" % (i + 1)):
-			if inventory_data.selected_slot != i:
-				inventory_data.selected_slot = i
-			else:
-				inventory_data.selected_slot = -1
-			break
 
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position() - $Components/Head.global_position
@@ -101,7 +63,7 @@ func _process(delta: float) -> void:
 		for emitter in particle_emitters:
 			emitter.initial_velocity_max = 32.0
 	
-	var current_item = inventory_data.current_item
+	var current_item = inventory_manager.inventory_data.current_item
 	if current_item is RangedWeapon:
 		aim(direction)
 	else:

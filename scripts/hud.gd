@@ -4,4 +4,4 @@ extends Control
 @export var player: Node2D
 
 func _ready() -> void:
-	$Inventory.initialize(player.inventory_data)
+	$Inventory.initialize(player.inventory_manager.inventory_data)

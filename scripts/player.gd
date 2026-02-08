@@ -10,7 +10,7 @@ class_name Player
 @export var walk_anim_range_legs: float = PI / 24
 @export var walk_anim_exp: float = 0.6
 
-@export var inventory_data: InventoryData
+@export var inventory_manager: InventoryManager
 
 var walk_anim_t_legs = 0.0
 var walk_anim_t_arms = 0.0
