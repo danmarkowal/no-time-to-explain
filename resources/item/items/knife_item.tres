@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://db3g7gy0posvt"]
+
+[ext_resource type="PackedScene" uid="uid://cudwe06ripux3" path="res://resources/item/prefabs/knife.tscn" id="1_a5ixq"]
+[ext_resource type="Script" uid="uid://dvm1n87cu7qr3" path="res://resources/item/melee_weapon.gd" id="1_xtq02"]
+[ext_resource type="Texture2D" uid="uid://dru86rpf7l7vh" path="res://textures/knife.png" id="3_0jdgi"]
+
+[resource]
+script = ExtResource("1_xtq02")
+damage = 5.0
+range = 0.5
+id = "knife"
+name = "Knife"
+texture = ExtResource("3_0jdgi")
+prefab = ExtResource("1_a5ixq")
+metadata/_custom_type_script = "uid://dvm1n87cu7qr3"

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cudwe06ripux3"]
+
+[ext_resource type="Texture2D" uid="uid://dru86rpf7l7vh" path="res://textures/knife.png" id="1_c2iij"]
+
+[node name="Knife" type="Sprite2D" unique_id=1510989381]
+texture = ExtResource("1_c2iij")
+offset = Vector2(1, -11)
+flip_h = true

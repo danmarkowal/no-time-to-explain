@@ -48,10 +48,3 @@ func _process(delta: float) -> void:
 			var chunk_pos = self.player.chunk_pos + Vector2i(x, y)
 			if world_bounds.has_point(chunk_pos):
 				terrain_generator.ensure_loaded(chunk_pos)
-
-func _draw() -> void:
-	if not draw_chunk_grid:
-		return
-	for chunk in terrain_generator.loaded_chunks.values():
-		chunk.draw_chunk_grid()
-	queue_redraw()

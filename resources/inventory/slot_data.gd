@@ -7,6 +7,11 @@ class_name SlotData
 func is_empty() -> bool:
 	return item_data == null
 
+func is_valid() -> bool:
+	if not is_empty():
+		return quantity > 0
+	return true
+
 func set_item(item: ItemData) -> void:
 	if item.stack_size <= 0:
 		push_error("Invalid item stack size %d" % item.stack_size)

@@ -1,6 +1,8 @@
 extends Node2D
 class_name ChunkInstance
 
+@export var debug_render: bool = false
+
 var chunk_data: ChunkData
 var isovalue: float
 
@@ -176,3 +178,7 @@ func draw_chunk_grid():
 			delta /= valid_count
 			
 			draw_line(center_pos, center_pos + delta * 64.0, Color.BLUE)
+
+func _draw() -> void:
+	if debug_render:
+		draw_chunk_grid()

@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dqx3idb731n7i" path="res://resources/inventory/inventory_data.gd" id="8_k0pa1"]
 [ext_resource type="Script" uid="uid://51t8it8b2hdp" path="res://resources/inventory/slot_data.gd" id="9_hap2i"]
 [ext_resource type="Resource" uid="uid://b30r6lgbdiwvd" path="res://resources/item/items/bandage_item.tres" id="10_e3cxq"]
+[ext_resource type="Texture2D" uid="uid://diwe6k88i1mmr" path="res://textures/hospital_bed.png" id="11_hap2i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gua2t"]
 texture = ExtResource("1_gua2t")
@@ -131,3 +132,7 @@ scale = Vector2(2, 1)
 [node name="MedicalCabinet" parent="." unique_id=33488724 instance=ExtResource("7_ekkh5")]
 position = Vector2(180, 80)
 inventory_data = SubResource("Resource_efss0")
+
+[node name="HospitalBed" type="Sprite2D" parent="." unique_id=1312605710]
+position = Vector2(16, 110)
+texture = ExtResource("11_hap2i")

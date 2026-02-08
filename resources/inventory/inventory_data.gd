@@ -1,7 +1,13 @@
 extends Resource
 class_name InventoryData
 
-@export var slot_datas: Array[SlotData]
+@export var slot_datas: Array[SlotData] :
+	set(value):
+		for i in value.size():
+			var slot = value[i]
+			if not slot.is_valid():
+				push_error("Invalid slot %d" % [i])
+		slot_datas = value
 
 var selected_slot: int = -1 :
 	get():
