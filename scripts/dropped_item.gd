@@ -6,7 +6,11 @@ class_name DroppedItem
 
 func _ready() -> void:
 	$Sprite2D.texture = item.texture
-	$ItemNameLabel.text = item.name
+	$LabelContainer/Label.text = item.name
+
+
+func _process(delta: float) -> void:
+	$LabelContainer.global_rotation = 0.0
 
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -15,8 +19,8 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 
 
 func _on_mouse_entered() -> void:
-	$ItemNameLabel.visible = true
+	$LabelContainer/Label.visible = true
 
 
 func _on_mouse_exited() -> void:
-	$ItemNameLabel.visible = false
+	$LabelContainer/Label.visible = false

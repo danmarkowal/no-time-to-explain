@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://hcimcrlphnpe" path="res://scripts/terrain_generator.gd" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://w7o7jbdvg51v" path="res://scenes/diver.tscn" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://dd15gywlyiv4" path="res://scripts/main.gd" id="1_tipki"]
 [ext_resource type="Script" uid="uid://bq3gqiwt3co3l" path="res://scripts/follower.gd" id="1_ya4ey"]
 [ext_resource type="Script" uid="uid://puodl8gsm5u" path="res://scripts/world.gd" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bsy5o062vpc5h" path="res://scenes/gui.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://db6ww8kvfaktg" path="res://scenes/hud.tscn" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://rsvcbjlk1wbb" path="res://scripts/gui.gd" id="9_choun"]
 [ext_resource type="AudioStream" uid="uid://cws40trdvfg67" path="res://audio/deep_sea.tres" id="10_choun"]
 [ext_resource type="AudioStream" uid="uid://dlpgalt2o7gsg" path="res://audio/trench_gate.tres" id="10_eb6dy"]
 
@@ -14,6 +17,7 @@ frequency = 0.05
 fractal_octaves = 4
 
 [node name="Main" type="Node2D" unique_id=1125537957]
+script = ExtResource("1_tipki")
 
 [node name="Follower" type="Node2D" parent="." unique_id=1074286308 node_paths=PackedStringArray("target")]
 script = ExtResource("1_ya4ey")
@@ -23,6 +27,7 @@ target = NodePath("../Diver")
 
 [node name="Diver" parent="." unique_id=1329831271 instance=ExtResource("1_sugp2")]
 z_index = 100
+motion_mode = 1
 
 [node name="TerrainGenerator" type="Node" parent="." unique_id=498047511 node_paths=PackedStringArray("player")]
 script = ExtResource("1_o5qli")
@@ -54,3 +59,6 @@ autoplay = true
 
 [node name="HUD" parent="CanvasLayer" unique_id=851495828 node_paths=PackedStringArray("player") instance=ExtResource("9_85g3d")]
 player = NodePath("../../Diver")
+
+[node name="GUI" parent="CanvasLayer" unique_id=1605761739 instance=ExtResource("8_tipki")]
+script = ExtResource("9_choun")

@@ -110,6 +110,14 @@ drop_item={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="hulls"
+2d_physics/layer_3="chutes"
+2d_physics/layer_4="items"
+2d_physics/layer_5="terrain"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0, 0.040549144, 0.123367704, 1)

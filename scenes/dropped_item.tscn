@@ -8,7 +8,7 @@ size = Vector2(16, 16)
 [node name="DroppedItem" type="RigidBody2D" unique_id=116450974]
 texture_filter = 1
 collision_layer = 8
-collision_mask = 2
+collision_mask = 18
 input_pickable = true
 script = ExtResource("1_u41rd")
 
@@ -17,7 +17,9 @@ script = ExtResource("1_u41rd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=511141817]
 shape = SubResource("RectangleShape2D_u41rd")
 
-[node name="ItemNameLabel" type="RichTextLabel" parent="." unique_id=1478449883]
+[node name="LabelContainer" type="Node2D" parent="." unique_id=1651037990]
+
+[node name="Label" type="RichTextLabel" parent="LabelContainer" unique_id=1478449883]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5

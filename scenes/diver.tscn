@@ -45,11 +45,13 @@ script = ExtResource("2_fou7f")
 slot_datas = Array[ExtResource("3_di3hc")]([SubResource("Resource_di3hc"), SubResource("Resource_duvs1"), SubResource("Resource_5ugpt"), SubResource("Resource_evrdc"), SubResource("Resource_swvyy")])
 metadata/_custom_type_script = "uid://dqx3idb731n7i"
 
-[node name="Diver" type="CharacterBody2D" unique_id=1267579876 node_paths=PackedStringArray("particle_emitters", "inventory_manager") groups=["player"]]
+[node name="Diver" type="CharacterBody2D" unique_id=1267579876 node_paths=PackedStringArray("particle_emitters", "inventory_manager", "interaction_manager") groups=["player"]]
 texture_filter = 1
+collision_mask = 17
 script = ExtResource("1_3vyb7")
 particle_emitters = [NodePath("Components/Torso/LeftLeg/Bubbles"), NodePath("Components/Torso/RightLeg/Bubbles")]
 inventory_manager = NodePath("InventoryManager")
+interaction_manager = NodePath("InteractionManager")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1256995027]
 position = Vector2(0, -1)

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cbxgvnre2m1dr"]
+
+[ext_resource type="Script" uid="uid://b8u5x3lqut07h" path="res://scripts/safe_code_screen.gd" id="1_mi6my"]
+
+[node name="SafeCodeScreen" type="Control" unique_id=991235054]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mi6my")
+
+[node name="Panel" type="Panel" parent="." unique_id=1536324697]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -98.0
+offset_right = 128.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="Panel" unique_id=63651333]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_top = 16.0
+offset_right = 42.5
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "Enter Code"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CodeTextEdit" type="LineEdit" parent="Panel" unique_id=476379944]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -16.0
+offset_right = 72.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "XXX"
+max_length = 3
+secret = true
+
+[node name="CloseButton" type="Button" parent="Panel" unique_id=1113161367]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 39.0
+grow_horizontal = 0
+text = "X"
+
+[node name="DoneButton" type="Button" parent="Panel" unique_id=1084102311]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -39.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Open"

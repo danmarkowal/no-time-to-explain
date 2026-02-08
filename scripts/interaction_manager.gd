@@ -4,6 +4,8 @@ class_name InteractionManager
 @export var player: Node2D
 @export var interaction_distance: float = 1.5
 
+var gui: GUI
+
 ## target_pos must be an absolute position
 func can_interact_with(node: Node2D) -> bool:
 	var origin = global_position
@@ -25,3 +27,6 @@ func interact_with(node: Node2D) -> void:
 	if node is DroppedItem:
 		if player.inventory_manager.pickup_item(node.item):
 			node.queue_free()
+	if node is Safe:
+		print("Interact with safe")
+		

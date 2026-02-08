@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c6eem2avh6wvp" path="res://textures/wires.png" id="13_a2gsv"]
 [ext_resource type="Texture2D" uid="uid://thd4u2w38wiq" path="res://textures/locker.png" id="14_efss0"]
 [ext_resource type="AudioStream" uid="uid://1km6gtnktsa1" path="res://audio/metal_squeak_1.mp3" id="15_ifrua"]
+[ext_resource type="Texture2D" uid="uid://dpol3kw45o3wm" path="res://textures/control_panel.png" id="15_l2uqm"]
 [ext_resource type="AudioStream" uid="uid://bnti8evv1vgub" path="res://audio/metal_squeak_2.mp3" id="16_5ykx4"]
 [ext_resource type="AudioStream" uid="uid://x54wihp8sty4" path="res://audio/metal_squeak_3.mp3" id="17_a23f2"]
 
@@ -178,6 +179,10 @@ texture = ExtResource("14_efss0")
 [node name="Locker2" type="Sprite2D" parent="." unique_id=385024527]
 position = Vector2(181, 96)
 texture = ExtResource("14_efss0")
+
+[node name="ControlPanel" type="Sprite2D" parent="." unique_id=1509098189]
+position = Vector2(-544, -64)
+texture = ExtResource("15_l2uqm")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=124594337]
 position = Vector2(-576, -128)
