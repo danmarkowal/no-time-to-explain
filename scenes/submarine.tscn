@@ -17,7 +17,10 @@
 [ext_resource type="AudioStream" uid="uid://1km6gtnktsa1" path="res://audio/metal_squeak_1.mp3" id="15_ifrua"]
 [ext_resource type="Texture2D" uid="uid://dpol3kw45o3wm" path="res://textures/control_panel.png" id="15_l2uqm"]
 [ext_resource type="AudioStream" uid="uid://bnti8evv1vgub" path="res://audio/metal_squeak_2.mp3" id="16_5ykx4"]
+[ext_resource type="Texture2D" uid="uid://daw3wt6xobvi2" path="res://textures/blood.png" id="16_ia36m"]
+[ext_resource type="Texture2D" uid="uid://bwpmhton61r1k" path="res://textures/blood_long.png" id="17_4hegc"]
 [ext_resource type="AudioStream" uid="uid://x54wihp8sty4" path="res://audio/metal_squeak_3.mp3" id="17_a23f2"]
+[ext_resource type="Texture2D" uid="uid://cmugg7j112jp7" path="res://textures/blood_head.png" id="21_yqrae"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gua2t"]
 texture = ExtResource("1_gua2t")
@@ -184,6 +187,25 @@ texture = ExtResource("14_efss0")
 position = Vector2(-544, -64)
 texture = ExtResource("15_l2uqm")
 
+[node name="Blood" type="Sprite2D" parent="." unique_id=439388077]
+position = Vector2(-491, -48)
+texture = ExtResource("16_ia36m")
+
+[node name="Blood2" type="Sprite2D" parent="." unique_id=52614887]
+z_index = -20
+position = Vector2(125, 109)
+texture = ExtResource("16_ia36m")
+
+[node name="Blood3" type="Sprite2D" parent="." unique_id=1715252348]
+z_index = -20
+position = Vector2(-233, 135)
+texture = ExtResource("16_ia36m")
+
+[node name="BloodLong" type="Sprite2D" parent="." unique_id=536882750]
+z_index = -20
+position = Vector2(-173, -19)
+texture = ExtResource("17_4hegc")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=124594337]
 position = Vector2(-576, -128)
 stream = ExtResource("15_ifrua")
@@ -206,3 +228,8 @@ stream = ExtResource("17_a23f2")
 volume_db = -12.0
 autoplay = true
 attenuation = 5.0
+
+[node name="BloodHead" type="Sprite2D" parent="." unique_id=1681817295]
+z_index = -20
+position = Vector2(-117, 84)
+texture = ExtResource("21_yqrae")
