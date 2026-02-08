@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://db6ww8kvfaktg" path="res://scenes/hud.tscn" id="2_cjhfg"]
 [ext_resource type="PackedScene" uid="uid://7wwjyg8nwxvy" path="res://scenes/submarine.tscn" id="5_0auqf"]
 [ext_resource type="AudioStream" uid="uid://cws40trdvfg67" path="res://audio/deep_sea.tres" id="6_4ge6i"]
+[ext_resource type="PackedScene" uid="uid://bsy5o062vpc5h" path="res://scenes/gui.tscn" id="6_y16t7"]
 
 [node name="Start" type="Node2D" unique_id=218489408]
 texture_filter = 1
@@ -19,9 +20,10 @@ zoom = Vector2(2, 2)
 [node name="AudioListener2D" type="AudioListener2D" parent="Follower" unique_id=668522441]
 current = true
 
-[node name="Player" parent="." unique_id=1763138530 instance=ExtResource("1_r3h5y")]
+[node name="Player" parent="." unique_id=1763138530 node_paths=PackedStringArray("gui") instance=ExtResource("1_r3h5y")]
 position = Vector2(-355, 171)
 collision_mask = 6
+gui = NodePath("../CanvasLayer/GUI")
 
 [node name="Submarine" parent="." unique_id=392428454 instance=ExtResource("5_0auqf")]
 position = Vector2(-1, 69)
@@ -35,3 +37,5 @@ autoplay = true
 
 [node name="HUD" parent="CanvasLayer" unique_id=851495828 node_paths=PackedStringArray("player") instance=ExtResource("2_cjhfg")]
 player = NodePath("../../Player")
+
+[node name="GUI" parent="CanvasLayer" unique_id=1605761739 instance=ExtResource("6_y16t7")]

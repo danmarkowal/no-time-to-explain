@@ -12,6 +12,7 @@ class_name Player
 
 @export var inventory_manager: InventoryManager
 @export var interaction_manager: InteractionManager
+@export var gui: GUI
 
 var walk_anim_t_legs = 0.0
 var walk_anim_t_arms = 0.0
@@ -21,6 +22,10 @@ var left_leg_smoother = LerpSmoother.new(0.0)
 var right_leg_smoother = LerpSmoother.new(0.0)
 var can_climb_ladder = false
 var is_climbing_ladder = false
+
+
+func _ready() -> void:
+	interaction_manager.gui = gui
 
 
 func _process(delta: float) -> void:

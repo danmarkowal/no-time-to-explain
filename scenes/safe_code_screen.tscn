@@ -53,8 +53,6 @@ offset_right = 72.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-placeholder_text = "XXX"
-max_length = 3
 secret = true
 
 [node name="CloseButton" type="Button" parent="Panel" unique_id=1113161367]
@@ -83,3 +81,6 @@ offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Open"
+
+[connection signal="pressed" from="Panel/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="Panel/DoneButton" to="." method="_on_done_button_pressed"]

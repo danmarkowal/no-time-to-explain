@@ -12,12 +12,16 @@ class_name Diver
 
 @export var inventory_manager: InventoryManager
 @export var interaction_manager: InteractionManager
+@export var gui: GUI
 
 var chunk_pos: Vector2i = Vector2i.ZERO
 var swim_anim_t_legs = 0.0
 var swim_anim_t_arms = 0.0
 var speed_smoother = Smoother.new(0.0)
 var torso_smoother = LerpSmoother.new(0.0)
+
+func _ready() -> void:
+	interaction_manager.gui = gui
 
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position() - $Components/Head.global_position
