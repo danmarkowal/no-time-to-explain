@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://tekamkf10wkh" path="res://textures/player/scientist/right_leg.png" id="7_fulsm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
-radius = 14.0
+radius = 15.0
 height = 110.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1763138530]
@@ -20,24 +20,24 @@ script = ExtResource("1_3vyb7")
 
 [node name="Head" type="Sprite2D" parent="Components" unique_id=483976877]
 z_index = 10
-position = Vector2(2, -36)
+position = Vector2(0, -36)
 texture = ExtResource("2_jej6c")
 offset = Vector2(0, -6)
 
 [node name="LeftArm" type="Sprite2D" parent="Components" unique_id=752836567]
 z_index = 9
-position = Vector2(-12, -24.5)
+position = Vector2(-14, -24.5)
 texture = ExtResource("3_f1ej7")
 offset = Vector2(0, 17)
 
 [node name="Torso" type="Sprite2D" parent="Components" unique_id=1670371547]
 z_index = 8
-position = Vector2(-1, 0)
+position = Vector2(-3, 0)
 texture = ExtResource("4_oprun")
 
 [node name="RightArm" type="Sprite2D" parent="Components" unique_id=598706655]
 z_index = 7
-position = Vector2(9, -24.5)
+position = Vector2(7, -24.5)
 texture = ExtResource("5_a8ls1")
 offset = Vector2(3, 17)
 
@@ -46,16 +46,16 @@ position = Vector2(6, 34.5)
 
 [node name="LeftLeg" type="Sprite2D" parent="Components" unique_id=437447056]
 z_index = 6
-position = Vector2(-7, 12)
+position = Vector2(-9, 12)
 texture = ExtResource("6_qfm1y")
 offset = Vector2(4, 21)
 
 [node name="RightLeg" type="Sprite2D" parent="Components" unique_id=10996485]
 z_index = 5
-position = Vector2(3, 11)
+position = Vector2(1, 11)
 texture = ExtResource("7_fulsm")
 offset = Vector2(4, 21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1753593586]
-position = Vector2(0, 2)
+position = Vector2(-2, 2)
 shape = SubResource("CapsuleShape2D_fjrip")

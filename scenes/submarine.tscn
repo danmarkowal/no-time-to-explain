@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://51t8it8b2hdp" path="res://resources/inventory/slot_data.gd" id="9_hap2i"]
 [ext_resource type="Resource" uid="uid://b30r6lgbdiwvd" path="res://resources/item/items/bandage_item.tres" id="10_e3cxq"]
 [ext_resource type="Texture2D" uid="uid://diwe6k88i1mmr" path="res://textures/hospital_bed.png" id="11_hap2i"]
+[ext_resource type="PackedScene" uid="uid://cv40eptngrd3w" path="res://scenes/safe.tscn" id="12_e3cxq"]
+[ext_resource type="Texture2D" uid="uid://c6eem2avh6wvp" path="res://textures/wires.png" id="13_a2gsv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gua2t"]
 texture = ExtResource("1_gua2t")
@@ -48,10 +50,10 @@ texture_region_size = Vector2i(32, 32)
 3:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(0, -16, 16, -16, 16, 16, 0, 16)
 6:0/next_alternative_id = 2
 6:0/0 = 0
-6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -16, 16, -16, 16, 16, 0, 16)
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 0, -16, 0.31863022, 16, -16, 16)
 6:0/1 = 1
 6:0/1/flip_h = true
-6:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 0.31863022, -16, 0.31863022, 16, -16, 16)
+6:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(0, -16, 16, -16, 16, 16, 0, 16)
 
 [sub_resource type="TileSet" id="TileSet_r3h5y"]
 tile_size = Vector2i(32, 32)
@@ -80,6 +82,9 @@ metadata/_custom_type_script = "uid://51t8it8b2hdp"
 script = ExtResource("8_k0pa1")
 slot_datas = Array[ExtResource("9_hap2i")]([SubResource("Resource_a2gsv")])
 metadata/_custom_type_script = "uid://dqx3idb731n7i"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3cxq"]
+size = Vector2(176, 128)
 
 [node name="Submarine" type="Node2D" unique_id=218489408]
 texture_filter = 1
@@ -121,6 +126,11 @@ z_index = -20
 position = Vector2(-129, 40)
 texture = ExtResource("5_t215d")
 
+[node name="HospitalBed" type="Sprite2D" parent="." unique_id=1312605710]
+z_index = 20
+position = Vector2(16, 110)
+texture = ExtResource("11_hap2i")
+
 [node name="DropChute2" parent="." unique_id=1319384023 instance=ExtResource("5_ubaeb")]
 position = Vector2(80, 0)
 scale = Vector2(2, 1)
@@ -130,9 +140,24 @@ position = Vector2(-464, 0)
 scale = Vector2(2, 1)
 
 [node name="MedicalCabinet" parent="." unique_id=33488724 instance=ExtResource("7_ekkh5")]
-position = Vector2(180, 80)
+position = Vector2(48, 80)
 inventory_data = SubResource("Resource_efss0")
 
-[node name="HospitalBed" type="Sprite2D" parent="." unique_id=1312605710]
-position = Vector2(16, 110)
-texture = ExtResource("11_hap2i")
+[node name="Safe" parent="." unique_id=1044646584 instance=ExtResource("12_e3cxq")]
+position = Vector2(-48, -80)
+
+[node name="EscapePodArea" type="Area2D" parent="." unique_id=1761248190]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EscapePodArea" unique_id=29916222]
+position = Vector2(-168, 96)
+shape = SubResource("RectangleShape2D_e3cxq")
+
+[node name="Wires2" type="Sprite2D" parent="." unique_id=423564473]
+z_index = -20
+position = Vector2(160, 64)
+texture = ExtResource("13_a2gsv")
+
+[node name="Wires" type="Sprite2D" parent="." unique_id=1273851756]
+z_index = -20
+position = Vector2(-1, 64)
+texture = ExtResource("13_a2gsv")

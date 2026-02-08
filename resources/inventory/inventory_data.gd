@@ -5,7 +5,7 @@ class_name InventoryData
 	set(value):
 		for i in value.size():
 			var slot = value[i]
-			if not slot.is_valid():
+			if slot == null or not slot.is_valid():
 				push_error("Invalid slot %d" % [i])
 		slot_datas = value
 
