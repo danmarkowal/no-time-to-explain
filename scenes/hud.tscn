@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://by0kqhujyy8wa" path="res://scripts/hud.gd" id="1_oo0fn"]
 [ext_resource type="PackedScene" uid="uid://lxltr18qhs5y" path="res://resources/inventory/hotbar.tscn" id="2_5ysmq"]
+[ext_resource type="Shader" uid="uid://uh5hxrh4qiwm" path="res://shaders/vignette.gdshader" id="2_6fi6k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uo2fv"]
+shader = ExtResource("2_6fi6k")
+shader_parameter/radius = 0.6000000285
+shader_parameter/softness = 0.70000003325
+shader_parameter/intensity = 1.0000000475
+shader_parameter/contrast = 1.5000000475
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Control" unique_id=851495828]
 layout_mode = 3
@@ -11,6 +20,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oo0fn")
+
+[node name="Vignette" type="ColorRect" parent="." unique_id=1430229087]
+material = SubResource("ShaderMaterial_uo2fv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Inventory" parent="." unique_id=1294224765 instance=ExtResource("2_5ysmq")]
 layout_mode = 1

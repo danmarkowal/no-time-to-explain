@@ -6,20 +6,11 @@
 [ext_resource type="Script" uid="uid://dqx3idb731n7i" path="res://resources/inventory/inventory_data.gd" id="2_m734x"]
 [ext_resource type="Script" uid="uid://51t8it8b2hdp" path="res://resources/inventory/slot_data.gd" id="3_ubaeb"]
 [ext_resource type="PackedScene" uid="uid://7wwjyg8nwxvy" path="res://scenes/submarine.tscn" id="5_0auqf"]
-[ext_resource type="Shader" uid="uid://uh5hxrh4qiwm" path="res://shaders/vignette.gdshader" id="5_4ge6i"]
 
 [sub_resource type="Resource" id="Resource_t215d"]
 script = ExtResource("2_m734x")
 slot_datas = Array[ExtResource("3_ubaeb")]([null, null, null, null, null])
 metadata/_custom_type_script = "uid://dqx3idb731n7i"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8itgj"]
-shader = ExtResource("5_4ge6i")
-shader_parameter/radius = 0.21200001007
-shader_parameter/softness = 0.3310000157225
-shader_parameter/intensity = 1.0000000475
-shader_parameter/contrast = 0.5
-shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
 [node name="Start" type="Node2D" unique_id=218489408]
 texture_filter = 1
@@ -36,13 +27,10 @@ position = Vector2(-355, 171)
 collision_mask = 6
 inventory_data = SubResource("Resource_t215d")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=991172848]
-material = SubResource("ShaderMaterial_8itgj")
+[node name="Submarine" parent="." unique_id=392428454 instance=ExtResource("5_0auqf")]
+position = Vector2(-1, 69)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=329245350]
 
 [node name="HUD" parent="CanvasLayer" unique_id=851495828 node_paths=PackedStringArray("player") instance=ExtResource("2_cjhfg")]
 player = NodePath("../../Player")
-
-[node name="Submarine" parent="." unique_id=392428454 instance=ExtResource("5_0auqf")]
-position = Vector2(-1, 69)

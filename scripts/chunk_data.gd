@@ -9,3 +9,6 @@ func get_vertex_value(pos: Vector2i) -> float:
 	if pos.x > Globals.CHUNK_SIZE or pos.y > Globals.CHUNK_SIZE:
 		push_error("Position", pos, "out of bounds")
 	return terrain_data[pos.x + pos.y * (Globals.CHUNK_SIZE + 1)]
+
+func get_global_pos(cell_pos: Vector2i) -> Vector2:
+	return (chunk_pos * Globals.CHUNK_SIZE + cell_pos) * Globals.TILE_SIZE * Globals.PPM
