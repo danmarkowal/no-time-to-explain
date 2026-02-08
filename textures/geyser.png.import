@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kwqsi2ajg7sd"
-path="res://.godot/imported/oxygen_geyser.png-760f741e546d0872e032f84f2746de4b.ctex"
+path="res://.godot/imported/geyser.png-804f59faa40c2219cbbaa7963c8085a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/oxygen_geyser.png"
-dest_files=["res://.godot/imported/oxygen_geyser.png-760f741e546d0872e032f84f2746de4b.ctex"]
+source_file="res://textures/geyser.png"
+dest_files=["res://.godot/imported/geyser.png-804f59faa40c2219cbbaa7963c8085a5.ctex"]
 
 [params]
 

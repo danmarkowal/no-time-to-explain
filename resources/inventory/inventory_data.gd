@@ -18,13 +18,20 @@ var selected_slot: int = -1 :
 		selected_slot = value
 		on_slot_selected.emit(value)
 
-var current_item: ItemData :
+var current_slot: SlotData :
 	get():
 		if selected_slot == -1:
 			return null
-		return slot_datas[selected_slot].item_data
+		return slot_datas[selected_slot]
+
+var current_item: ItemData :
+	get():
+		if current_slot == null:
+			return null
+		return current_slot.item_data
 
 signal on_item_added(slot: SlotData)
+signal on_item_dropped(slot: SlotData)
 signal on_slot_selected(slot_index: int)
 
 # returns whether the item was added or not
@@ -41,3 +48,10 @@ func add_item(item_data: ItemData) -> bool:
 		on_item_added.emit(empty_slot)
 		return true
 	return false
+	
+func drop_item() -> bool:
+	if current_slot == null:
+		return false
+	var res = current_slot.try_decrement(1)
+	on_item_dropped.emit(current_slot)
+	return res

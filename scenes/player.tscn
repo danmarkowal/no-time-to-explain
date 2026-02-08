@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b1v8bcjd544v2" path="res://textures/player/scientist/left_arm.png" id="3_f1ej7"]
 [ext_resource type="Script" uid="uid://51t8it8b2hdp" path="res://resources/inventory/slot_data.gd" id="3_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://cv5j21dxg30p1" path="res://textures/player/scientist/torso.png" id="4_oprun"]
+[ext_resource type="Resource" uid="uid://b8eby0tlkd577" path="res://resources/item/items/harpoon_gun_item.tres" id="5_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://bqd8lnms3ouev" path="res://textures/player/scientist/right_arm.png" id="5_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://d0gcqo84j6dua" path="res://textures/player/scientist/left_leg.png" id="6_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://tekamkf10wkh" path="res://textures/player/scientist/right_leg.png" id="7_fulsm"]
@@ -18,6 +19,8 @@ height = 110.0
 
 [sub_resource type="Resource" id="Resource_y4r1p"]
 script = ExtResource("3_y4r1p")
+item_data = ExtResource("5_3v2ag")
+quantity = 1
 metadata/_custom_type_script = "uid://51t8it8b2hdp"
 
 [sub_resource type="Resource" id="Resource_d2wvv"]
@@ -50,7 +53,8 @@ inventory_manager = NodePath("InventoryManager")
 position = Vector2(-2, 2)
 shape = SubResource("CapsuleShape2D_fjrip")
 
-[node name="InventoryManager" parent="." unique_id=1093543294 node_paths=PackedStringArray("item_slot") instance=ExtResource("2_smehm")]
+[node name="InventoryManager" parent="." unique_id=1093543294 node_paths=PackedStringArray("player", "item_slot") instance=ExtResource("2_smehm")]
+player = NodePath("..")
 inventory_data = SubResource("Resource_oprun")
 item_slot = NodePath("../Components/RightArm/ItemSlot")
 

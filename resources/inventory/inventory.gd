@@ -8,6 +8,7 @@ var inventory_data: InventoryData
 func initialize(_inventory_data: InventoryData) -> void:
 	inventory_data = _inventory_data
 	inventory_data.on_item_added.connect.call(func (item): refresh())
+	inventory_data.on_item_dropped.connect.call(func (item): refresh())
 	inventory_data.on_slot_selected.connect.call(func (slot): refresh())
 	refresh()
 

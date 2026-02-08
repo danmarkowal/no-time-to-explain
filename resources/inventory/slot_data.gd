@@ -34,4 +34,12 @@ func try_increment(count: int) -> bool:
 		return false
 	quantity += count
 	return true
-	
+
+# returns whether the item was successfully removed
+func try_decrement(count: int) -> bool:
+	if item_data == null or quantity - count < 0:
+		return false
+	quantity -= count
+	if quantity == 0:
+		clear()
+	return true

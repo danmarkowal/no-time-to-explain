@@ -93,3 +93,7 @@ func _physics_process(delta: float) -> void:
 		$WalkingSound.playing = false
 	
 	move_and_slide()
+
+func drop_item(dropped_item: Node2D):
+	dropped_item.global_position = global_position
+	get_tree().root.add_child(dropped_item)
