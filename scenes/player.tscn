@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bqd8lnms3ouev" path="res://textures/player/scientist/right_arm.png" id="5_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://d0gcqo84j6dua" path="res://textures/player/scientist/left_leg.png" id="6_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://tekamkf10wkh" path="res://textures/player/scientist/right_leg.png" id="7_fulsm"]
+[ext_resource type="AudioStream" uid="uid://drosm6dd6rr8u" path="res://audio/metal_walking.tres" id="11_d2wvv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
 radius = 15.0
@@ -93,3 +94,9 @@ z_index = 5
 position = Vector2(1, 11)
 texture = ExtResource("7_fulsm")
 offset = Vector2(4, 21)
+
+[node name="WalkingSound" type="AudioStreamPlayer2D" parent="." unique_id=1279260338]
+position = Vector2(0, 56)
+stream = ExtResource("11_d2wvv")
+volume_db = -6.0
+autoplay = true

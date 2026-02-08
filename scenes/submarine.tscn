@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://cv40eptngrd3w" path="res://scenes/safe.tscn" id="12_e3cxq"]
 [ext_resource type="Texture2D" uid="uid://c6eem2avh6wvp" path="res://textures/wires.png" id="13_a2gsv"]
 [ext_resource type="Texture2D" uid="uid://thd4u2w38wiq" path="res://textures/locker.png" id="14_efss0"]
+[ext_resource type="AudioStream" uid="uid://1km6gtnktsa1" path="res://audio/metal_squeak_1.mp3" id="15_ifrua"]
+[ext_resource type="AudioStream" uid="uid://bnti8evv1vgub" path="res://audio/metal_squeak_2.mp3" id="16_5ykx4"]
+[ext_resource type="AudioStream" uid="uid://x54wihp8sty4" path="res://audio/metal_squeak_3.mp3" id="17_a23f2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gua2t"]
 texture = ExtResource("1_gua2t")
@@ -175,3 +178,24 @@ texture = ExtResource("14_efss0")
 [node name="Locker2" type="Sprite2D" parent="." unique_id=385024527]
 position = Vector2(181, 96)
 texture = ExtResource("14_efss0")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=124594337]
+position = Vector2(-590, -143)
+stream = ExtResource("15_ifrua")
+volume_db = -12.0
+autoplay = true
+attenuation = 5.0
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=680539436]
+position = Vector2(238, 15)
+stream = ExtResource("16_5ykx4")
+volume_db = -12.0
+autoplay = true
+attenuation = 5.0
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="." unique_id=1343243819]
+position = Vector2(-127, 176)
+stream = ExtResource("17_a23f2")
+volume_db = -12.0
+autoplay = true
+attenuation = 5.0

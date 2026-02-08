@@ -181,6 +181,10 @@ func draw_chunk_grid():
 			
 			draw_line(center_pos, center_pos + delta * 64.0, Color.BLUE)
 
+func _draw() -> void:
+	if debug_render:
+		draw_chunk_grid()
+
 # --- Add/replace these functions in your ChunkInstance.gd ---
 
 func create_collision_from_mesh(verts: Array, indices: Array) -> void:
@@ -470,8 +474,3 @@ func _make_concave_collision_from_local_tris(local_vertices: Array, local_tris: 
 	var shape_node = CollisionShape2D.new()
 	shape_node.shape = conc
 	$ChunkBody.add_child(shape_node)
-
-
-func _draw() -> void:
-	if debug_render:
-		draw_chunk_grid()

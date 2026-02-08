@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 		is_climbing_ladder = false
 	elif climb_dir != 0:
 		is_climbing_ladder = true
-			
+	
 	if not is_on_floor() and not is_climbing_ladder:
 		velocity += get_gravity() * delta
 	
@@ -74,15 +74,22 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("walk_left", "walk_right")
 	var speed_multiplier = run_multiplier if Input.is_action_pressed("run") else 1.0
+	
 	if direction:
 		velocity.x = direction * walk_speed * speed_multiplier
 	else:
 		velocity.x = move_toward(velocity.x, 0, walk_speed * speed_multiplier)
-		
+	
 	if is_climbing_ladder:
 		if climb_dir != 0:
 			velocity.y = climb_dir * climb_speed * speed_multiplier
 		else:
 			velocity.y = move_toward(velocity.y, 0, climb_speed * speed_multiplier)
+	
+	if is_on_floor() and velocity.length_squared() > 0:
+		if not $WalkingSound.playing:
+			$WalkingSound.playing = true
+	else:
+		$WalkingSound.playing = false
 	
 	move_and_slide()
