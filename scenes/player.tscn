@@ -80,6 +80,7 @@ offset = Vector2(3, 17)
 
 [node name="ItemSlot" type="Node2D" parent="Components/RightArm" unique_id=519234465]
 position = Vector2(6, 34.5)
+rotation = 1.5707964
 
 [node name="LeftLeg" type="Sprite2D" parent="Components" unique_id=437447056]
 z_index = 6

@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Great Warwick Game Jam"
-run/main_scene="uid://cxrx820pryg0u"
+run/main_scene="uid://cmu35spvp45fp"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
