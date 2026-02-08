@@ -4,6 +4,7 @@
 
 [node name="ChunkInstance" type="Node2D" unique_id=49376616]
 script = ExtResource("1_xpami")
+debug_render = true
 
 [node name="ChunkBody" type="StaticBody2D" parent="." unique_id=233814914]
 
