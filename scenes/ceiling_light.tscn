@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cgdk6ymc5a8hu"]
+
+[ext_resource type="Texture2D" uid="uid://cqoqdpygm0ll4" path="res://textures/light.png" id="1_2xfhq"]
+[ext_resource type="Texture2D" uid="uid://cc8elme8jt2vg" path="res://textures/point_light.png" id="2_a2g0k"]
+
+[node name="Light" type="Sprite2D" unique_id=795664594]
+texture = ExtResource("1_2xfhq")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=611373346]
+blend_mode = 2
+texture = ExtResource("2_a2g0k")
+offset = Vector2(0, 125)
+texture_scale = 2.0

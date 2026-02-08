@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://diwe6k88i1mmr" path="res://textures/hospital_bed.png" id="11_hap2i"]
 [ext_resource type="PackedScene" uid="uid://cv40eptngrd3w" path="res://scenes/safe.tscn" id="12_e3cxq"]
 [ext_resource type="Texture2D" uid="uid://c6eem2avh6wvp" path="res://textures/wires.png" id="13_a2gsv"]
+[ext_resource type="Texture2D" uid="uid://thd4u2w38wiq" path="res://textures/locker.png" id="14_efss0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gua2t"]
 texture = ExtResource("1_gua2t")
@@ -152,6 +153,11 @@ position = Vector2(-48, -80)
 position = Vector2(-168, 96)
 shape = SubResource("RectangleShape2D_e3cxq")
 
+[node name="Wires3" type="Sprite2D" parent="." unique_id=324835522]
+z_index = -20
+position = Vector2(-192, 64)
+texture = ExtResource("13_a2gsv")
+
 [node name="Wires2" type="Sprite2D" parent="." unique_id=423564473]
 z_index = -20
 position = Vector2(160, 64)
@@ -161,3 +167,11 @@ texture = ExtResource("13_a2gsv")
 z_index = -20
 position = Vector2(-1, 64)
 texture = ExtResource("13_a2gsv")
+
+[node name="Locker" type="Sprite2D" parent="." unique_id=2125043642]
+position = Vector2(6, -64)
+texture = ExtResource("14_efss0")
+
+[node name="Locker2" type="Sprite2D" parent="." unique_id=385024527]
+position = Vector2(181, 96)
+texture = ExtResource("14_efss0")
