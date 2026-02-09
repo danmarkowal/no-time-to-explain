@@ -21,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://bwpmhton61r1k" path="res://textures/blood_long.png" id="17_4hegc"]
 [ext_resource type="AudioStream" uid="uid://x54wihp8sty4" path="res://audio/metal_squeak_3.mp3" id="17_a23f2"]
 [ext_resource type="Texture2D" uid="uid://cmugg7j112jp7" path="res://textures/blood_head.png" id="21_yqrae"]
+[ext_resource type="Texture2D" uid="uid://cs410g5s81gmi" path="res://textures/table.png" id="22_yqrae"]
+[ext_resource type="PackedScene" uid="uid://dxkr2xhcixqw0" path="res://scenes/dropped_item.tscn" id="23_l26e6"]
+[ext_resource type="Resource" uid="uid://db3g7gy0posvt" path="res://resources/item/items/knife_item.tres" id="24_gquyh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gua2t"]
 texture = ExtResource("1_gua2t")
@@ -233,3 +236,13 @@ attenuation = 5.0
 z_index = -20
 position = Vector2(-117, 84)
 texture = ExtResource("21_yqrae")
+
+[node name="Table" type="Sprite2D" parent="." unique_id=837170423]
+position = Vector2(-192, -48)
+texture = ExtResource("22_yqrae")
+
+[node name="DroppedItem" parent="." unique_id=116450974 instance=ExtResource("23_l26e6")]
+position = Vector2(-110, -69)
+rotation = -2.6179938
+freeze = true
+item = ExtResource("24_gquyh")
