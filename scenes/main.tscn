@@ -28,7 +28,6 @@ script = ExtResource("1_ya4ey")
 target = NodePath("../Diver")
 
 [node name="Camera2D" type="Camera2D" parent="Follower" unique_id=2021513726]
-position_smoothing_enabled = true
 
 [node name="Parallax" type="Node2D" parent="Follower" unique_id=453401419]
 modulate = Color(0.50140655, 0.5014065, 0.5014065, 1)

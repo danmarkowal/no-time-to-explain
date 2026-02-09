@@ -49,4 +49,4 @@ func _process(delta: float) -> void:
 			if world_bounds.has_point(chunk_pos):
 				terrain_generator.ensure_loaded(chunk_pos)
 	for layer in parallax.get_children():
-		layer.screen_offset = player.position / (Vector2(world_bounds.position + world_bounds.size) * Globals.CHUNK_SIZE * Globals.TILE_SIZE * Globals.PPM) * Vector2(1920 * 2, 0)
+		layer.screen_offset = player.position / (Vector2(world_bounds.position + world_bounds.size) * Globals.CHUNK_SIZE * Globals.TILE_SIZE * Globals.PPM) * Vector2(1920 * 4, 0)
