@@ -30,6 +30,7 @@
 [ext_resource type="Resource" uid="uid://db3g7gy0posvt" path="res://resources/item/items/knife_item.tres" id="24_gquyh"]
 [ext_resource type="Resource" uid="uid://ceaeg35sovch0" path="res://resources/item/items/radar_item.tres" id="26_dbiej"]
 [ext_resource type="Resource" uid="uid://d0d71r6k33je" path="res://resources/item/items/oxygen_cannister_item.tres" id="27_dbiej"]
+[ext_resource type="Resource" uid="uid://djpypdm1hekux" path="res://resources/item/items/diving_suit_item.tres" id="31_r6ra4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gua2t"]
 texture = ExtResource("1_gua2t")
@@ -328,3 +329,8 @@ item = ExtResource("27_dbiej")
 position = Vector2(-549, 149)
 freeze = true
 item = ExtResource("27_dbiej")
+
+[node name="DroppedItem6" parent="." unique_id=970832364 instance=ExtResource("23_l26e6")]
+position = Vector2(201, -17)
+freeze = true
+item = ExtResource("31_r6ra4")

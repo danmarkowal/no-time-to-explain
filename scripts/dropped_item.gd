@@ -8,6 +8,9 @@ class_name DroppedItem
 func _ready() -> void:
 	$Sprite2D.texture = item.texture
 	$LabelContainer/Label.text = item.name
+	var shape = RectangleShape2D.new()
+	shape.size = item.collider_size
+	$CollisionShape2D.shape = shape
 
 
 func _process(delta: float) -> void:

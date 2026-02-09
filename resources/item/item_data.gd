@@ -6,6 +6,7 @@ class_name ItemData
 @export var texture: Texture2D
 @export var stack_size: int = 1
 @export var prefab: PackedScene
+@export var collider_size: Vector2 = Vector2(16.0, 16.0)
 
 
 func default_instance() -> Node2D:

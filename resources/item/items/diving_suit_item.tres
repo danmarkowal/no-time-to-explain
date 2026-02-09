@@ -8,4 +8,5 @@ script = ExtResource("1_jpwkt")
 id = "diving_suit"
 name = "Diving Suit"
 texture = ExtResource("2_tx286")
+collider_size = Vector2(32, 32)
 metadata/_custom_type_script = "uid://4rg6eckkaigk"

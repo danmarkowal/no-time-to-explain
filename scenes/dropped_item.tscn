@@ -11,6 +11,7 @@ collision_layer = 8
 collision_mask = 18
 input_pickable = true
 script = ExtResource("1_u41rd")
+collider_size = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=491255164]
 

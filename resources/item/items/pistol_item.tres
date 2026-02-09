@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("2_2t3q2")
 mag_size = 8
+ammo = null
 id = "pistol"
 name = "Pistol"
 texture = ExtResource("2_ojiyi")
