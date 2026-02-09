@@ -8,4 +8,5 @@ script = ExtResource("1_2jqkx")
 id = "bandage"
 name = "Bandage"
 texture = ExtResource("2_a68fh")
+stack_size = 2
 metadata/_custom_type_script = "uid://4rg6eckkaigk"

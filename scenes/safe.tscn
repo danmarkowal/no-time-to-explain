@@ -9,7 +9,8 @@ size = Vector2(42, 42)
 [node name="Safe" type="Area2D" unique_id=1044646584]
 texture_filter = 1
 script = ExtResource("1_no4i6")
-code = 237
+code = null
+opened = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2111070805]
 texture = ExtResource("1_2mjrh")

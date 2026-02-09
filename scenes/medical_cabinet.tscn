@@ -8,6 +8,7 @@ size = Vector2(26, 26)
 
 [node name="MedicalCabinet" type="Area2D" unique_id=33488724]
 script = ExtResource("1_5r3pa")
+title = "Medical Cabinet"
 
 [node name="MedicalCabinet" type="Sprite2D" parent="." unique_id=73365284]
 texture_filter = 1

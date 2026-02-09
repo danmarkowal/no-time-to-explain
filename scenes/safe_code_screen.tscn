@@ -56,14 +56,15 @@ grow_vertical = 2
 secret = true
 
 [node name="CloseButton" type="Button" parent="Panel" unique_id=1113161367]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -26.0
+offset_left = -40.0
 offset_top = 8.0
 offset_right = -8.0
-offset_bottom = 39.0
+offset_bottom = 40.0
 grow_horizontal = 0
 text = "X"
 

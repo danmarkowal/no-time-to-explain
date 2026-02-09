@@ -30,8 +30,9 @@ func close() -> void:
 	
 func done() -> void:
 	if $Panel/CodeTextEdit.text == safe.code:
-		safe.opened = true
 		close()
+		safe.opened = true
+		on_opened.emit()
 	else:
 		$Panel/CodeTextEdit.text = ""
 		$Panel/DoneButton.theme_type_variation = "WrongButton"
