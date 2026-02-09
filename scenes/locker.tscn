@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bqpr1q0ibsalq"]
+
+[ext_resource type="Texture2D" uid="uid://thd4u2w38wiq" path="res://textures/locker.png" id="1_46kxn"]
+[ext_resource type="Script" uid="uid://pgo5xwc2vktf" path="res://scripts/inventory_container.gd" id="1_byg57"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byg57"]
+size = Vector2(48, 120)
+
+[node name="Locker" type="Area2D" unique_id=1714546057]
+script = ExtResource("1_byg57")
+title = "Locker"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1867030768]
+texture = ExtResource("1_46kxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=308527359]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_byg57")
