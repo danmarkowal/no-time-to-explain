@@ -4,6 +4,7 @@ class_name World
 @export var player: Diver
 @export var terrain_generator: TerrainGenerator
 @export var world_bounds: Rect2i
+@export var parallax: Node2D
 @export var draw_chunk_grid: bool = false
 
 func _ready() -> void:
@@ -13,7 +14,7 @@ func _ready() -> void:
 		for x in range(min.x, max.x):
 			terrain_generator.generate_chunk(Vector2i(x, y))
 	player.position = pick_spawn_pos()
-			
+	
 
 func pick_spawn_pos() -> Vector2:
 	var found = false
@@ -48,3 +49,5 @@ func _process(delta: float) -> void:
 			var chunk_pos = self.player.chunk_pos + Vector2i(x, y)
 			if world_bounds.has_point(chunk_pos):
 				terrain_generator.ensure_loaded(chunk_pos)
+	for layer in parallax.get_children():
+		layer.screen_offset = player.position / (Vector2(world_bounds.position + world_bounds.size) * Globals.CHUNK_SIZE * Globals.TILE_SIZE * Globals.PPM) * Vector2(1920 * 2, 0)

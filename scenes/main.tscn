@@ -7,12 +7,17 @@
 [ext_resource type="Script" uid="uid://puodl8gsm5u" path="res://scripts/world.gd" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bsy5o062vpc5h" path="res://scenes/gui.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://db6ww8kvfaktg" path="res://scenes/hud.tscn" id="9_85g3d"]
+[ext_resource type="Texture2D" uid="uid://78alwdx6sts3" path="res://textures/parallax_background_5.png" id="10_a8y0u"]
 [ext_resource type="AudioStream" uid="uid://cws40trdvfg67" path="res://audio/deep_sea.tres" id="10_choun"]
 [ext_resource type="AudioStream" uid="uid://dlpgalt2o7gsg" path="res://audio/trench_gate.tres" id="10_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://c15v60quki2tr" path="res://textures/parallax_background_4.png" id="11_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://cne4gr06nvp4m" path="res://textures/parallax_background_3.png" id="12_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://r2vmdj5g7d72" path="res://textures/parallax_background_2.png" id="13_muem4"]
+[ext_resource type="Texture2D" uid="uid://c742soru8lopm" path="res://textures/parallax_background_1.png" id="14_dp3eg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o5qli"]
 noise_type = 0
-frequency = 0.05
+frequency = 0.03
 fractal_octaves = 4
 
 [node name="Main" type="Node2D" unique_id=1125537957]
@@ -24,6 +29,50 @@ target = NodePath("../Diver")
 
 [node name="Camera2D" type="Camera2D" parent="Follower" unique_id=2021513726]
 
+[node name="Parallax" type="Node2D" parent="Follower" unique_id=453401419]
+modulate = Color(0.50140655, 0.5014065, 0.5014065, 1)
+z_index = -100
+
+[node name="Parallax2D5" type="Parallax2D" parent="Follower/Parallax" unique_id=1015797291]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(1920, 0)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Follower/Parallax/Parallax2D5" unique_id=147729372]
+texture = ExtResource("10_a8y0u")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Follower/Parallax" unique_id=722216050]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1920, 0)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Follower/Parallax/Parallax2D4" unique_id=1811472800]
+texture = ExtResource("11_jkv2x")
+
+[node name="Parallax2D3" type="Parallax2D" parent="Follower/Parallax" unique_id=1323478722]
+scroll_scale = Vector2(0.4, 0.4)
+repeat_size = Vector2(1920, 0)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Follower/Parallax/Parallax2D3" unique_id=1940953596]
+texture = ExtResource("12_jbj1t")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Follower/Parallax" unique_id=1618221102]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(1920, 0)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Follower/Parallax/Parallax2D2" unique_id=1206025456]
+texture = ExtResource("13_muem4")
+
+[node name="Parallax2D" type="Parallax2D" parent="Follower/Parallax" unique_id=2139606264]
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(1920, 0)
+follow_viewport = false
+
+[node name="ParallaxBackground1" type="Sprite2D" parent="Follower/Parallax/Parallax2D" unique_id=1972622198]
+texture = ExtResource("14_dp3eg")
+
 [node name="Diver" parent="." unique_id=1329831271 node_paths=PackedStringArray("gui") instance=ExtResource("1_sugp2")]
 z_index = 100
 motion_mode = 1
@@ -32,15 +81,16 @@ gui = NodePath("../CanvasLayer/GUI")
 [node name="TerrainGenerator" type="Node" parent="." unique_id=498047511 node_paths=PackedStringArray("player")]
 script = ExtResource("1_o5qli")
 noise = SubResource("FastNoiseLite_o5qli")
-isovalue = 0.05
+isovalue = 0.01
 player = NodePath("../Diver")
 metadata/_custom_type_script = "uid://hcimcrlphnpe"
 
-[node name="World" type="Node2D" parent="." unique_id=1488576089 node_paths=PackedStringArray("player", "terrain_generator")]
+[node name="World" type="Node2D" parent="." unique_id=1488576089 node_paths=PackedStringArray("player", "terrain_generator", "parallax")]
 script = ExtResource("2_0wfyh")
 player = NodePath("../Diver")
 terrain_generator = NodePath("../TerrainGenerator")
 world_bounds = Rect2i(0, 0, 8, 8)
+parallax = NodePath("../Follower/Parallax")
 
 [node name="Darken" type="CanvasModulate" parent="." unique_id=752574786]
 visible = false
