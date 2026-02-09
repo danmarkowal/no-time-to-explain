@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://us4mar1gbxce"]
+
+[ext_resource type="Script" uid="uid://dib1mqc0pac2r" path="res://interactable/chest.gd" id="1_t4nxu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ew2ts"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_t4nxu"]
+material = SubResource("StandardMaterial3D_ew2ts")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a43qq"]
+size = Vector2(60, 60)
+
+[node name="Chest" type="StaticBody2D" unique_id=1008955499 groups=["external_inventory"]]
+modulate = Color(0.37254903, 0.84313726, 0.54509807, 1)
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_t4nxu")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=292136769]
+position = Vector2(0, -8.046627e-07)
+scale = Vector2(60, 60)
+mesh = SubResource("QuadMesh_t4nxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2037133879]
+shape = SubResource("RectangleShape2D_a43qq")

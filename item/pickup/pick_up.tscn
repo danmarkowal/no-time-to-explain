@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cdcawpnxgpatm"]
+
+[ext_resource type="Texture2D" uid="uid://cjx0pgr4m18k5" path="res://item/item_atlas.tres" id="1_3n17m"]
+[ext_resource type="Script" uid="uid://bav6xeh6vnetj" path="res://item/pickup/pick_up.gd" id="1_r72yy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r72yy"]
+size = Vector2(26, 24)
+
+[node name="Pick up" type="RigidBody2D" unique_id=100375648]
+collision_layer = 0
+lock_rotation = true
+freeze_mode = 1
+constant_force = Vector2(0, -800)
+constant_torque = 300.0
+script = ExtResource("1_r72yy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=923091901]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_3n17m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1960145520]
+shape = SubResource("RectangleShape2D_r72yy")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=987532039]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=106728862]
+shape = SubResource("RectangleShape2D_r72yy")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

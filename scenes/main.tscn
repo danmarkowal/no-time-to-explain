@@ -8,11 +8,37 @@
 [ext_resource type="PackedScene" uid="uid://lxltr18qhs5y" path="res://inventory/inventory.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://b2mds1o3j3280" path="res://scenes/inventory_interface.gd" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://bgo7iechrmm3p" path="res://inventory/slot.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://us4mar1gbxce" path="res://interactable/chest.tscn" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://dqx3idb731n7i" path="res://inventory/inventory_data.gd" id="10_trceg"]
+[ext_resource type="Script" uid="uid://51t8it8b2hdp" path="res://inventory/slot_data.gd" id="11_a8y0u"]
+[ext_resource type="Resource" uid="uid://cchwfxajyowmr" path="res://item/items/money.tres" id="12_jkv2x"]
+[ext_resource type="Resource" uid="uid://bveuperdsle7o" path="res://item/items/potion.tres" id="13_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://cdcawpnxgpatm" path="res://item/pickup/pick_up.tscn" id="14_a8y0u"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o5qli"]
 noise_type = 0
 frequency = 0.05
 fractal_octaves = 4
+
+[sub_resource type="Resource" id="Resource_muem4"]
+script = ExtResource("11_a8y0u")
+item_data = ExtResource("12_jkv2x")
+metadata/_custom_type_script = "uid://51t8it8b2hdp"
+
+[sub_resource type="Resource" id="Resource_dp3eg"]
+script = ExtResource("11_a8y0u")
+item_data = ExtResource("13_jbj1t")
+metadata/_custom_type_script = "uid://51t8it8b2hdp"
+
+[sub_resource type="Resource" id="Resource_0ld40"]
+script = ExtResource("10_trceg")
+slot_datas = Array[ExtResource("11_a8y0u")]([SubResource("Resource_muem4"), SubResource("Resource_dp3eg"), null, null, null])
+metadata/_custom_type_script = "uid://dqx3idb731n7i"
+
+[sub_resource type="Resource" id="Resource_a8y0u"]
+script = ExtResource("11_a8y0u")
+item_data = ExtResource("13_jbj1t")
+metadata/_custom_type_script = "uid://51t8it8b2hdp"
 
 [node name="Main" type="Node2D" unique_id=1125537957]
 script = ExtResource("1_tefeu")
@@ -55,8 +81,26 @@ offset_top = 550.0
 offset_right = 390.0
 offset_bottom = 590.0
 
+[node name="ExternalInventory" parent="UI/InventoryInterface" unique_id=1352776753 instance=ExtResource("3_sugp2")]
+visible = false
+layout_mode = 0
+offset_left = 350.0
+offset_top = 315.0
+offset_right = 390.0
+offset_bottom = 355.0
+
 [node name="GrabbedSlot" parent="UI/InventoryInterface" unique_id=961905673 instance=ExtResource("8_tipki")]
 visible = false
 modulate = Color(1, 1, 1, 0.48235294)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Chest" parent="." unique_id=1008955499 instance=ExtResource("9_85g3d")]
+position = Vector2(147, 72)
+inventory_data = SubResource("Resource_0ld40")
+
+[node name="Pick up" parent="." unique_id=100375648 instance=ExtResource("14_a8y0u")]
+position = Vector2(124, 18)
+slot_data = SubResource("Resource_a8y0u")
