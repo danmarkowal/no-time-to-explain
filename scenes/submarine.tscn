@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://dxkr2xhcixqw0" path="res://scenes/dropped_item.tscn" id="23_l26e6"]
 [ext_resource type="Resource" uid="uid://db3g7gy0posvt" path="res://resources/item/items/knife_item.tres" id="24_gquyh"]
 [ext_resource type="Resource" uid="uid://ceaeg35sovch0" path="res://resources/item/items/radar_item.tres" id="26_dbiej"]
+[ext_resource type="Texture2D" uid="uid://7gc2xqjvrwv1" path="res://textures/chair.png" id="26_haftu"]
 [ext_resource type="Resource" uid="uid://d0d71r6k33je" path="res://resources/item/items/oxygen_cannister_item.tres" id="27_dbiej"]
 [ext_resource type="Resource" uid="uid://djpypdm1hekux" path="res://resources/item/items/diving_suit_item.tres" id="31_r6ra4"]
 [ext_resource type="PackedScene" uid="uid://dk6ny0cqw3q8y" path="res://scenes/escape_button.tscn" id="32_pliag"]
@@ -291,6 +292,16 @@ texture = ExtResource("17_4hegc")
 z_index = -20
 position = Vector2(-323, 35)
 texture = ExtResource("17_4hegc")
+
+[node name="Chair" type="Sprite2D" parent="." unique_id=376942723]
+position = Vector2(-362, 144)
+rotation = 1.5707964
+texture = ExtResource("26_haftu")
+
+[node name="Chair2" type="Sprite2D" parent="." unique_id=703790142]
+position = Vector2(-307, -46)
+texture = ExtResource("26_haftu")
+flip_h = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=124594337]
 position = Vector2(-576, -128)
