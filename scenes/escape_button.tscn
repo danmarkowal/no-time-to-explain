@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dk6ny0cqw3q8y"]
+
+[ext_resource type="Texture2D" uid="uid://ce7sf82sabtj0" path="res://textures/button.png" id="1_qpobw"]
+[ext_resource type="Script" uid="uid://b6n8qtdh15lxp" path="res://scripts/escape_button.gd" id="1_r417g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpobw"]
+size = Vector2(36, 36)
+
+[node name="EscapeButton" type="Area2D" unique_id=1650288052]
+texture_filter = 1
+script = ExtResource("1_r417g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=949372256]
+texture = ExtResource("1_qpobw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=812786962]
+shape = SubResource("RectangleShape2D_qpobw")

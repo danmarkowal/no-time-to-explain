@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cmu35spvp45fp"]
 
+[ext_resource type="Script" uid="uid://emgm7k2uc3wd" path="res://scripts/start.gd" id="1_4ge6i"]
 [ext_resource type="PackedScene" uid="uid://vmbdflvn8iue" path="res://scenes/player.tscn" id="1_r3h5y"]
 [ext_resource type="Script" uid="uid://bq3gqiwt3co3l" path="res://scripts/follower.gd" id="1_y16t7"]
 [ext_resource type="PackedScene" uid="uid://db6ww8kvfaktg" path="res://scenes/hud.tscn" id="2_cjhfg"]
@@ -9,6 +10,7 @@
 
 [node name="Start" type="Node2D" unique_id=218489408]
 texture_filter = 1
+script = ExtResource("1_4ge6i")
 
 [node name="Follower" type="Node2D" parent="." unique_id=394060055 node_paths=PackedStringArray("target")]
 script = ExtResource("1_y16t7")
@@ -25,8 +27,9 @@ position = Vector2(-355, 171)
 collision_mask = 6
 gui = NodePath("../CanvasLayer/GUI")
 
-[node name="Submarine" parent="." unique_id=392428454 instance=ExtResource("5_0auqf")]
+[node name="Submarine" parent="." unique_id=392428454 node_paths=PackedStringArray("start") instance=ExtResource("5_0auqf")]
 position = Vector2(-1, 69)
+start = NodePath("..")
 
 [node name="SeaNoise" type="AudioStreamPlayer" parent="." unique_id=1770811024]
 stream = ExtResource("6_4ge6i")

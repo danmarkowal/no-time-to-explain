@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://7wwjyg8nwxvy"]
 
+[ext_resource type="Script" uid="uid://b18r23yi07d4o" path="res://scripts/submarine.gd" id="1_gbrnk"]
 [ext_resource type="Texture2D" uid="uid://b31yleh5ujhsu" path="res://textures/sub_atlas.png" id="1_gua2t"]
 [ext_resource type="Texture2D" uid="uid://bvd6g34jdcv7o" path="res://textures/sub_logo.png" id="2_cjhfg"]
 [ext_resource type="PackedScene" uid="uid://bv4vxddepa1f5" path="res://scenes/ladder.tscn" id="3_cjhfg"]
@@ -7,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://blc1ogmtu80u8" path="res://textures/escape_pod_text.png" id="5_t215d"]
 [ext_resource type="PackedScene" uid="uid://1hyuqqu3o5ub" path="res://scenes/drop_chute.tscn" id="5_ubaeb"]
 [ext_resource type="PackedScene" uid="uid://vqaybdgo4mm4" path="res://scenes/medical_cabinet.tscn" id="7_ekkh5"]
+[ext_resource type="Texture2D" uid="uid://bajrbgolrh1qg" path="res://textures/all_u_need.png" id="7_jcep5"]
+[ext_resource type="Texture2D" uid="uid://c8juna54gp7e6" path="res://textures/diving_suit_sihouette.png" id="8_1f8nq"]
 [ext_resource type="Script" uid="uid://dqx3idb731n7i" path="res://resources/inventory/inventory_data.gd" id="8_k0pa1"]
 [ext_resource type="Script" uid="uid://51t8it8b2hdp" path="res://resources/inventory/slot_data.gd" id="9_hap2i"]
 [ext_resource type="Resource" uid="uid://b30r6lgbdiwvd" path="res://resources/item/items/bandage_item.tres" id="10_e3cxq"]
@@ -25,12 +28,14 @@
 [ext_resource type="AudioStream" uid="uid://x54wihp8sty4" path="res://audio/metal_squeak_3.mp3" id="17_a23f2"]
 [ext_resource type="Resource" uid="uid://cao0v536hfxgb" path="res://resources/item/items/pistol_mag_item.tres" id="17_wneam"]
 [ext_resource type="Texture2D" uid="uid://cmugg7j112jp7" path="res://textures/blood_head.png" id="21_yqrae"]
+[ext_resource type="Texture2D" uid="uid://rv1ltyunl3hp" path="res://textures/warning_sign.png" id="22_alw38"]
 [ext_resource type="Texture2D" uid="uid://cs410g5s81gmi" path="res://textures/table.png" id="22_yqrae"]
 [ext_resource type="PackedScene" uid="uid://dxkr2xhcixqw0" path="res://scenes/dropped_item.tscn" id="23_l26e6"]
 [ext_resource type="Resource" uid="uid://db3g7gy0posvt" path="res://resources/item/items/knife_item.tres" id="24_gquyh"]
 [ext_resource type="Resource" uid="uid://ceaeg35sovch0" path="res://resources/item/items/radar_item.tres" id="26_dbiej"]
 [ext_resource type="Resource" uid="uid://d0d71r6k33je" path="res://resources/item/items/oxygen_cannister_item.tres" id="27_dbiej"]
 [ext_resource type="Resource" uid="uid://djpypdm1hekux" path="res://resources/item/items/diving_suit_item.tres" id="31_r6ra4"]
+[ext_resource type="PackedScene" uid="uid://dk6ny0cqw3q8y" path="res://scenes/escape_button.tscn" id="32_pliag"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gua2t"]
 texture = ExtResource("1_gua2t")
@@ -149,6 +154,7 @@ metadata/_custom_type_script = "uid://dqx3idb731n7i"
 
 [node name="Submarine" type="Node2D" unique_id=218489408]
 texture_filter = 1
+script = ExtResource("1_gbrnk")
 
 [node name="HullLayer" type="TileMapLayer" parent="." unique_id=2045823858]
 tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAADAAAAAAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAAEAAAAAAADAAAAAQD7/wAAAAAAAAAAAAAFAAAAAAAAAAAAAAD6/wAAAAAAAAAAAAAGAAAAAAAAAAAAAAD5/wAAAAAAAAAAAAAHAAAAAAACAAAAAAAHAP//AAACAAAAAAAHAP7/AAACAAAAAAAHAP3/AAACAAAAAAAHAPz/AAACAAAAAAAGAPv/AAAAAAAAAwAFAPv/AAAAAAAAAwAEAPv/AAAAAAAAAwADAPv/AAAAAAAAAwACAPv/AAAAAAAAAwABAPv/AAAAAAAAAwAAAPv/AAAAAAAAAwD///v/AAAAAAAAAwD+//v/AAAAAAAAAwAHAPv/AAABAAAAAgD9//v/AAAAAAAAAwD8//v/AAAAAAAAAwD7//v/AAAAAAAAAwD6//v/AAAAAAAAAwD5//v/AAAAAAAAAwD4//v/AAAAAAAAAwD3//v/AAAAAAAAAwD2//v/AAAAAAAAAwD1//v/AAAAAAAAAwD0//v/AAAAAAAAAwDz//v/AAAAAAAAAwDy//v/AAAAAAAAAwDx//v/AAAAAAAAAwDw//v/AAAAAAAAAwDv//v/AAAAAAAAAwDu//v/AAAAAAAAAwD4/wAAAAAAAAAAAAD3/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD1/wAAAAAAAAAAAAD0/wAAAAAAAAAAAADz/wAAAAADAAAAAQDw/wAAAAAAAAAAAADv/wAAAAAAAAAAAADu/wAAAAAAAAAAAADt//v/AAABAAAABADt//z/AAACAAAAAQDt//3/AAACAAAAAQDt//7/AAACAAAAAQDt////AAACAAAAAQDt/wAAAAACAAAAAQDt/wEAAAACAAAAAQDt/wIAAAACAAAAAQDt/wMAAAACAAAAAQDt/wQAAAACAAAAAQDt/wUAAAABAAAAAwDu/wUAAAAAAAAAAADv/wUAAAAAAAAAAADw/wUAAAAAAAAAAADx/wUAAAAAAAAAAADy/wUAAAAAAAAAAADz/wUAAAAAAAAAAAD0/wUAAAAAAAAAAAD1/wUAAAAAAAAAAAD2/wUAAAAAAAAAAAD3/wUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAABAAAAAAAHAAQAAAACAAAAAAAHAAMAAAACAAAAAAAHAAIAAAACAAAAAAAHAAEAAAACAAAAAADx/wAAAAADAAAAAAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAD9/wQAAAAGAAAAAQD9/wMAAAAGAAAAAQD9/wIAAAAGAAAAAQD9/wEAAAAGAAAAAQA=")
@@ -191,6 +197,16 @@ texture = ExtResource("5_t215d")
 z_index = 20
 position = Vector2(16, 110)
 texture = ExtResource("11_hap2i")
+
+[node name="AllUNeed" type="Sprite2D" parent="." unique_id=831047785]
+z_index = -20
+position = Vector2(-194, 124)
+texture = ExtResource("7_jcep5")
+
+[node name="DivingSuitSihouette" type="Sprite2D" parent="." unique_id=1939637947]
+z_index = -20
+position = Vector2(-141, 138)
+texture = ExtResource("8_1f8nq")
 
 [node name="DropChute2" parent="." unique_id=1319384023 instance=ExtResource("5_ubaeb")]
 position = Vector2(80, 0)
@@ -241,6 +257,11 @@ inventory_data = SubResource("Resource_jcep5")
 [node name="ControlPanel" type="Sprite2D" parent="." unique_id=1509098189]
 position = Vector2(-544, -64)
 texture = ExtResource("15_l2uqm")
+
+[node name="WarningSign" type="Sprite2D" parent="." unique_id=1824106273]
+z_index = -20
+position = Vector2(-400, -82)
+texture = ExtResource("22_alw38")
 
 [node name="Blood" type="Sprite2D" parent="." unique_id=439388077]
 position = Vector2(-491, -48)
@@ -334,3 +355,6 @@ item = ExtResource("27_dbiej")
 position = Vector2(201, -17)
 freeze = true
 item = ExtResource("31_r6ra4")
+
+[node name="EscapeButton" parent="." unique_id=1650288052 instance=ExtResource("32_pliag")]
+position = Vector2(-193, 96)
