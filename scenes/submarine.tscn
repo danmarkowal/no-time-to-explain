@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c6eem2avh6wvp" path="res://textures/wires.png" id="13_a2gsv"]
 [ext_resource type="Resource" uid="uid://b8eby0tlkd577" path="res://resources/item/items/harpoon_gun_item.tres" id="13_rj6rf"]
 [ext_resource type="Resource" uid="uid://ufv77jwvsnkc" path="res://resources/item/items/keycard_item.tres" id="14_ys125"]
+[ext_resource type="Resource" uid="uid://wfdh6knfsyea" path="res://resources/item/items/harpoon.tres" id="15_e0uya"]
 [ext_resource type="AudioStream" uid="uid://1km6gtnktsa1" path="res://audio/metal_squeak_1.mp3" id="15_ifrua"]
 [ext_resource type="Texture2D" uid="uid://dpol3kw45o3wm" path="res://textures/control_panel.png" id="15_l2uqm"]
 [ext_resource type="PackedScene" uid="uid://bqpr1q0ibsalq" path="res://scenes/locker.tscn" id="15_ys125"]
@@ -22,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://daw3wt6xobvi2" path="res://textures/blood.png" id="16_ia36m"]
 [ext_resource type="Texture2D" uid="uid://bwpmhton61r1k" path="res://textures/blood_long.png" id="17_4hegc"]
 [ext_resource type="AudioStream" uid="uid://x54wihp8sty4" path="res://audio/metal_squeak_3.mp3" id="17_a23f2"]
+[ext_resource type="Resource" uid="uid://cao0v536hfxgb" path="res://resources/item/items/pistol_mag_item.tres" id="17_wneam"]
 [ext_resource type="Texture2D" uid="uid://cmugg7j112jp7" path="res://textures/blood_head.png" id="21_yqrae"]
 [ext_resource type="Texture2D" uid="uid://cs410g5s81gmi" path="res://textures/table.png" id="22_yqrae"]
 [ext_resource type="PackedScene" uid="uid://dxkr2xhcixqw0" path="res://scenes/dropped_item.tscn" id="23_l26e6"]
@@ -120,11 +122,28 @@ size = Vector2(176, 128)
 
 [sub_resource type="Resource" id="Resource_dbiej"]
 script = ExtResource("9_hap2i")
+item_data = ExtResource("17_wneam")
+quantity = 3
+metadata/_custom_type_script = "uid://51t8it8b2hdp"
+
+[sub_resource type="Resource" id="Resource_alw38"]
+script = ExtResource("9_hap2i")
+item_data = ExtResource("15_e0uya")
+quantity = 2
 metadata/_custom_type_script = "uid://51t8it8b2hdp"
 
 [sub_resource type="Resource" id="Resource_e0uya"]
 script = ExtResource("8_k0pa1")
-slot_datas = Array[ExtResource("9_hap2i")]([SubResource("Resource_dbiej")])
+slot_datas = Array[ExtResource("9_hap2i")]([SubResource("Resource_dbiej"), SubResource("Resource_alw38")])
+metadata/_custom_type_script = "uid://dqx3idb731n7i"
+
+[sub_resource type="Resource" id="Resource_pliag"]
+script = ExtResource("9_hap2i")
+metadata/_custom_type_script = "uid://51t8it8b2hdp"
+
+[sub_resource type="Resource" id="Resource_jcep5"]
+script = ExtResource("8_k0pa1")
+slot_datas = Array[ExtResource("9_hap2i")]([SubResource("Resource_pliag")])
 metadata/_custom_type_script = "uid://dqx3idb731n7i"
 
 [node name="Submarine" type="Node2D" unique_id=218489408]
@@ -216,6 +235,7 @@ inventory_data = SubResource("Resource_e0uya")
 
 [node name="Locker2" parent="." unique_id=1289023630 instance=ExtResource("15_ys125")]
 position = Vector2(180, 96)
+inventory_data = SubResource("Resource_jcep5")
 
 [node name="ControlPanel" type="Sprite2D" parent="." unique_id=1509098189]
 position = Vector2(-544, -64)
@@ -235,9 +255,19 @@ z_index = -20
 position = Vector2(-233, 135)
 texture = ExtResource("16_ia36m")
 
+[node name="Blood4" type="Sprite2D" parent="." unique_id=1628440577]
+z_index = -20
+position = Vector2(-490, 76)
+texture = ExtResource("16_ia36m")
+
 [node name="BloodLong" type="Sprite2D" parent="." unique_id=536882750]
 z_index = -20
 position = Vector2(-173, -19)
+texture = ExtResource("17_4hegc")
+
+[node name="BloodLong2" type="Sprite2D" parent="." unique_id=1470006304]
+z_index = -20
+position = Vector2(-323, 35)
 texture = ExtResource("17_4hegc")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=124594337]

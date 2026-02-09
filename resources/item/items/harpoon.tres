@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://wfdh6knfsyea"]
+
+[ext_resource type="Script" uid="uid://4rg6eckkaigk" path="res://resources/item/item_data.gd" id="1_yth6r"]
+[ext_resource type="Texture2D" uid="uid://ha75de3efvgi" path="res://textures/harpoon.png" id="2_5y8ja"]
+
+[resource]
+script = ExtResource("1_yth6r")
+id = "harpoon"
+name = "Harpoon"
+texture = ExtResource("2_5y8ja")
+stack_size = 2
+metadata/_custom_type_script = "uid://4rg6eckkaigk"
