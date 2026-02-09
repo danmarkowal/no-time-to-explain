@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://drt34y2l3hphi"]
 
 [ext_resource type="Script" uid="uid://17dwxv27dexv" path="res://scripts/chunk_instance.gd" id="1_xpami"]
+[ext_resource type="Texture2D" uid="uid://bjpc55715xxsm" path="res://textures/rock.png" id="2_wg7um"]
 
 [node name="ChunkInstance" type="Node2D" unique_id=49376616]
 script = ExtResource("1_xpami")
-debug_render = true
 
 [node name="ChunkBody" type="StaticBody2D" parent="." unique_id=233814914]
 collision_layer = 16
 
 [node name="ChunkMesh" type="MeshInstance2D" parent="ChunkBody" unique_id=945218128]
 z_index = -1
+texture = ExtResource("2_wg7um")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChunkBody" unique_id=43480602]

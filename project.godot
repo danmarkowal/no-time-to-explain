@@ -124,4 +124,4 @@ drop_item={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0, 0.040549144, 0.123367704, 1)
+environment/defaults/default_clear_color=Color(0.043137256, 0.0627451, 0.08627451, 1)

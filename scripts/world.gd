@@ -5,7 +5,6 @@ class_name World
 @export var terrain_generator: TerrainGenerator
 @export var world_bounds: Rect2i
 @export var parallax: Node2D
-@export var draw_chunk_grid: bool = false
 
 func _ready() -> void:
 	var min = world_bounds.position
