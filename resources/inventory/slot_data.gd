@@ -4,6 +4,8 @@ class_name SlotData
 @export var item_data: ItemData
 @export var quantity: int
 
+signal on_clicked()
+
 func is_empty() -> bool:
 	return item_data == null
 

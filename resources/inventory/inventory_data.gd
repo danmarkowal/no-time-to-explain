@@ -30,9 +30,11 @@ var current_item: ItemData :
 			return null
 		return current_slot.item_data
 
+signal on_item_moved()
 signal on_item_added(slot: SlotData)
 signal on_item_dropped(slot: SlotData)
 signal on_slot_selected(slot_index: int)
+signal on_slot_clicked(slot: SlotData)
 
 # returns whether the item was added or not
 func add_item(item_data: ItemData) -> bool:
@@ -54,4 +56,13 @@ func drop_item() -> bool:
 		return false
 	var res = current_slot.try_decrement(1)
 	on_item_dropped.emit(current_slot)
+	return res
+	
+func try_move_item(from: SlotData, to: InventoryData) -> bool:
+	if from.is_empty():
+		return false
+	var item = from.item_data
+	var res = from.try_decrement(1) and to.add_item(item)
+	if res:
+		on_item_moved.emit()
 	return res

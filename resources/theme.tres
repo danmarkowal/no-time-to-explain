@@ -2,5 +2,21 @@
 
 [ext_resource type="FontFile" uid="uid://bbvylpe5mrgwv" path="res://fonts/determination.ttf" id="1_d4nwg"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4nwg"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [resource]
 default_font = ExtResource("1_d4nwg")
+SelectedButton/base_type = &"Button"
+SelectedButton/styles/normal = SubResource("StyleBoxFlat_d4nwg")
+WrongButton/base_type = &"Button"
+WrongButton/colors/font_color = Color(1, 0, 0, 1)
+WrongButton/colors/font_hover_color = Color(0.8, 0, 0.01333313, 1)
+WrongButton/colors/font_pressed_color = Color(1, 0, 0.016666412, 1)

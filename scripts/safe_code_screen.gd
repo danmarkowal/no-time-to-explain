@@ -4,6 +4,9 @@ class_name SafeCodeScreen
 var safe: Safe
 
 
+signal on_opened()
+
+
 func _ready() -> void:
 	$Panel/CodeTextEdit.max_length = str(safe.code).length()
 
@@ -13,4 +16,22 @@ func _on_close_button_pressed() -> void:
 
 
 func _on_done_button_pressed() -> void:
-	pass # Replace with function body.
+	done()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("submit"):
+		done()
+
+
+func close() -> void:
+	queue_free()
+	
+	
+func done() -> void:
+	if $Panel/CodeTextEdit.text == safe.code:
+		safe.opened = true
+		close()
+	else:
+		$Panel/CodeTextEdit.text = ""
+		$Panel/DoneButton.theme_type_variation = "WrongButton"

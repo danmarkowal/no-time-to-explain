@@ -1,8 +1,6 @@
 extends Node2D
 class_name InteractionManager
 
-@onready var safe_screen_prefab = preload("res://scenes/safe_code_screen.tscn")
-
 @export var player: Node2D
 @export var interaction_distance: float = 1.5
 
@@ -29,7 +27,5 @@ func interact_with(node: Node2D) -> void:
 	if node is DroppedItem:
 		if player.inventory_manager.pickup_item(node.item):
 			node.queue_free()
-	if node is Safe:
-		var safe_screen = safe_screen_prefab.instantiate()
-		safe_screen.safe = node
-		gui.push_screen(safe_screen)
+	if node.has_method("interaction_success"):
+		node.interaction_success(self)

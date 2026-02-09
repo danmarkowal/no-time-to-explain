@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://diwe6k88i1mmr" path="res://textures/hospital_bed.png" id="11_hap2i"]
 [ext_resource type="PackedScene" uid="uid://cv40eptngrd3w" path="res://scenes/safe.tscn" id="12_e3cxq"]
 [ext_resource type="Texture2D" uid="uid://c6eem2avh6wvp" path="res://textures/wires.png" id="13_a2gsv"]
+[ext_resource type="Resource" uid="uid://b8eby0tlkd577" path="res://resources/item/items/harpoon_gun_item.tres" id="13_rj6rf"]
 [ext_resource type="Texture2D" uid="uid://thd4u2w38wiq" path="res://textures/locker.png" id="14_efss0"]
 [ext_resource type="AudioStream" uid="uid://1km6gtnktsa1" path="res://audio/metal_squeak_1.mp3" id="15_ifrua"]
 [ext_resource type="Texture2D" uid="uid://dpol3kw45o3wm" path="res://textures/control_panel.png" id="15_l2uqm"]
@@ -24,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://cs410g5s81gmi" path="res://textures/table.png" id="22_yqrae"]
 [ext_resource type="PackedScene" uid="uid://dxkr2xhcixqw0" path="res://scenes/dropped_item.tscn" id="23_l26e6"]
 [ext_resource type="Resource" uid="uid://db3g7gy0posvt" path="res://resources/item/items/knife_item.tres" id="24_gquyh"]
+[ext_resource type="Resource" uid="uid://ceaeg35sovch0" path="res://resources/item/items/radar_item.tres" id="26_dbiej"]
+[ext_resource type="Resource" uid="uid://d0d71r6k33je" path="res://resources/item/items/oxygen_cannister_item.tres" id="27_dbiej"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gua2t"]
 texture = ExtResource("1_gua2t")
@@ -94,6 +97,17 @@ script = ExtResource("8_k0pa1")
 slot_datas = Array[ExtResource("9_hap2i")]([SubResource("Resource_a2gsv")])
 metadata/_custom_type_script = "uid://dqx3idb731n7i"
 
+[sub_resource type="Resource" id="Resource_ys125"]
+script = ExtResource("9_hap2i")
+item_data = ExtResource("13_rj6rf")
+quantity = 1
+metadata/_custom_type_script = "uid://51t8it8b2hdp"
+
+[sub_resource type="Resource" id="Resource_wneam"]
+script = ExtResource("8_k0pa1")
+slot_datas = Array[ExtResource("9_hap2i")]([SubResource("Resource_ys125")])
+metadata/_custom_type_script = "uid://dqx3idb731n7i"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3cxq"]
 size = Vector2(176, 128)
 
@@ -156,6 +170,8 @@ inventory_data = SubResource("Resource_efss0")
 
 [node name="Safe" parent="." unique_id=1044646584 instance=ExtResource("12_e3cxq")]
 position = Vector2(-48, -80)
+code = "237"
+inventory_data = SubResource("Resource_wneam")
 
 [node name="EscapePodArea" type="Area2D" parent="." unique_id=1761248190]
 
@@ -246,3 +262,24 @@ position = Vector2(-110, -69)
 rotation = -2.6179938
 freeze = true
 item = ExtResource("24_gquyh")
+
+[node name="DroppedItem2" parent="." unique_id=1514980291 instance=ExtResource("23_l26e6")]
+position = Vector2(-527, -41.99997)
+rotation = -0.5235988
+freeze = true
+item = ExtResource("26_dbiej")
+
+[node name="DroppedItem4" parent="." unique_id=717892415 instance=ExtResource("23_l26e6")]
+position = Vector2(-557, 133)
+freeze = true
+item = ExtResource("27_dbiej")
+
+[node name="DroppedItem3" parent="." unique_id=1908276244 instance=ExtResource("23_l26e6")]
+position = Vector2(-565, 149)
+freeze = true
+item = ExtResource("27_dbiej")
+
+[node name="DroppedItem5" parent="." unique_id=1933921507 instance=ExtResource("23_l26e6")]
+position = Vector2(-549, 149)
+freeze = true
+item = ExtResource("27_dbiej")
