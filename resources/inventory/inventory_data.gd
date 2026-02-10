@@ -72,3 +72,11 @@ func has_item(item: ItemData) -> bool:
 		if slot.item_matches(item):
 			return true
 	return false
+	
+func try_remove_item(item: ItemData) -> bool:
+	for slot in slot_datas:
+		if slot.item_matches(item):
+			slot.clear()
+			return true
+	return false
+		

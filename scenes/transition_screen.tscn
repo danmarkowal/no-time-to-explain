@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://3c0e5t85ms7v"]
+
+[ext_resource type="AudioStream" uid="uid://cv0uatxyepka5" path="res://audio/metal_pipe_boom.mp3" id="1_12c8c"]
+
+[node name="TransitionScreen" type="Control" unique_id=1423164787]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1171562753]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.0627451, 0.08627451, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2107208424]
+process_mode = 3
+stream = ExtResource("1_12c8c")
+volume_db = -12.0
+autoplay = true
+
+[node name="Timer" type="Timer" parent="." unique_id=811186802]
+wait_time = 2.0
+one_shot = true
+autostart = true

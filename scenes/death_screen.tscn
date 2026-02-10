@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://bnd5up55j81km"]
+
+[ext_resource type="Script" uid="uid://c30rhnf3mg8r8" path="res://scripts/death_screen.gd" id="1_dwo6e"]
+
+[sub_resource type="Animation" id="Animation_dwo6e"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:self_modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:self_modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:self_modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect2:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_uyutr"]
+resource_name = "fade_in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:self_modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:self_modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:self_modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect2:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwo6e"]
+_data = {
+&"RESET": SubResource("Animation_dwo6e"),
+&"fade_in": SubResource("Animation_uyutr")
+}
+
+[node name="DeathScreen" type="Control" unique_id=1423164787]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dwo6e")
+death_message = "You died"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1171562753]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.0627451, 0.08627451, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=811186802]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="YouDiedText" type="RichTextLabel" parent="." unique_id=2066068981]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -228.0
+offset_right = 240.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.7490196, 0.22352941, 0.22352941, 1)
+theme_override_font_sizes/normal_font_size = 48
+text = "You have perished..."
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathMessage" type="RichTextLabel" parent="." unique_id=1812208591]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -165.0
+offset_right = 240.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.8901961, 0.8666667, 0.81960785, 1)
+theme_override_font_sizes/normal_font_size = 24
+text = "You have perished..."
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TryAgainButton" type="Button" parent="." unique_id=1622073025]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -15.0
+offset_right = 43.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Try again"
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=715384227]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.0627451, 0.08627451, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect2" unique_id=280080265]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_dwo6e")
+
+[connection signal="pressed" from="TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="animation_finished" from="ColorRect2/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

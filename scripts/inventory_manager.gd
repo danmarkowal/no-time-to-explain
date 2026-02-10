@@ -71,3 +71,7 @@ func pickup_item(item: ItemData) -> bool:
 	
 func has_item(item: ItemData) -> bool:
 	return inventory_data.has_item(item)
+	
+	
+func try_remove_item(item: ItemData) -> bool:
+	return inventory_data.try_remove_item(item)
