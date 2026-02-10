@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cne4gr06nvp4m" path="res://textures/parallax_background_3.png" id="12_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://r2vmdj5g7d72" path="res://textures/parallax_background_2.png" id="13_muem4"]
 [ext_resource type="Texture2D" uid="uid://c742soru8lopm" path="res://textures/parallax_background_1.png" id="14_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://jna5yll43cc8" path="res://scenes/glowfish.tscn" id="15_jkv2x"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o5qli"]
 noise_type = 0
@@ -93,7 +94,7 @@ world_bounds = Rect2i(0, 0, 8, 8)
 parallax = NodePath("../Follower/Parallax")
 
 [node name="Darken" type="CanvasModulate" parent="." unique_id=752574786]
-color = Color(0.14117648, 0.32156864, 0.4509804, 1)
+color = Color(0.33749998, 0.40312502, 0.45, 1)
 
 [node name="SeaNoise" type="AudioStreamPlayer" parent="." unique_id=191949020]
 stream = ExtResource("10_choun")
@@ -110,3 +111,6 @@ autoplay = true
 player = NodePath("../../Diver")
 
 [node name="GUI" parent="CanvasLayer" unique_id=1605761739 instance=ExtResource("8_tipki")]
+
+[node name="Glowfish" parent="." unique_id=759158415 instance=ExtResource("15_jkv2x")]
+position = Vector2(-174, -135)
