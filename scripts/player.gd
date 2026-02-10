@@ -118,8 +118,7 @@ func _physics_process(delta: float) -> void:
 	handle_survival_stats(delta)
 
 func handle_survival_stats(delta: float) -> void:
-	# 1. Drain Oxygen
-	# If you want it to always drain, just do this:
+	
 	self.oxygen -= oxygen_drain_rate * delta
 	
 	if oxygen <= 0:
