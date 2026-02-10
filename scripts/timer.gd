@@ -1,4 +1,5 @@
 extends Control
+class_name CountdownTimer
 
 
 @export var time: float = 30.0

@@ -9,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bsy5o062vpc5h" path="res://scenes/gui.tscn" id="6_y16t7"]
 [ext_resource type="PackedScene" uid="uid://dayfbw8e3blqn" path="res://scenes/timer.tscn" id="7_8itgj"]
 
-[node name="Start" type="Node2D" unique_id=218489408]
+[node name="Start" type="Node2D" unique_id=218489408 node_paths=PackedStringArray("timer")]
 texture_filter = 1
 script = ExtResource("1_4ge6i")
+timer = NodePath("CanvasLayer/Timer")
 
 [node name="Follower" type="Node2D" parent="." unique_id=394060055 node_paths=PackedStringArray("target")]
 script = ExtResource("1_y16t7")
@@ -26,6 +27,7 @@ current = true
 [node name="Player" parent="." unique_id=1763138530 node_paths=PackedStringArray("gui") instance=ExtResource("1_r3h5y")]
 position = Vector2(-355, 171)
 collision_mask = 6
+run_multiplier = 2.0
 gui = NodePath("../CanvasLayer/GUI")
 
 [node name="Submarine" parent="." unique_id=392428454 node_paths=PackedStringArray("start") instance=ExtResource("5_0auqf")]
@@ -43,6 +45,7 @@ autoplay = true
 player = NodePath("../../Player")
 
 [node name="Timer" parent="CanvasLayer" unique_id=587933780 instance=ExtResource("7_8itgj")]
+time = 33.0
 
 [node name="GUI" parent="CanvasLayer" unique_id=1605761739 instance=ExtResource("6_y16t7")]
 

@@ -66,3 +66,9 @@ func try_move_item(from: SlotData, to: InventoryData) -> bool:
 	if res:
 		on_item_moved.emit()
 	return res
+	
+func has_item(item: ItemData) -> bool:
+	for slot in slot_datas:
+		if slot.item_matches(item):
+			return true
+	return false

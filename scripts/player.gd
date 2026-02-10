@@ -56,8 +56,9 @@ func _process(delta: float) -> void:
 	$Components/Head.rotation = clamp(-direction * mouse_pos.angle_to(direction * Vector2.RIGHT), -PI / 6, PI / 6)
 
 	if velocity.length_squared() > 0:
-		walk_anim_t_legs += delta
-		walk_anim_t_arms += delta
+		var speed_multiplier = run_multiplier if Input.is_action_pressed("run") else 1.0
+		walk_anim_t_legs += delta * speed_multiplier
+		walk_anim_t_arms += delta * speed_multiplier
 		
 		var arm_offset = -PI / 2 if is_climbing_ladder else 0
 		left_arm_smoother.update(sin_pow(TAU * walk_anim_t_arms - walk_anim_phase_offset_arms, walk_anim_exp) * walk_anim_range_arms + arm_offset, delta, 0.2)

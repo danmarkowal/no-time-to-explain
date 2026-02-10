@@ -206,7 +206,7 @@ texture = ExtResource("7_jcep5")
 
 [node name="DivingSuitSihouette" type="Sprite2D" parent="." unique_id=1939637947]
 z_index = -20
-position = Vector2(-141, 138)
+position = Vector2(-116, 138)
 texture = ExtResource("8_1f8nq")
 
 [node name="DropChute2" parent="." unique_id=1319384023 instance=ExtResource("5_ubaeb")]
@@ -227,6 +227,7 @@ code = "237"
 inventory_data = SubResource("Resource_wneam")
 
 [node name="EscapePodArea" type="Area2D" parent="." unique_id=1761248190]
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EscapePodArea" unique_id=29916222]
 position = Vector2(-168, 96)
@@ -328,7 +329,7 @@ attenuation = 5.0
 
 [node name="BloodHead" type="Sprite2D" parent="." unique_id=1681817295]
 z_index = -20
-position = Vector2(-117, 84)
+position = Vector2(179, -80)
 texture = ExtResource("21_yqrae")
 
 [node name="Table" type="Sprite2D" parent="." unique_id=837170423]
