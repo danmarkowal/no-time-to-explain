@@ -112,5 +112,5 @@ player = NodePath("../../Diver")
 
 [node name="GUI" parent="CanvasLayer" unique_id=1605761739 instance=ExtResource("8_tipki")]
 
-[node name="Glowfish" parent="." unique_id=759158415 instance=ExtResource("15_jkv2x")]
-position = Vector2(-174, -135)
+[connection signal="health_changed" from="Diver" to="CanvasLayer/HUD" method="_on_player_health_changed"]
+[connection signal="oxygen_changed" from="Diver" to="CanvasLayer/HUD" method="_on_player_oxygen_changed"]
