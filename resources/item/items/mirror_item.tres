@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cygv8lyhrx3gg"]
+
+[ext_resource type="Script" uid="uid://4rg6eckkaigk" path="res://resources/item/item_data.gd" id="1_phoju"]
+[ext_resource type="Texture2D" uid="uid://dyiys8gkvepiv" path="res://textures/mirror.png" id="2_u16si"]
+
+[resource]
+script = ExtResource("1_phoju")
+id = "mirror"
+name = "Mirror"
+texture = ExtResource("2_u16si")
+metadata/_custom_type_script = "uid://4rg6eckkaigk"
