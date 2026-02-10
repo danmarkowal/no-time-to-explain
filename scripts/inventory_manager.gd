@@ -38,17 +38,18 @@ func use_item_in_slot(slot: SlotData):
 	# not null
 	var item = slot.item_data
 	if item is RangedWeapon:
-		if player.has_method("ranged_attack"):
-			player.ranged_attack(item)
+		if player.has_method("ranged_attack") \
+				and not player.ranged_attack(item):
+			return
 	elif item is MeleeWeapon:
-		if player.has_method("melee_attack"):
-			player.melee_attack(item)
+		if player.has_method("melee_attack") \
+				and not player.melee_attack(item):
+			return
 	var item_instance = item_slot.get_child(0)
 	if item_instance.has_method("use_item") \
 			and item_instance.use_item(self) \
 			and item.is_consumable:
 		inventory_data.use_item()
-		
 
 
 func refresh_held_item() -> void:

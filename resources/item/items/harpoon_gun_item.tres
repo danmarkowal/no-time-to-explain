@@ -7,10 +7,9 @@
 [resource]
 script = ExtResource("1_04jvc")
 mag_size = 1
-ammo = null
+ammo = 1
 id = "harpoon_gun"
 name = "Harpoon Gun"
 texture = ExtResource("2_1hws4")
 prefab = ExtResource("1_3euml")
-is_consumable = false
 metadata/_custom_type_script = "uid://bustjsbgk5twl"

@@ -7,9 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://c31nuxiuatkq3" path="res://textures/player/diving_suit/left_arm.png" id="3_smehm"]
 [ext_resource type="PackedScene" uid="uid://c3r736dbfxbq2" path="res://scenes/inventory_manager.tscn" id="4_di3hc"]
 [ext_resource type="Texture2D" uid="uid://ckc5ni3ry8i8f" path="res://textures/player/diving_suit/torso.png" id="4_ur7pv"]
+[ext_resource type="Resource" uid="uid://bntpt8bmka2qo" path="res://resources/item/items/pistol_item.tres" id="5_6jugd"]
 [ext_resource type="Texture2D" uid="uid://ias58gfar7hi" path="res://textures/player/diving_suit/right_arm.png" id="5_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://ct1fdvcqo2lwf" path="res://scenes/interaction_manager.tscn" id="6_6jugd"]
 [ext_resource type="Texture2D" uid="uid://qnlgwbi2b0m5" path="res://textures/player/diving_suit/left_leg.png" id="6_d2wvv"]
+[ext_resource type="Resource" uid="uid://b8eby0tlkd577" path="res://resources/item/items/harpoon_gun_item.tres" id="6_e5upo"]
 [ext_resource type="Texture2D" uid="uid://ctacdvxepfx0k" path="res://textures/player/diving_suit/right_leg.png" id="7_3v2ag"]
 [ext_resource type="PackedScene" uid="uid://bwv1m61pwqxkd" path="res://scenes/bubbles.tscn" id="8_di3hc"]
 
@@ -19,10 +21,14 @@ height = 122.0
 
 [sub_resource type="Resource" id="Resource_di3hc"]
 script = ExtResource("3_di3hc")
+item_data = ExtResource("5_6jugd")
+quantity = 1
 metadata/_custom_type_script = "uid://51t8it8b2hdp"
 
 [sub_resource type="Resource" id="Resource_duvs1"]
 script = ExtResource("3_di3hc")
+item_data = ExtResource("6_e5upo")
+quantity = 1
 metadata/_custom_type_script = "uid://51t8it8b2hdp"
 
 [sub_resource type="Resource" id="Resource_5ugpt"]
