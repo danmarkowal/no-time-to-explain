@@ -4,6 +4,12 @@ class_name Start
 
 @onready var diving_suit_item = preload("res://resources/item/items/diving_suit_item.tres")
 
+@export var timer: CountdownTimer
+
+
+func _ready() -> void:
+	timer.on_complete.connect(escape)
+
 
 func escape():
 	if can_escape_safely():
