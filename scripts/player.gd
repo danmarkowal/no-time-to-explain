@@ -9,7 +9,11 @@ class_name Player
 @export var walk_anim_phase_offset_legs: float = PI
 @export var walk_anim_range_legs: float = PI / 24
 @export var walk_anim_exp: float = 0.6
-
+@export_group("Survival Stats")
+@export var max_health: float = 100.0
+@export var max_oxygen: float = 100.0
+@export var oxygen_drain_rate: float = 2.0  
+@export var drown_damage_rate: float = 10.0 
 @export var inventory_manager: InventoryManager
 @export var interaction_manager: InteractionManager
 @export var gui: GUI
@@ -22,6 +26,18 @@ var left_leg_smoother = LerpSmoother.new(0.0)
 var right_leg_smoother = LerpSmoother.new(0.0)
 var can_climb_ladder = false
 var is_climbing_ladder = false
+signal health_changed(value)
+signal oxygen_changed(value)
+
+var health = 100:
+	set(val):
+		health = clamp(val, 0, 100)
+		health_changed.emit(health) 
+
+var oxygen = 100:
+	set(val):
+		oxygen = clamp(val, 0, 100)
+		oxygen_changed.emit(oxygen) 
 
 
 func _ready() -> void:
@@ -99,7 +115,21 @@ func _physics_process(delta: float) -> void:
 		$WalkingSound.playing = false
 	
 	move_and_slide()
+	handle_survival_stats(delta)
 
+func handle_survival_stats(delta: float) -> void:
+	# 1. Drain Oxygen
+	# If you want it to always drain, just do this:
+	self.oxygen -= oxygen_drain_rate * delta
+	
+	if oxygen <= 0:
+		self.health -= drown_damage_rate * delta
+		
+	if health <= 0:
+		die()
+
+func die():
+	print("Diver has perished.")
 
 func interact_with(node: Node2D):
 	interaction_manager.interact_with(node)

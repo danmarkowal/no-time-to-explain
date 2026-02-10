@@ -45,3 +45,6 @@ player = NodePath("../../Player")
 [node name="Timer" parent="CanvasLayer" unique_id=587933780 instance=ExtResource("7_8itgj")]
 
 [node name="GUI" parent="CanvasLayer" unique_id=1605761739 instance=ExtResource("6_y16t7")]
+
+[connection signal="health_changed" from="Player" to="CanvasLayer/HUD" method="_on_player_health_changed"]
+[connection signal="oxygen_changed" from="Player" to="CanvasLayer/HUD" method="_on_player_oxygen_changed"]
