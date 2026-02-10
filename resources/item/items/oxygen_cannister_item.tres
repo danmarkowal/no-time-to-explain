@@ -9,4 +9,5 @@ id = "oxygen_cannister"
 name = "Oxygen Cannister"
 texture = ExtResource("2_76h5t")
 stack_size = 2
+is_consumable = true
 metadata/_custom_type_script = "uid://4rg6eckkaigk"

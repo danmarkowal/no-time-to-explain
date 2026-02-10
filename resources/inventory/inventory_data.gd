@@ -33,6 +33,8 @@ var current_item: ItemData :
 signal on_item_moved()
 signal on_item_added(slot: SlotData)
 signal on_item_dropped(slot: SlotData)
+signal on_item_removed(slot: SlotData)
+signal on_item_used(slot: SlotData)
 signal on_slot_selected(slot_index: int)
 signal on_slot_clicked(slot: SlotData)
 
@@ -50,7 +52,7 @@ func add_item(item_data: ItemData) -> bool:
 		on_item_added.emit(empty_slot)
 		return true
 	return false
-	
+
 func drop_item() -> bool:
 	if current_slot == null:
 		return false
@@ -77,6 +79,13 @@ func try_remove_item(item: ItemData) -> bool:
 	for slot in slot_datas:
 		if slot.item_matches(item):
 			slot.clear()
+			on_item_removed.emit(slot)
 			return true
 	return false
-		
+	
+func use_item() -> bool:
+	if current_slot == null:
+		return false
+	var res = current_slot.try_decrement(1)
+	on_item_used.emit(current_slot)
+	return res

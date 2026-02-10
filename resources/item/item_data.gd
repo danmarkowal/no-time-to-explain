@@ -7,6 +7,7 @@ class_name ItemData
 @export var stack_size: int = 1
 @export var prefab: PackedScene
 @export var collider_size: Vector2 = Vector2(16.0, 16.0)
+@export var is_consumable: bool = false
 
 
 func default_instance() -> Node2D:

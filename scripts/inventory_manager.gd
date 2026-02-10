@@ -3,14 +3,18 @@ class_name InventoryManager
 
 @onready var dropped_item_prefab = preload("res://scenes/dropped_item.tscn")
 
+@export var player: Node2D
 @export var inventory_data: InventoryData
 @export var item_slot: Node2D
+@export var can_use_items: bool
 
 
 func _ready() -> void:
 	inventory_data.on_item_added.connect(func (x): refresh_held_item())
 	inventory_data.on_slot_selected.connect(func (x): refresh_held_item())
 	inventory_data.on_item_dropped.connect(func (x): refresh_held_item())
+	inventory_data.on_item_removed.connect(func (x): refresh_held_item())
+	inventory_data.on_item_used.connect(func (x): refresh_held_item())
 	refresh_held_item()
 
 
@@ -24,6 +28,27 @@ func _unhandled_input(event: InputEvent) -> void:
 			else:
 				inventory_data.selected_slot = -1
 			break
+	if event.is_action_pressed("use_item") \
+			and can_use_items \
+			and inventory_data.current_item != null:
+		use_item_in_slot(inventory_data.current_slot)
+
+
+func use_item_in_slot(slot: SlotData):
+	# not null
+	var item = slot.item_data
+	if item is RangedWeapon:
+		if player.has_method("ranged_attack"):
+			player.ranged_attack(item)
+	elif item is MeleeWeapon:
+		if player.has_method("melee_attack"):
+			player.melee_attack(item)
+	var item_instance = item_slot.get_child(0)
+	if item_instance.has_method("use_item") \
+			and item_instance.use_item(self) \
+			and item.is_consumable:
+		inventory_data.use_item()
+		
 
 
 func refresh_held_item() -> void:

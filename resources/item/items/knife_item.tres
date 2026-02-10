@@ -12,4 +12,5 @@ id = "knife"
 name = "Knife"
 texture = ExtResource("3_0jdgi")
 prefab = ExtResource("1_a5ixq")
+is_consumable = false
 metadata/_custom_type_script = "uid://dvm1n87cu7qr3"

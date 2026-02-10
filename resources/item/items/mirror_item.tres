@@ -8,4 +8,5 @@ script = ExtResource("1_phoju")
 id = "mirror"
 name = "Mirror"
 texture = ExtResource("2_u16si")
+is_consumable = false
 metadata/_custom_type_script = "uid://4rg6eckkaigk"

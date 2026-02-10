@@ -8,4 +8,5 @@ script = ExtResource("1_regxb")
 id = "keycard"
 name = "Keycard"
 texture = ExtResource("2_ot1g8")
+is_consumable = false
 metadata/_custom_type_script = "uid://4rg6eckkaigk"

@@ -52,9 +52,11 @@ interaction_manager = NodePath("InteractionManager")
 position = Vector2(-2, 2)
 shape = SubResource("CapsuleShape2D_fjrip")
 
-[node name="InventoryManager" parent="." unique_id=1093543294 node_paths=PackedStringArray("item_slot") instance=ExtResource("2_smehm")]
+[node name="InventoryManager" parent="." unique_id=1093543294 node_paths=PackedStringArray("player", "item_slot") instance=ExtResource("2_smehm")]
+player = NodePath("..")
 inventory_data = SubResource("Resource_oprun")
 item_slot = NodePath("../Components/RightArm/ItemSlot")
+can_use_items = null
 
 [node name="InteractionManager" parent="." unique_id=356724999 node_paths=PackedStringArray("player") instance=ExtResource("6_jej6c")]
 player = NodePath("..")

@@ -8,6 +8,9 @@ class_name Diver
 @export var swim_anim_phase_offset_legs: float = PI / 2
 @export var swim_anim_phase_offset_arms: float = PI / 6
 @export var swim_anim_speed_moving_multiplier = 2.0
+@export var swing_anim_speed: float = 5.0
+@export var swing_range_min: float = -PI
+@export var swing_range_max: float = 0
 @export var particle_emitters: Array[CPUParticles2D]
 
 @export var inventory_manager: InventoryManager
@@ -36,6 +39,7 @@ var oxygen = max_oxygen:
 var chunk_pos: Vector2i = Vector2i.ZERO
 var swim_anim_t_legs = 0.0
 var swim_anim_t_arms = 0.0
+var swing_smoother = Smoother.new(1.0)
 var speed_smoother = Smoother.new(0.0)
 var torso_smoother = LerpSmoother.new(0.0)
 
@@ -75,6 +79,8 @@ func _process(delta: float) -> void:
 	swim_anim_t_legs += delta * anim_speed_legs
 	swim_anim_t_arms += delta * anim_speed_arms
 	
+	swing_smoother.update(delta * swing_anim_speed, true)
+	
 	$Components/Torso/LeftLeg.rotation = sin(2.0 * PI * swim_anim_t_legs) * swim_anim_range
 	$Components/Torso/RightLeg.rotation = sin(2.0 * PI * swim_anim_t_legs - swim_anim_phase_offset_legs) * swim_anim_range
 	
@@ -90,6 +96,8 @@ func _process(delta: float) -> void:
 	var current_item = inventory_manager.inventory_data.current_item
 	if current_item is RangedWeapon:
 		aim(direction)
+	elif swing_smoother.value < 1.0:
+		$Components/Torso/RightArm.rotation = swing_smoother.smooth(swing_range_min, swing_range_max)
 	else:
 		$Components/Torso/RightArm.rotation = sin(2.0 * PI * swim_anim_t_arms - swim_anim_phase_offset_arms) * swim_anim_range
 
@@ -111,6 +119,15 @@ func _physics_process(delta: float) -> void:
 	# Update chunk position
 	chunk_pos = floor(position / (Globals.CHUNK_SIZE * Globals.TILE_SIZE * Globals.PPM))
 	handle_survival_stats(delta)
+
+func melee_attack(with: ItemData) -> void:
+	swing_arm()
+	
+func ranged_attack(with: ItemData) -> void:
+	pass
+	
+func swing_arm() -> void:
+	swing_smoother.value = 0.0
 
 func interact_with(node: Node2D):
 	interaction_manager.interact_with(node)

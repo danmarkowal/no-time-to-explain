@@ -9,4 +9,5 @@ id = "harpoon"
 name = "Harpoon"
 texture = ExtResource("2_5y8ja")
 stack_size = 2
+is_consumable = false
 metadata/_custom_type_script = "uid://4rg6eckkaigk"

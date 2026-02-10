@@ -9,4 +9,5 @@ id = "diving_suit"
 name = "Diving Suit"
 texture = ExtResource("2_tx286")
 collider_size = Vector2(32, 32)
+is_consumable = false
 metadata/_custom_type_script = "uid://4rg6eckkaigk"

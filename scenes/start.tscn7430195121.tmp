@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cmu35spvp45fp"]
+
+[ext_resource type="Script" uid="uid://emgm7k2uc3wd" path="res://scripts/start.gd" id="1_4ge6i"]
+[ext_resource type="PackedScene" uid="uid://vmbdflvn8iue" path="res://scenes/player.tscn" id="1_r3h5y"]
+[ext_resource type="Script" uid="uid://bq3gqiwt3co3l" path="res://scripts/follower.gd" id="1_y16t7"]
+[ext_resource type="PackedScene" uid="uid://7wwjyg8nwxvy" path="res://scenes/submarine.tscn" id="5_0auqf"]
+[ext_resource type="AudioStream" uid="uid://cws40trdvfg67" path="res://audio/deep_sea.tres" id="6_4ge6i"]
+
+[node name="Start" type="Node2D" unique_id=218489408 node_paths=PackedStringArray("timer")]
+process_mode = 3
+texture_filter = 1
+script = ExtResource("1_4ge6i")
+timer = NodePath("")
+
+[node name="Follower" type="Node2D" parent="." unique_id=394060055 node_paths=PackedStringArray("target")]
+script = ExtResource("1_y16t7")
+target = NodePath("../Player")
+
+[node name="Camera2D" type="Camera2D" parent="Follower" unique_id=1244786680]
+zoom = Vector2(2, 2)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Follower" unique_id=668522441]
+current = true
+
+[node name="Player" parent="." unique_id=1763138530 node_paths=PackedStringArray("gui") instance=ExtResource("1_r3h5y")]
+position = Vector2(-355, 171)
+collision_mask = 6
+run_multiplier = 2.0
+gui = NodePath("")
+
+[node name="Submarine" parent="." unique_id=392428454 node_paths=PackedStringArray("start") instance=ExtResource("5_0auqf")]
+position = Vector2(-1, 69)
+start = NodePath("..")
+
+[node name="SeaNoise" type="AudioStreamPlayer" parent="." unique_id=1770811024]
+stream = ExtResource("6_4ge6i")
+volume_db = -6.0
+autoplay = true
