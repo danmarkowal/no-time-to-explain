@@ -2,6 +2,8 @@ extends Node2D
 class_name InventoryManager
 
 @onready var dropped_item_prefab = preload("res://scenes/dropped_item.tscn")
+@onready var ranged_weapon_hud_prefab = preload("res://scenes/ranged_weapon_hud.tscn")
+
 
 @export var player: Node2D
 @export var inventory_data: InventoryData
@@ -62,20 +64,29 @@ func refresh_held_item() -> void:
 
 func try_equip(item: ItemData) -> void:
 	var prefab = item.prefab
+	
 	var item_instance: Node
 	if prefab == null:
 		item_instance = item.default_instance()
 	else:
 		item_instance = prefab.instantiate()
+	item_slot.add_child(item_instance)
+
 	if item_instance.has_method("on_equip"):
 		item_instance.on_equip(item)
-	item_slot.add_child(item_instance)
+		
+	if item is RangedWeapon:
+		var hud = ranged_weapon_hud_prefab.instantiate()
+		hud.item = item
+		player.hud.item_hud.add_child(hud)
 
 
 func unequip() -> void:
 	for child in item_slot.get_children():
 		if child.has_method("on_unequip"):
 			child.on_unequip()
+		child.queue_free()
+	for child in player.hud.item_hud.get_children():
 		child.queue_free()
 
 	

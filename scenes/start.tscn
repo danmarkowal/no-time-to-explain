@@ -25,10 +25,18 @@ zoom = Vector2(2, 2)
 [node name="AudioListener2D" type="AudioListener2D" parent="Follower" unique_id=668522441]
 current = true
 
-[node name="Player" parent="." unique_id=1763138530 node_paths=PackedStringArray("gui") instance=ExtResource("1_r3h5y")]
+[node name="Player" parent="." unique_id=1763138530 node_paths=PackedStringArray("hud", "gui") instance=ExtResource("1_r3h5y")]
 position = Vector2(-355, 171)
 collision_mask = 6
+walk_speed = null
+climb_speed = null
 run_multiplier = 2.0
+walk_anim_phase_offset_arms = null
+walk_anim_range_arms = null
+walk_anim_phase_offset_legs = null
+walk_anim_range_legs = null
+walk_anim_exp = null
+hud = NodePath("../CanvasLayer/HUD")
 gui = NodePath("../CanvasLayer/GUI")
 
 [node name="Submarine" parent="." unique_id=392428454 node_paths=PackedStringArray("start") instance=ExtResource("5_0auqf")]

@@ -1,4 +1,5 @@
 extends Control
+class_name HUD
 
 # this needs to be a node 2d since player can be Player or Diver
 @export var player: Node2D
@@ -6,6 +7,7 @@ extends Control
 @export var inventory: Inventory
 @export var health_bar: ProgressBar
 @export var oxygen_bar: ProgressBar
+@export var item_hud: Control
 
 func _ready() -> void:
 	inventory.initialize(player.inventory_manager.inventory_data)

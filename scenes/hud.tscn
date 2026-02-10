@@ -14,7 +14,7 @@ shader_parameter/intensity = 1.0000000475
 shader_parameter/contrast = 1.5000000475
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
-[node name="HUD" type="Control" unique_id=851495828 node_paths=PackedStringArray("inventory", "health_bar", "oxygen_bar")]
+[node name="HUD" type="Control" unique_id=851495828 node_paths=PackedStringArray("inventory", "health_bar", "oxygen_bar", "item_hud")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,9 +23,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_oo0fn")
-inventory = NodePath("VBoxContainer/HBoxContainer2/Inventory")
-health_bar = NodePath("VBoxContainer/HBoxContainer/Health")
-oxygen_bar = NodePath("VBoxContainer/HBoxContainer2/Oxygen")
+inventory = NodePath("PlayerHUD/HBoxContainer2/Inventory")
+health_bar = NodePath("PlayerHUD/HBoxContainer/Health")
+oxygen_bar = NodePath("PlayerHUD/HBoxContainer2/Oxygen")
+item_hud = NodePath("ItemHUD")
 
 [node name="Vignette" type="ColorRect" parent="." unique_id=1430229087]
 material = SubResource("ShaderMaterial_uo2fv")
@@ -37,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1670823013]
+[node name="PlayerHUD" type="VBoxContainer" parent="." unique_id=1670823013]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -51,19 +52,28 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=861066579]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerHUD" unique_id=861066579]
 layout_mode = 2
 
-[node name="Health" parent="VBoxContainer/HBoxContainer" unique_id=552793778 instance=ExtResource("5_047uy")]
+[node name="Health" parent="PlayerHUD/HBoxContainer" unique_id=552793778 instance=ExtResource("5_047uy")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=505861943]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PlayerHUD" unique_id=505861943]
 layout_mode = 2
 
-[node name="Inventory" parent="VBoxContainer/HBoxContainer2" unique_id=1294224765 instance=ExtResource("2_5ysmq")]
+[node name="Inventory" parent="PlayerHUD/HBoxContainer2" unique_id=1294224765 instance=ExtResource("2_5ysmq")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Oxygen" parent="VBoxContainer/HBoxContainer2" unique_id=354424121 instance=ExtResource("4_uo2fv")]
+[node name="Oxygen" parent="PlayerHUD/HBoxContainer2" unique_id=354424121 instance=ExtResource("4_uo2fv")]
 layout_mode = 2
+
+[node name="ItemHUD" type="Control" parent="." unique_id=632344477]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

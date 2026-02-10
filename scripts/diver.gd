@@ -15,6 +15,7 @@ class_name Diver
 
 @export var inventory_manager: InventoryManager
 @export var interaction_manager: InteractionManager
+@export var hud: HUD
 @export var gui: GUI
 
 @export_group("Survival Stats")

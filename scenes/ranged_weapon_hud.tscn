@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dol2le1xg0yd8"]
+
+[ext_resource type="Script" uid="uid://bd5lesi45yhpi" path="res://scripts/ranged_weapon_hud.gd" id="1_3nmrc"]
+
+[node name="RangedWeaponHud" type="VBoxContainer" unique_id=245696247]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -74.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_3nmrc")
+
+[node name="WeaponNameText" type="RichTextLabel" parent="." unique_id=304492766]
+layout_mode = 2
+text = "Weapon name"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+
+[node name="AmmoText" type="RichTextLabel" parent="." unique_id=118563274]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Ammo"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2

@@ -73,9 +73,10 @@ follow_viewport = false
 [node name="ParallaxBackground1" type="Sprite2D" parent="Follower/Parallax/Parallax2D" unique_id=1972622198]
 texture = ExtResource("14_dp3eg")
 
-[node name="Diver" parent="." unique_id=1329831271 node_paths=PackedStringArray("gui") instance=ExtResource("1_sugp2")]
+[node name="Diver" parent="." unique_id=1329831271 node_paths=PackedStringArray("hud", "gui") instance=ExtResource("1_sugp2")]
 z_index = 100
 motion_mode = 1
+hud = NodePath("../CanvasLayer/HUD")
 gui = NodePath("../CanvasLayer/GUI")
 oxygen_drain_rate = 0.5
 drown_damage_rate = 5.0
