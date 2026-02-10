@@ -227,6 +227,7 @@ code = "237"
 inventory_data = SubResource("Resource_wneam")
 
 [node name="EscapePodArea" type="Area2D" parent="." unique_id=1761248190]
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EscapePodArea" unique_id=29916222]
 position = Vector2(-168, 96)

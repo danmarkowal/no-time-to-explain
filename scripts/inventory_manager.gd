@@ -67,3 +67,7 @@ func drop_current_item() -> void:
 
 func pickup_item(item: ItemData) -> bool:
 	return inventory_data.add_item(item)
+	
+	
+func has_item(item: ItemData) -> bool:
+	return inventory_data.has_item(item)
