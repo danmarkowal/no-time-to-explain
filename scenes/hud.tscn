@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://by0kqhujyy8wa" path="res://scripts/hud.gd" id="1_oo0fn"]
 [ext_resource type="PackedScene" uid="uid://lxltr18qhs5y" path="res://resources/inventory/inventory.tscn" id="2_5ysmq"]
 [ext_resource type="Shader" uid="uid://uh5hxrh4qiwm" path="res://shaders/vignette.gdshader" id="2_6fi6k"]
+[ext_resource type="PackedScene" uid="uid://bka7pl47kfhh" path="res://scenes/oxygen_bar.tscn" id="4_uo2fv"]
+[ext_resource type="PackedScene" uid="uid://bl5rpp1lmqgq2" path="res://scenes/health_bar.tscn" id="5_047uy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uo2fv"]
 shader = ExtResource("2_6fi6k")
@@ -45,3 +47,17 @@ offset_right = 20.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Oxygen" parent="." unique_id=354424121 instance=ExtResource("4_uo2fv")]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 592.0
+offset_right = 650.0
+offset_bottom = 632.0
+
+[node name="Health" parent="." unique_id=552793778 instance=ExtResource("5_047uy")]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 538.0
+offset_right = 560.0
+offset_bottom = 578.0
