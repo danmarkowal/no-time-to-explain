@@ -27,8 +27,19 @@ current = true
 [node name="Player" parent="." unique_id=1763138530 node_paths=PackedStringArray("gui") instance=ExtResource("1_r3h5y")]
 position = Vector2(-355, 171)
 collision_mask = 6
+walk_speed = null
+climb_speed = null
 run_multiplier = 2.0
+walk_anim_phase_offset_arms = null
+walk_anim_range_arms = null
+walk_anim_phase_offset_legs = null
+walk_anim_range_legs = null
+walk_anim_exp = null
 gui = NodePath("../CanvasLayer/GUI")
+max_health = null
+max_oxygen = null
+oxygen_drain_rate = null
+drown_damage_rate = null
 
 [node name="Submarine" parent="." unique_id=392428454 node_paths=PackedStringArray("start") instance=ExtResource("5_0auqf")]
 position = Vector2(-1, 69)
@@ -48,3 +59,6 @@ player = NodePath("../../Player")
 time = 33.0
 
 [node name="GUI" parent="CanvasLayer" unique_id=1605761739 instance=ExtResource("6_y16t7")]
+
+[connection signal="health_changed" from="Player" to="CanvasLayer/HUD" method="_on_player_health_changed"]
+[connection signal="oxygen_changed" from="Player" to="CanvasLayer/HUD" method="_on_player_oxygen_changed"]

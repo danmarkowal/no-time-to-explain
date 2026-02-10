@@ -77,6 +77,8 @@ texture = ExtResource("14_dp3eg")
 z_index = 100
 motion_mode = 1
 gui = NodePath("../CanvasLayer/GUI")
+oxygen_drain_rate = 0.5
+drown_damage_rate = 5.0
 
 [node name="TerrainGenerator" type="Node" parent="." unique_id=498047511 node_paths=PackedStringArray("player")]
 script = ExtResource("1_o5qli")

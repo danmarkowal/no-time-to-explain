@@ -2,11 +2,13 @@ extends Control
 
 # this needs to be a node 2d since player can be Player or Diver
 @export var player: Node2D
-@onready var health_bar = $Health
-@onready var oxygen_bar = $Oxygen
+
+@export var inventory: Inventory
+@export var health_bar: ProgressBar
+@export var oxygen_bar: ProgressBar
 
 func _ready() -> void:
-	$Inventory.initialize(player.inventory_manager.inventory_data)
+	inventory.initialize(player.inventory_manager.inventory_data)
 	health_bar.value = 100
 	oxygen_bar.value = 100
 

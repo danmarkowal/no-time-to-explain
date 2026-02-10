@@ -13,11 +13,25 @@ class_name Diver
 @export var inventory_manager: InventoryManager
 @export var interaction_manager: InteractionManager
 @export var gui: GUI
+
 @export_group("Survival Stats")
 @export var max_health: float = 100.0
 @export var max_oxygen: float = 100.0
 @export var oxygen_drain_rate: float = 2.0 
-@export var drown_damage_rate: float = 10.0 
+@export var drown_damage_rate: float = 10.0
+
+signal health_changed(value)
+signal oxygen_changed(value)
+
+var health = max_health:
+	set(val):
+		health = clamp(val, 0, 100)
+		health_changed.emit(health) 
+
+var oxygen = max_oxygen:
+	set(val):
+		oxygen = clamp(val, 0, 100)
+		oxygen_changed.emit(oxygen) 
 
 var chunk_pos: Vector2i = Vector2i.ZERO
 var swim_anim_t_legs = 0.0
@@ -98,30 +112,15 @@ func _physics_process(delta: float) -> void:
 	chunk_pos = floor(position / (Globals.CHUNK_SIZE * Globals.TILE_SIZE * Globals.PPM))
 	handle_survival_stats(delta)
 
-func handle_survival_stats(delta: float) -> void:
+func interact_with(node: Node2D):
+	interaction_manager.interact_with(node)
 
+func handle_survival_stats(delta: float) -> void:
 	self.oxygen -= oxygen_drain_rate * delta
-	
 	if oxygen <= 0:
 		self.health -= drown_damage_rate * delta
-		
 	if health <= 0:
 		die()
 
 func die():
 	print("Diver has perished.")
-func interact_with(node: Node2D):
-	interaction_manager.interact_with(node)
-
-signal health_changed(value)
-signal oxygen_changed(value)
-
-var health = 100:
-	set(val):
-		health = clamp(val, 0, 100)
-		health_changed.emit(health) 
-
-var oxygen = 100:
-	set(val):
-		oxygen = clamp(val, 0, 100)
-		oxygen_changed.emit(oxygen) 
