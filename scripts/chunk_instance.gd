@@ -1,7 +1,14 @@
 extends Node2D
 class_name ChunkInstance
 
+const chest_prefab = preload("res://scenes/chest.tscn")
+const oxygen_geyser_prefab = preload("res://scenes/oxygen_geyser.tscn")
+
 @export var debug_render: bool = false
+@export var min_chests: int = 0
+@export var max_chests: int = 3
+@export var min_geysers: int = 1
+@export var max_geysers: int = 3
 
 var chunk_data: ChunkData
 var isovalue: float
@@ -93,6 +100,31 @@ func build(_isovalue: float):
 	$ChunkBody/ChunkMesh.mesh = mesh
 	
 	create_collision_from_mesh(verts, indices)
+	
+	spawn_chests()
+	spawn_geysers()
+
+func spawn_chests() -> void:
+	var spawn_locations = get_spawn_locations()
+	spawn_locations.shuffle()
+	var n_chests = randi_range(min_chests, max_chests)
+	for i in min(n_chests, spawn_locations.size()):
+		var location = spawn_locations[i]
+		var chest = chest_prefab.instantiate()
+		chest.position = location["pos"]
+		chest.rotation = location["normal"].angle() + PI / 2
+		add_child(chest)
+		
+func spawn_geysers() -> void:
+	var spawn_locations = get_spawn_locations()
+	spawn_locations.shuffle()
+	var n_chests = randi_range(min_geysers, max_geysers)
+	for i in min(n_chests, spawn_locations.size()):
+		var location = spawn_locations[i]
+		var geyser = oxygen_geyser_prefab.instantiate()
+		geyser.position = location["pos"]
+		geyser.rotation = location["normal"].angle() + PI / 2
+		add_child(geyser)
 
 func is_close(a: float, b: float) -> bool:
 	return abs(a - b) <= 0.01
@@ -474,3 +506,108 @@ func _make_concave_collision_from_local_tris(local_vertices: Array, local_tris: 
 	var shape_node = CollisionShape2D.new()
 	shape_node.shape = conc
 	$ChunkBody.add_child(shape_node)
+
+# safe sample of scalar at integer grid coords clamped to valid range
+func _sample_vertex(ix: int, iy: int) -> float:
+	var max_index = Globals.CHUNK_SIZE # vertex coords run 0..CHUNK_SIZE inclusive
+	ix = clamp(ix, 0, max_index)
+	iy = clamp(iy, 0, max_index)
+	return self.chunk_data.get_vertex_value(Vector2i(ix, iy))
+
+# returns Array of Dictionaries: { "pos": Vector2, "normal": Vector2 }
+# min_above_neighbors: require at least this many of the 8 neighbours to be > isovalue
+# max_tilt_degrees: maximum tilt from perfectly upward allowed (in degrees)
+func get_spawn_locations(min_above_neighbors: int = 5, max_tilt_degrees: float = 75.0) -> Array:
+	var results := []
+	var seen := {} # dedupe by quantized position key
+	var up_vec := Vector2(0.0, -1.0) # Godot Y grows down, so "up" is negative Y
+	var max_cos := cos(deg_to_rad(max_tilt_degrees))
+	var grid_spacing := Globals.TILE_SIZE * Globals.PPM
+	var max_index := Globals.CHUNK_SIZE # vertex coords run 0..CHUNK_SIZE inclusive
+
+	# iterate every cell, only consider cells that actually have a contour (case != 0 && != 15)
+	for y in range(Globals.CHUNK_SIZE):
+		for x in range(Globals.CHUNK_SIZE):
+			var cell_pos = Vector2i(x, y)
+			# replicate casevalue logic from build_cell
+			var v := [
+				self.chunk_data.get_vertex_value(cell_pos),
+				self.chunk_data.get_vertex_value(cell_pos + Vector2i(1, 0)),
+				self.chunk_data.get_vertex_value(cell_pos + Vector2i(1, 1)),
+				self.chunk_data.get_vertex_value(cell_pos + Vector2i(0, 1))
+			]
+			var casevalue := int(is_inside(v[0], isovalue)) \
+				| int(is_inside(v[1], isovalue)) << 1 \
+				| int(is_inside(v[2], isovalue)) << 2 \
+				| int(is_inside(v[3], isovalue)) << 3
+			if casevalue == 0 or casevalue == 15:
+				continue # no contour in this cell
+
+			# get the exact contour verts for this cell (use your existing build_cell so interpolation is identical)
+			var cell = build_cell(cell_pos, isovalue)
+			for world_pos in cell.verts:
+				# dedupe (quantize to avoid duplicates along shared cell edges)
+				var qx = int(round(world_pos.x * 100.0)) # quantize to 0.01 world units
+				var qy = int(round(world_pos.y * 100.0))
+				var key = str(qx) + "_" + str(qy)
+				if seen.has(key):
+					continue
+				seen[key] = true
+
+				# map world position back into the sample/grid coordinate space (floating)
+				var grid_pos = world_pos / grid_spacing
+				var ix = int(round(grid_pos.x))
+				var iy = int(round(grid_pos.y))
+
+				# count the 8 neighbours (3x3 minus center) that are above the isovalue
+				var above_count = 0
+				for dy in [-1, 0, 1]:
+					for dx in [-1, 0, 1]:
+						if dx == 0 and dy == 0:
+							continue
+						var s = _sample_vertex(ix + dx, iy + dy)
+						# "above ground" is interpreted as value > isovalue
+						if s > isovalue:
+							above_count += 1
+
+				if above_count < min_above_neighbors:
+					continue
+
+				# approximate gradient at nearest integer sample (central differences)
+				var left  = _sample_vertex(ix - 1, iy)
+				var right = _sample_vertex(ix + 1, iy)
+				var up    = _sample_vertex(ix, iy - 1)
+				var down  = _sample_vertex(ix, iy + 1)
+
+				var dFdx := 0.0
+				var dFdy := 0.0
+				# prefer central differences where possible, fall back to forward/backward at borders
+				if ix - 1 >= 0 and ix + 1 <= max_index:
+					dFdx = (right - left) * 0.5
+				elif ix + 1 <= max_index:
+					dFdx = (right - _sample_vertex(ix, iy))
+				elif ix - 1 >= 0:
+					dFdx = (_sample_vertex(ix, iy) - left)
+
+				if iy - 1 >= 0 and iy + 1 <= max_index:
+					dFdy = (down - up) * 0.5
+				elif iy + 1 <= max_index:
+					dFdy = (down - _sample_vertex(ix, iy))
+				elif iy - 1 >= 0:
+					dFdy = (_sample_vertex(ix, iy) - up)
+
+				var grad = Vector2(dFdx, dFdy)
+				if grad.length_squared() < 1e-8:
+					# very flat / undefined normal -> skip
+					continue
+				var normal = grad.normalized() # gradient is normal to the level set
+
+				# require the normal to face generally upwards (compare with up_vec)
+				# note: since up_vec is (0,-1), larger dot means closer to upward direction
+				if normal.dot(up_vec) < max_cos:
+					continue
+
+				# candidate accepted
+				results.append({"pos": world_pos, "normal": normal})
+
+	return results

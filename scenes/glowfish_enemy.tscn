@@ -1,99 +1,99 @@
 [gd_scene format=3 uid="uid://jna5yll43cc8"]
 
-[ext_resource type="Script" uid="uid://crvpw1akkui03" path="res://scripts/glowfish.gd" id="1_j2ivb"]
-[ext_resource type="Texture2D" uid="uid://bn2g6gqqkx1wy" path="res://textures/enemies/glowfish/idle.png" id="2_4lqd8"]
-[ext_resource type="Texture2D" uid="uid://drpsrtwyt34s0" path="res://textures/enemies/glowfish/attack.png" id="2_i2keh"]
-[ext_resource type="Texture2D" uid="uid://1o0dm24tcnv1" path="res://textures/enemies/glowfish/death.png" id="3_8a2pb"]
-[ext_resource type="Texture2D" uid="uid://b43wn81gq53v5" path="res://textures/enemies/glowfish/walk.png" id="3_k41or"]
-[ext_resource type="Texture2D" uid="uid://byeg32gfsrgb0" path="res://textures/enemies/glowfish/hurt.png" id="4_6jqgu"]
-[ext_resource type="Texture2D" uid="uid://w3sjkv5r6kt6" path="res://textures/particles/light_03.png" id="7_8a2pb"]
+[ext_resource type="Script" uid="uid://crvpw1akkui03" path="res://scripts/glowfish.gd" id="1_lqs8k"]
+[ext_resource type="Texture2D" uid="uid://drpsrtwyt34s0" path="res://textures/enemies/glowfish/attack.png" id="2_0eoke"]
+[ext_resource type="Texture2D" uid="uid://1o0dm24tcnv1" path="res://textures/enemies/glowfish/death.png" id="3_c1knc"]
+[ext_resource type="Texture2D" uid="uid://byeg32gfsrgb0" path="res://textures/enemies/glowfish/hurt.png" id="4_uvi3k"]
+[ext_resource type="Texture2D" uid="uid://bn2g6gqqkx1wy" path="res://textures/enemies/glowfish/idle.png" id="5_rwngj"]
+[ext_resource type="Texture2D" uid="uid://b43wn81gq53v5" path="res://textures/enemies/glowfish/walk.png" id="6_o67c7"]
+[ext_resource type="Texture2D" uid="uid://w3sjkv5r6kt6" path="res://textures/particles/light_03.png" id="7_v0rm0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f85kj"]
-atlas = ExtResource("2_i2keh")
+atlas = ExtResource("2_0eoke")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xmool"]
-atlas = ExtResource("2_i2keh")
+atlas = ExtResource("2_0eoke")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1xql"]
-atlas = ExtResource("2_i2keh")
+atlas = ExtResource("2_0eoke")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r20wk"]
-atlas = ExtResource("2_i2keh")
+atlas = ExtResource("2_0eoke")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66kix"]
-atlas = ExtResource("2_i2keh")
+atlas = ExtResource("2_0eoke")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0wt3"]
-atlas = ExtResource("2_i2keh")
+atlas = ExtResource("2_0eoke")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o4h1t"]
-atlas = ExtResource("3_8a2pb")
+atlas = ExtResource("3_c1knc")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qd8ai"]
-atlas = ExtResource("3_8a2pb")
+atlas = ExtResource("3_c1knc")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yflyh"]
-atlas = ExtResource("3_8a2pb")
+atlas = ExtResource("3_c1knc")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xu0p"]
-atlas = ExtResource("3_8a2pb")
+atlas = ExtResource("3_c1knc")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqqau"]
-atlas = ExtResource("3_8a2pb")
+atlas = ExtResource("3_c1knc")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifbqw"]
-atlas = ExtResource("3_8a2pb")
+atlas = ExtResource("3_c1knc")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s20mx"]
-atlas = ExtResource("4_6jqgu")
+atlas = ExtResource("4_uvi3k")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_42oml"]
-atlas = ExtResource("4_6jqgu")
+atlas = ExtResource("4_uvi3k")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55h24"]
-atlas = ExtResource("2_4lqd8")
+atlas = ExtResource("5_rwngj")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i2keh"]
-atlas = ExtResource("2_4lqd8")
+atlas = ExtResource("5_rwngj")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8a2pb"]
-atlas = ExtResource("2_4lqd8")
+atlas = ExtResource("5_rwngj")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jqgu"]
-atlas = ExtResource("2_4lqd8")
+atlas = ExtResource("5_rwngj")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbdea"]
-atlas = ExtResource("3_k41or")
+atlas = ExtResource("6_o67c7")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qw3mc"]
-atlas = ExtResource("3_k41or")
+atlas = ExtResource("6_o67c7")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bn8q1"]
-atlas = ExtResource("3_k41or")
+atlas = ExtResource("6_o67c7")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwar7"]
-atlas = ExtResource("3_k41or")
+atlas = ExtResource("6_o67c7")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f85kj"]
@@ -197,7 +197,7 @@ radius = 17.0
 texture_filter = 1
 scale = Vector2(2, 2)
 motion_mode = 1
-script = ExtResource("1_j2ivb")
+script = ExtResource("1_lqs8k")
 id = "glowfish"
 enemy_name = "Glowfish"
 max_health = 50.0
@@ -214,4 +214,4 @@ shape = SubResource("CircleShape2D_i2keh")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1674828132]
 position = Vector2(7, -3)
-texture = ExtResource("7_8a2pb")
+texture = ExtResource("7_v0rm0")

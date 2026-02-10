@@ -26,6 +26,7 @@ Globals="*res://scripts/globals/globals.gd"
 [global_group]
 
 player=""
+oxygen_geyser=""
 
 [gui]
 
